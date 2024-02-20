@@ -32,10 +32,10 @@ public class SpringSecurityConfig {
             "/swagger-ui/**",
             "/swagger-resources",
             "/swagger-resources/**",
-
             "/auth/*",
-           "/auth/**"
-
+           "/auth/**",
+            "/attach/any/**", "attach/*",
+            "/category/any"
     };
 
     @Bean

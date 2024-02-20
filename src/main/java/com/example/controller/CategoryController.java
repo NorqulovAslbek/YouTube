@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.CreateCategoryDTO;
+import com.example.enums.AppLanguage;
 import com.example.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -37,6 +38,12 @@ public class CategoryController {
      }
 
 
+
+    @GetMapping("/any")
+    @Operation(summary = "Api for Category", description = "this api used for Category list")
+    public ResponseEntity<?> getList(@RequestParam(value = "lan",defaultValue = "UZ") AppLanguage lan){
+        return ResponseEntity.ok(categoryService.getList(lan));
+    }
      @Operation(summary = "Api for delete",description = " this api for category delete")
      @DeleteMapping("/{id}")
      @PreAuthorize(value = "hasRole('ADMIN')")

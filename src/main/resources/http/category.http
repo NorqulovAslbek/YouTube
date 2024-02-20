@@ -19,7 +19,12 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0NDA2NjcsImVtYWlsIjoiY
   "nameRu": "Музыка",
   "nameUz": "Music"
 }
+<<<<<<< HEAD
+### Get list
+GET localhost:8080/category/any?lan=UZ
+=======
 
 ### Delete category
 DELETE localhost:8080/category/2
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0NDA2NjcsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg1MjcwNjcsImlzcyI6IllvdXR1YmUifQ.W6hXPYuOsmxvkMfw1HYEQo5ISAwTmjyVKn3ugm4HXydNKfOKfyGmqU-f3Q1EjAReloFIUX5yMrnuR_v8dcuqcA
+>>>>>>> f3cfe1fe37226fcfae767028f5abc96380d6ccfe

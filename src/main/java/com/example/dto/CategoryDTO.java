@@ -13,6 +13,7 @@ public class CategoryDTO {
     private String nameUz;
     private String nameRU;
     private String nameEn;
+    private String name;
     private Boolean visible;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;

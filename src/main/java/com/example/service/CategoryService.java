@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -81,7 +83,26 @@ public class CategoryService {
         return true;
     }
 
+
+    public List<CategoryDTO> getList(AppLanguage lan) {
+        List<CategoryDTO> dtoList = new LinkedList<>();
+        Iterable<CategoryEntity> all = categoryRepository.findAll();
+
+        for (CategoryEntity entity : all) {
+            if (entity.getVisible().equals(true)) {
+                CategoryDTO dto = new CategoryDTO();
+                switch (lan) {
+                    case UZ -> dto.setName(entity.getNameUz());
+                    case RU -> dto.setName(entity.getNameRU());
+                    default -> dto.setName(entity.getNameEn());
+                }
+                dtoList.add(dto);
+            }
+        }
+        return dtoList;
+    }
     private CategoryEntity get(Integer id) {
         return categoryRepository.getById(id).orElseThrow(() -> new AppBadException("category not found"));
     }
 }
+
