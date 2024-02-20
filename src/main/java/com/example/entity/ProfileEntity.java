@@ -17,8 +17,6 @@ public class ProfileEntity extends BaseEntity{
     private String surname;
     @Column(unique = true, nullable = false)
     private String email;
-    @Column(unique = true)
-    private String phone;
     @Column(nullable = false)
     private String password;
     @Enumerated(EnumType.STRING)
@@ -27,4 +25,6 @@ public class ProfileEntity extends BaseEntity{
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private ProfileRole role;
+    @Column(name = "photo")
+    private String photo;
 }

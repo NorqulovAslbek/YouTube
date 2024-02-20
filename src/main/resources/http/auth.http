@@ -1,0 +1,15 @@
+### registration profile
+POST localhost:8080/auth/registration
+Content-Type: application/json
+Accept-Language: UZ
+
+{
+  "name": "Aslbek",
+  "surname": "Norqulov",
+  "email": "norqulovaslbek920@gmail.com",
+  "password": "Asl123"
+}
+
+### verification profile
+GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzIwNTgsImlkIjozMSwiZXhwIjoxNzA4NDM1NjU4LCJpc3MiOiJZb3V0dWJlIn0.ntO0gT0GsoVYOC_Yu5E3-R-v8mBcRIfHAXUusDu9onyP1UM4FMRr2MulNbd6MozyyRZhqEe59mBi3mn2PAfSIQ
+Accept-Language: UZ
