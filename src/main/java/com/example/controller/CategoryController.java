@@ -37,7 +37,7 @@ public class CategoryController {
      }
 
 
-
+     @Operation(summary = "Api for delete",description = " this api for category delete")
      @DeleteMapping("/{id}")
      @PreAuthorize(value = "hasRole('ADMIN')")
      public ResponseEntity<?> delete(@PathVariable("id") Integer id){
