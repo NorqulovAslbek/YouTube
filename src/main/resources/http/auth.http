@@ -6,10 +6,10 @@ Accept-Language: UZ
 {
   "name": "Aslbek",
   "surname": "Norqulov",
-  "email": "norqulovaslbek920@gmail.com",
+  "email": "ahrororzimurodov@icloud.com",
   "password": "Asl123"
 }
 
 ### verification profile
-GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzIwNTgsImlkIjozMSwiZXhwIjoxNzA4NDM1NjU4LCJpc3MiOiJZb3V0dWJlIn0.ntO0gT0GsoVYOC_Yu5E3-R-v8mBcRIfHAXUusDu9onyP1UM4FMRr2MulNbd6MozyyRZhqEe59mBi3mn2PAfSIQ
+GET localhost:8080/auth/verification/email/UZ/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzM0MDgsImlkIjozLCJleHAiOjE3MDg0MzcwMDgsImlzcyI6IllvdXR1YmUifQ.IEQ8Dw_j9o-6hS-pe-hEnljY8soBe77FIwlTPsz-jvkjNLtnTBTrLaS3JtBr85b022A0JYjtM2nc3lnWcpguEQ
 Accept-Language: UZ
