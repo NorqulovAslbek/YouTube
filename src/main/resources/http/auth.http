@@ -11,5 +11,15 @@ Accept-Language: UZ
 }
 
 ### verification profile
-GET localhost:8080/auth/verification/email/UZ/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzM0MDgsImlkIjozLCJleHAiOjE3MDg0MzcwMDgsImlzcyI6IllvdXR1YmUifQ.IEQ8Dw_j9o-6hS-pe-hEnljY8soBe77FIwlTPsz-jvkjNLtnTBTrLaS3JtBr85b022A0JYjtM2nc3lnWcpguEQ
+GET localhost:8080/auth/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0MzIwNTgsImlkIjozMSwiZXhwIjoxNzA4NDM1NjU4LCJpc3MiOiJZb3V0dWJlIn0.ntO0gT0GsoVYOC_Yu5E3-R-v8mBcRIfHAXUusDu9onyP1UM4FMRr2MulNbd6MozyyRZhqEe59mBi3mn2PAfSIQ
 Accept-Language: UZ
+
+### login profile
+POST localhost:8080/auth/login
+Content-Type: application/json
+Accept-Language: UZ
+
+{
+  "email": "norqulovaslbek920@gmail.com",
+  "password": "Asl123"
+}
