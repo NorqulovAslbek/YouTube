@@ -32,7 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 logs/
-/src/main/resources/talablar.txt/
+/src/main/resources/talablar.txt
 /src/main/resources/application-dev.properties/
 
 
