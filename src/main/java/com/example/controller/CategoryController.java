@@ -25,6 +25,7 @@ public class CategoryController {
     @PreAuthorize(value = "hasRole('ADMIN')")
     @Operation(summary = "Api for Category", description = "this api used for Category create")
     public ResponseEntity<?> create(@Valid  @RequestBody CreateCategoryDTO dto){
+        log.info("Create category {}", dto.getNameEn());
         return ResponseEntity.ok(categoryService.create(dto));
-    }
+     }
 }

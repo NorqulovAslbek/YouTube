@@ -6,12 +6,14 @@ import com.example.entity.CategoryEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
 import com.example.repository.CategoryRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
@@ -21,7 +23,8 @@ public class CategoryService {
     public Object create(CreateCategoryDTO dto) {
         Optional<CategoryEntity> optional = categoryRepository.findByNameUzAndNameRUAndNameEn(dto.getNameUz(), dto.getNameRu(), dto.getNameEn());
         if (optional.isPresent()){
-           throw new AppBadException(resourceBundleService.getMessage("category.exists", AppLanguage.EN));
+            log.warn("This category exists");
+           throw new AppBadException("This category exists");
         }
 
         CategoryEntity entity = new CategoryEntity();
