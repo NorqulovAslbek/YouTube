@@ -6,7 +6,7 @@ Accept-Language: UZ
 {
   "name": "Aslbek",
   "surname": "Norqulov",
-  "email": "norqulovaslbek920@gmail.com",
+  "email": "ahrororzimurodov@icloud.com",
   "password": "Asl123"
 }
 
@@ -20,6 +20,6 @@ Content-Type: application/json
 Accept-Language: UZ
 
 {
-  "email": "norqulovaslbek920@gmail.com",
-  "password": "Asl123"
+  "email": "adminjon@gmail.com",
+  "password": "@Root123"
 }
