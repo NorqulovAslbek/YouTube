@@ -37,15 +37,16 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.update(dto, id));
     }
 
+    @GetMapping("/any")
+    @Operation(summary = "Api for Category", description = "this api used for Category list")
+    public ResponseEntity<?> getList(@RequestParam(value = "lan",defaultValue = "UZ") AppLanguage lan){
+        return ResponseEntity.ok(categoryService.getList(lan));
+    }
+     @Operation(summary = "Api for delete",description = " this api for category delete")
      @DeleteMapping("/{id}")
      @PreAuthorize(value = "hasRole('ADMIN')")
      public ResponseEntity<?> delete(@PathVariable("id") Integer id){
       log.info("delete category {}",id);
       return ResponseEntity.ok(categoryService.delete(id));
      }
-    @GetMapping("/any")
-    @Operation(summary = "Api for Category", description = "this api used for Category list")
-    public ResponseEntity<?> getList(@RequestParam(value = "lan",defaultValue = "UZ") AppLanguage lan){
-        return ResponseEntity.ok(categoryService.getList(lan));
-    }
 }
