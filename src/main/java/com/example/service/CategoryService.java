@@ -83,10 +83,9 @@ public class CategoryService {
         return true;
     }
 
-<<<<<<<<< Temporary merge branch 1
     private CategoryEntity get(Integer id) {
         return categoryRepository.getById(id).orElseThrow(() -> new AppBadException("category not found"));
-=========
+    }
 
     public List<CategoryDTO> getList(AppLanguage lan) {
         List<CategoryDTO> dtoList = new LinkedList<>();
@@ -104,7 +103,6 @@ public class CategoryService {
             }
         }
         return dtoList;
->>>>>>>>> Temporary merge branch 2
     }
 }
 
