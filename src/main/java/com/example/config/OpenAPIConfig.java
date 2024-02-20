@@ -23,7 +23,7 @@ public class OpenAPIConfig {
 
         Contact contact = new Contact();
         contact.setEmail("YOUTUBE");
-        contact.setName("ASLBEK");
+        contact.setName("YOU TUBE");
         contact.setUrl("https://t.me/asl_bec");
 
 
