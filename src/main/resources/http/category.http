@@ -8,3 +8,14 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0NDA2NjcsImVtYWlsIjoiY
   "nameRu": "Cпорт",
   "nameEn": "Sport"
 }
+
+### Update
+PUT localhost:8080/category/6
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0NDA2NjcsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg1MjcwNjcsImlzcyI6IllvdXR1YmUifQ.W6hXPYuOsmxvkMfw1HYEQo5ISAwTmjyVKn3ugm4HXydNKfOKfyGmqU-f3Q1EjAReloFIUX5yMrnuR_v8dcuqcA
+
+{
+  "nameEn": "Musiqa",
+  "nameRu": "Музыка",
+  "nameUz": "Music"
+}
