@@ -10,8 +10,8 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-public interface CategoryRepository extends CrudRepository<CategoryEntity,Integer> {
-    Optional<CategoryEntity> findByNameUzAndNameRUAndNameEn(String nameUz,String nameRu,String nameEn);
+public interface CategoryRepository extends CrudRepository<CategoryEntity, Integer> {
+    Optional<CategoryEntity> findByNameUzAndNameRUAndNameEn(String nameUz, String nameRu, String nameEn);
 
     @Transactional
     @Modifying
@@ -20,7 +20,8 @@ public interface CategoryRepository extends CrudRepository<CategoryEntity,Intege
                @Param("nameRu") String nameRu,
                @Param("nameEn") String nameEn,
                @Param("updateDate") LocalDateTime updateDate,
-               @Param("id")Integer id);
+               @Param("id") Integer id);
 
-
+    @Query("FROM CategoryEntity WHERE  id=?1 AND visible=true ")
+    Optional<CategoryEntity> getById(Integer id);
 }

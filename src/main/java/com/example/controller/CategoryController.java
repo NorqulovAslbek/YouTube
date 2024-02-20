@@ -42,4 +42,11 @@ public class CategoryController {
     public ResponseEntity<?> getList(@RequestParam(value = "lan",defaultValue = "UZ") AppLanguage lan){
         return ResponseEntity.ok(categoryService.getList(lan));
     }
+     @DeleteMapping("/{id}")
+     @PreAuthorize(value = "hasRole('ADMIN')")
+     public ResponseEntity<?> delete(@PathVariable("id") Integer id){
+      log.info("delete category {}",id);
+      return ResponseEntity.ok(categoryService.delete(id));
+     }
+
 }

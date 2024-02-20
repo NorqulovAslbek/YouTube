@@ -2,7 +2,6 @@ package com.example.service;
 
 import com.example.dto.CategoryDTO;
 import com.example.dto.CreateCategoryDTO;
-import com.example.entity.AttachEntity;
 import com.example.entity.CategoryEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
@@ -72,9 +71,16 @@ public class CategoryService {
 
     }
 
-    private CategoryEntity get(Integer id) {
-        return categoryRepository.findById(id).orElseThrow(() -> new AppBadException("category not found"));
 
+    public Boolean delete(Integer id) {
+        CategoryEntity categoryEntity = get(id);
+        if (categoryEntity == null) {
+            log.warn("delete {}", id);
+            throw new AppBadException("category not found");
+        }
+        categoryEntity.setVisible(false);
+        categoryRepository.save(categoryEntity);
+        return true;
     }
 
 
@@ -94,6 +100,9 @@ public class CategoryService {
             }
         }
         return dtoList;
+    }
+    private CategoryEntity get(Integer id) {
+        return categoryRepository.getById(id).orElseThrow(() -> new AppBadException("category not found"));
     }
 }
 
