@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dto.CategoryDTO;
 import com.example.dto.CreateCategoryDTO;
+import com.example.entity.AttachEntity;
 import com.example.entity.CategoryEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -50,4 +52,28 @@ public class CategoryService {
         dto.setUpdatedDate(entity.getUpdatedDate());
         return dto;
     }
+
+    public Boolean update(CreateCategoryDTO dto,Integer id) {
+        Optional<CategoryEntity> optional = categoryRepository.findByNameUzAndNameRUAndNameEn(dto.getNameUz(), dto.getNameRu(), dto.getNameEn());
+        if (optional.isPresent()){
+            log.warn("This category exists");
+            throw new AppBadException("This category exists");
+        }
+        CategoryEntity entity = get(id);
+        if (!entity.getVisible().equals(true)){
+            log.warn("category is disabled");
+            throw new AppBadException("category is disabled");
+        }
+
+        int effectRows = categoryRepository.update(dto.getNameUz(), dto.getNameRu(),dto.getNameEn(), LocalDateTime.now(),id);
+        return effectRows==1;
+
+    }
+
+    private CategoryEntity get(Integer id) {
+        return categoryRepository.findById(id).orElseThrow(() -> new AppBadException("category not found"));
+
+    }
+
+
 }
