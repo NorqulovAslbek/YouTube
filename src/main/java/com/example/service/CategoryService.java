@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -22,9 +23,9 @@ public class CategoryService {
 
     public Object create(CreateCategoryDTO dto) {
         Optional<CategoryEntity> optional = categoryRepository.findByNameUzAndNameRUAndNameEn(dto.getNameUz(), dto.getNameRu(), dto.getNameEn());
-        if (optional.isPresent()){
+        if (optional.isPresent()) {
             log.warn("This category exists");
-           throw new AppBadException("This category exists");
+            throw new AppBadException("This category exists");
         }
 
         CategoryEntity entity = new CategoryEntity();
@@ -49,5 +50,38 @@ public class CategoryService {
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setUpdatedDate(entity.getUpdatedDate());
         return dto;
+    }
+
+    public Boolean update(CreateCategoryDTO dto, Integer id) {
+        Optional<CategoryEntity> optional = categoryRepository.findByNameUzAndNameRUAndNameEn(dto.getNameUz(), dto.getNameRu(), dto.getNameEn());
+        if (optional.isPresent()) {
+            log.warn("This category exists");
+            throw new AppBadException("This category exists");
+        }
+        CategoryEntity entity = get(id);
+        if (!entity.getVisible().equals(true)) {
+            log.warn("category is disabled");
+            throw new AppBadException("category is disabled");
+        }
+
+        int effectRows = categoryRepository.update(dto.getNameUz(), dto.getNameRu(), dto.getNameEn(), LocalDateTime.now(), id);
+        return effectRows == 1;
+
+    }
+
+
+    public Boolean delete(Integer id) {
+        CategoryEntity categoryEntity = get(id);
+        if (categoryEntity == null) {
+            log.warn("delete {}", id);
+            throw new AppBadException("category not found");
+        }
+        categoryEntity.setVisible(false);
+        categoryRepository.save(categoryEntity);
+        return true;
+    }
+
+    private CategoryEntity get(Integer id) {
+        return categoryRepository.getById(id).orElseThrow(() -> new AppBadException("category not found"));
     }
 }
