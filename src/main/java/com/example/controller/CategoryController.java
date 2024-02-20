@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.CreateCategoryDTO;
+import com.example.enums.AppLanguage;
 import com.example.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,20 +23,32 @@ public class CategoryController {
     @PostMapping
     @PreAuthorize(value = "hasRole('ADMIN')")
     @Operation(summary = "Api for Category", description = "this api used for Category create")
-    public ResponseEntity<?> create(@Valid  @RequestBody CreateCategoryDTO dto){
+    public ResponseEntity<?> create(@Valid @RequestBody CreateCategoryDTO dto) {
         log.info("Create category {}", dto.getNameEn());
         return ResponseEntity.ok(categoryService.create(dto));
-     }
+    }
 
-     @PutMapping("/{id}")
-     @PreAuthorize(value = "hasRole('ADMIN')")
-     @Operation(summary = "Api for Category", description = "this api used for Category update")
-    public ResponseEntity<?> update(@Valid  @RequestBody CreateCategoryDTO dto,
-                                            @PathVariable("id") Integer id){
+    @PutMapping("/{id}")
+    @PreAuthorize(value = "hasRole('ADMIN')")
+    @Operation(summary = "Api for Category", description = "this api used for Category update")
+    public ResponseEntity<?> update(@Valid @RequestBody CreateCategoryDTO dto,
+                                    @PathVariable("id") Integer id) {
         log.info("Update category {}", dto.getNameEn());
-        return ResponseEntity.ok(categoryService.update(dto,id));
+        return ResponseEntity.ok(categoryService.update(dto, id));
+    }
+
+<<<<<<<<< Temporary merge branch 1
+     @DeleteMapping("/{id}")
+     @PreAuthorize(value = "hasRole('ADMIN')")
+     public ResponseEntity<?> delete(@PathVariable("id") Integer id){
+      log.info("delete category {}",id);
+      return ResponseEntity.ok(categoryService.delete(id));
      }
-
-
-
+=========
+    @GetMapping("/any")
+    @Operation(summary = "Api for Category", description = "this api used for Category list")
+    public ResponseEntity<?> getList(@RequestParam(value = "lan",defaultValue = "UZ") AppLanguage lan){
+        return ResponseEntity.ok(categoryService.getList(lan));
+    }
+>>>>>>>>> Temporary merge branch 2
 }

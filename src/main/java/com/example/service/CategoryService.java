@@ -2,7 +2,6 @@ package com.example.service;
 
 import com.example.dto.CategoryDTO;
 import com.example.dto.CreateCategoryDTO;
-import com.example.entity.AttachEntity;
 import com.example.entity.CategoryEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
@@ -12,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,9 +25,9 @@ public class CategoryService {
 
     public Object create(CreateCategoryDTO dto) {
         Optional<CategoryEntity> optional = categoryRepository.findByNameUzAndNameRUAndNameEn(dto.getNameUz(), dto.getNameRu(), dto.getNameEn());
-        if (optional.isPresent()){
+        if (optional.isPresent()) {
             log.warn("This category exists");
-           throw new AppBadException("This category exists");
+            throw new AppBadException("This category exists");
         }
 
         CategoryEntity entity = new CategoryEntity();
@@ -53,27 +54,57 @@ public class CategoryService {
         return dto;
     }
 
-    public Boolean update(CreateCategoryDTO dto,Integer id) {
+    public Boolean update(CreateCategoryDTO dto, Integer id) {
         Optional<CategoryEntity> optional = categoryRepository.findByNameUzAndNameRUAndNameEn(dto.getNameUz(), dto.getNameRu(), dto.getNameEn());
-        if (optional.isPresent()){
+        if (optional.isPresent()) {
             log.warn("This category exists");
             throw new AppBadException("This category exists");
         }
         CategoryEntity entity = get(id);
-        if (!entity.getVisible().equals(true)){
+        if (!entity.getVisible().equals(true)) {
             log.warn("category is disabled");
             throw new AppBadException("category is disabled");
         }
 
-        int effectRows = categoryRepository.update(dto.getNameUz(), dto.getNameRu(),dto.getNameEn(), LocalDateTime.now(),id);
-        return effectRows==1;
+        int effectRows = categoryRepository.update(dto.getNameUz(), dto.getNameRu(), dto.getNameEn(), LocalDateTime.now(), id);
+        return effectRows == 1;
 
     }
 
+
+    public Boolean delete(Integer id) {
+        CategoryEntity categoryEntity = get(id);
+        if (categoryEntity == null) {
+            log.warn("delete {}", id);
+            throw new AppBadException("category not found");
+        }
+        categoryEntity.setVisible(false);
+        categoryRepository.save(categoryEntity);
+        return true;
+    }
+
+<<<<<<<<< Temporary merge branch 1
     private CategoryEntity get(Integer id) {
-        return categoryRepository.findById(id).orElseThrow(() -> new AppBadException("category not found"));
+        return categoryRepository.getById(id).orElseThrow(() -> new AppBadException("category not found"));
+=========
 
+    public List<CategoryDTO> getList(AppLanguage lan) {
+        List<CategoryDTO> dtoList = new LinkedList<>();
+        Iterable<CategoryEntity> all = categoryRepository.findAll();
+
+        for (CategoryEntity entity : all) {
+            if (entity.getVisible().equals(true)) {
+                CategoryDTO dto = new CategoryDTO();
+                switch (lan) {
+                    case UZ -> dto.setName(entity.getNameUz());
+                    case RU -> dto.setName(entity.getNameRU());
+                    default -> dto.setName(entity.getNameEn());
+                }
+                dtoList.add(dto);
+            }
+        }
+        return dtoList;
+>>>>>>>>> Temporary merge branch 2
     }
-
-
 }
+
