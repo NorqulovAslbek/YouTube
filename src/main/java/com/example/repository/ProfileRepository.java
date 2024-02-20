@@ -16,4 +16,8 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
     @Modifying
     @Query("Update ProfileEntity  set status =?2 where id = ?1")
     void updateStatus(Integer id, ProfileStatus active);
+
+
+    @Query("FROM ProfileEntity WHERE email=?1 AND password=?2 AND visible=true")
+    Optional<ProfileEntity> getProfile(String email, String password);
 }
