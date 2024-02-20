@@ -19,3 +19,5 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg0NDA2NjcsImVtYWlsIjoiY
   "nameRu": "Музыка",
   "nameUz": "Music"
 }
+### Get list
+GET localhost:8080/category/any?lan=UZ
