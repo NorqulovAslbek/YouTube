@@ -1,0 +1,256 @@
+*************** Requirements ***************
+1. GIT, Setting (package, properties, db,)
+2. log,
+3. security + jwt,
+4. Swagger,
+5. flyway (admin, moderator,user,category,tag),
+6. User MD5 for password encoding.
+8. internationalization(en,uz,ru))
+9. http
+
+***
+10. Trigger - increase video view count. While inserting into VideoWatched  table.
+11. Notification send to subscribers (rabbitMq + httpRest + fireBase + simple front).
+12. Function (get like and dislike cout in one request.)
+
+*************** Youtube ***************
+1. Profile
+    id,name,surname,email,password,photo,role,status
+2. Attach
+    id(uuid),origin_name,size,type (extension),path,duration
+3. Category
+    id,name,created_date
+4. Tag
+    id,name,created_date
+5. Channel
+    id(uuid),name,photo,description,status (ACTIVE, BLOCK),banner,profile_id
+6. Playlist
+    id,channel_id,name,description,status(private,public),order_num
+7. Video
+    id(uuid), preview_attach_id,title,category_id,attach_id,created_date,published_date,
+      status(private,public),
+     type(video,short),view_count,shared_count,description,channel_id,(like_count,dislike_count),
+
+     view_count -> Okala view_count buyerda ham bo'lsin. Alohida Table ham bo'lsin.
+     category_id -> bitta video bitta category bo'lsin.
+8. VideoWatched
+    id(uuid), profile_id, video_id, created_date
+9. playlist_video
+    id,playlist_id,video_id,created_date, order_num
+10. video_tag
+    id,video_id,tag_id,created_date
+11. Comment
+    id,profile_id,video_id,content,reply_id (like_count,dislike_count)
+12. Subscription
+    id,profile_id,channel_id,created_date, unsubscribe_date, status (active,block),notification_type(All,Personalized,Non)
+13. video_like
+    id,profile_id,video_id,created_date,type(Like,Dislike)
+14. comment_like
+    id,profile_id,comment_id,created_date,type(Like,Dislike)
+15. report
+    id,profile_id,content,entity_id(channel)id,profile_id),type(channel,video)
+16. email_history
+    id, to_email, title, message, created_date
+
+
+
+*** Task List ***
+0. Auth
+	1. Registration (with email verification)
+	  id,name,surname,email,main_photo (url)
+	2. Authorization
+
+1. Profile (USER role)
+	1. Change password
+	2. Update Email (with email verification)
+	3. Update Profile Detail(name,surname)
+	4. Update Profile Attach (main_photo) (delete old attach)
+	5. Get Profile Detail (id,name,surname,email,main_photo((url)))
+    6. Create Profile (ADMIN)
+        (id,name,surname,email,Role(ADMIN,MODERATOR))
+
+2. Attach
+    1. Create Attach (upload)
+    2. Get Attach By Id (Open)
+    3. Download Attach (Download)
+    4. Attach pagination (ADMIN)
+        id,origen_name,size,url
+    5. Delete Attach (delete from db and system) (ADMIN)
+
+3. Category
+    1. Create Category (ADMIN)
+    2. Update Category (ADMIN)
+    3. Delete Category (ADMIN)
+    4. Category List
+
+4. Tag
+      1. Create Tag
+      2. Update Tag (ADMIN)
+      3. Delete Tag (ADMIN)
+      4. Tag List
+
+5. Channel
+    1. Create Channel (USER)
+    2. Update Channel ( USER and OWNER)
+    3. Update Channel photo ( USER and OWNER)
+    4. Update Channel banner ( USER and OWNER)
+    5. Channel Pagination (ADMIN)
+    6. Get Channel By Id
+    7. Change Channel Status (ADMIN,USER and OWNER)
+    8. User Channel List (murojat qilgan userni)
+
+---------------------------------------------------------------------------
+6. Playlist
+    1. Create Playlist (USER)
+    2. Update Playlist(USER and OWNER)
+    3. Change Playlist Status (USER and OWNER)
+    4. Delete Playlist (USER and OWNER, ADMIN)
+    5. Playlist Pagination (ADMIN)
+        PlayListInfo
+    6. Playlist List By UserId (order by order number desc) (ADMIN)
+        PlayListInfo
+    7. Get User Playlist (order by order number desc) (murojat qilgan user ni)
+        PlayListShortInfo
+    8. Get Channel Play List By ChannelKey (order by order_num desc) (only Public)
+        PlayListShortInfo
+        Example:  https://www.youtube.com/channel/UCFoy0KOV9sihL61PJSh7x1g/playlists
+    9. Get Playlist by id
+        id,name,video_count, total_view_count (shu play listdagi videolarni ko'rilganlar soni),
+        last_update_date
+        Example: left_side  https://www.youtube.com/playlist?list=PLeUA5nZ_B5224RX0IDQlM11hsKZuW9iUA
+
+
+        PlayListShortInfo
+            id, name,created_date,channel(id,name),video_count,video_list[{id,name,duration}] (first 2)
+        PlayListInfo
+            id,name,description,status(private,public),order_num,
+            channel(id,name,photo(id,url), profile(id,name,surname,photo(id,url)))
+
+---------------
+7. Video
+    1. Create Video (USER)
+    2. Update Video Detail (USER and OWNER)
+    3. Change Video Status (USER and OWNER)
+	(video_id,status)
+    4. Increase video_view Count by id
+    5. Get Video Pagination by CategoryId
+        VideShortInfo
+    6. Search video by Title
+        VideShortInfo
+    7. Get video by tag_id with pagination
+            VideShortInfo
+    8. Get Video By id (If Status PRIVATE allow only for OWNER or ADMIN)
+        VideFullInfo
+    9. Get Video List Pagination (ADMIN)
+        (VideShortInfo + owner (is,name,surname) + playlist (id,name))
+    10. Get Channel Video List Pagination (created_date desc)
+         VidePlayListInfo
+         example: https://www.youtube.com/channel/UCFoy0KOV9sihL61PJSh7x1g/videos
+
+    VideFullInfo (id,title,description,
+                preview_attach(id,url),attach(id,url,duration),
+                category(id,name),tagList(id,name),
+                published_date, channel(id,name,photo(url)),
+                view_count,shared_count,Like(like_count,dislike_count,
+                isUserLiked,IsUserDisliked),duration)
+    VideShortInfo(id,title, preview_attach(id,url),
+                   published_date, channel(id,name,photo(url)),
+                   view_count,duration)
+    VidePlayListInfo(id,title, preview_attach(id,url), view_count,
+                       published_date,duration)
+---------------
+8. PlaylistVideo
+    1. Create (User and Owner)
+        (playlist_id,video_id, order_num) front dan keladigan malumotlar
+    2. Update
+        (playlist_id,video_id, order_num) front dan keladigan malumotlar
+    3. Delete PlayListVideo
+          (playlist_id,video_id) front dan keladigan malumotlar
+    4. Get Video list by playListId (video status published)
+        PlaylistVideoInfo
+        example: (right side) https://www.youtube.com/playlist?list=PLeUA5nZ_B5224RX0IDQlM11hsKZuW9iUA
+                              https://www.youtube.com/watch?v=QSQIxgnisP0&list=PLeUA5nZ_B5224RX0IDQlM11hsKZuW9iUA
+
+        PlaylistVideoInfo
+            playlist_id,video(id,preview_attach(id,url),title,duration),
+            channel(id,name),created_date, order_num
+---------------
+9. Video Tag
+    1. Add tag to video. (USER and OWNER)
+        (video_id,tag_id) keladigan malumot.
+    2. Delete tag from vide (USER and OWNER)
+        (video_id,tag_id) keladigan malumot.
+    3. Get video Tag List by videoId
+       (id,video_id,tag(id,name),created_date)
+---------------
+10. Comment
+    1. Crate Comment (USER)
+    2. Update Comment (USER AND OWNER)
+    3. Delete Comment (USER AND OWNER, ADMIN)
+    4. Comment List Pagination (ADMIN)
+    5. Comment List By profileId(ADMIN)
+        id,content,created_date,like_count,dislike_count, video(id,name,preview_attach_id,title,duration)
+    6. Comment List By Profile (murojat qilgan odamning comment lari) (USER AND OWNER)
+        id,content,created_date,like_count,dislike_count, video(id,name,preview_attach_id,title,duration)
+    7. Comment List by videoId
+        CommentInfo
+    8. Get Comment Replied Comment by comment Id (Commentga yozilgan commentlar)
+        CommentInfo
+
+    CommentInfo
+        id,content,created_date,like_count,dislike_count,
+        profile(id,name,surname,photo(id,url))
+
+11. Subscription
+    1. Create User Subscription (USER)
+        channel_id,notification_type (keladigna parametr)
+    2. Change Subscription Status (USER)
+        channel_id,status
+    3. Change Subscription Notification type (USER)
+        channel_id,notification_type
+    4. Get User Subscription List (only Active) (murojat qilgan user)
+        SubscriptionInfo
+    5. Get User Subscription List By UserId (only Active) (ADMIN)
+        SubscriptionInfo + created_date
+
+        SubscriptionInfo
+            id,channel(id,name,photo(id,url)),notification_type
+
+12. VideoLike
+    1. Create Video like
+    2. Remove Video Like
+    3. User Liked Video List (order by created_date desc) (USER)
+        VideoLikeInfo
+    4. Get User LikedVideo List By UserId (ADMIN)
+        VideoLikeInfo
+
+        VideoLikeInfo
+        id,video(id,name,channel(id,name),duration),preview_attach(id,url)
+13. CommentLike
+    1. Create Comment like
+    2. Remove Comment Like
+    3. User Liked Comment List (order by created_date desc) (USER)
+        VideoLikeInfo
+    4. Get User LikedComment List By UserId (ADMIN)
+        CommentLikeInfo
+
+        CommentLikeInfo
+        id,profile_id,comment_id,created_date,type(Like,Dislike)
+
+14. Report
+    1. Create repost (USER)
+    2. ReportList Pagination ADMIN
+        ReportInfo
+    3. Remove Report by id (ADMIN)
+    4. Report List By User id (ADMIN)
+        ReportInfo
+
+    RepostInfo
+        id,profile(id,name,surname,photo(id,url)),content,
+            entity_id(channel/video)),type(channel,video)
+15. Email history
+    1. Get email pagination (ADMIN)
+    2. Get Email pagination by email
+    3. filter (email,created_date) + with pagination
+
+16. Notification
