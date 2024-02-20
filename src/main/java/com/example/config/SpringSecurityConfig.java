@@ -33,7 +33,7 @@ public class SpringSecurityConfig {
             "/swagger-resources",
             "/swagger-resources/**",
 
-
+            "/attach/any/**", "attach/*",
     };
 
     @Bean

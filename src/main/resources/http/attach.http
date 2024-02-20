@@ -1,0 +1,23 @@
+### Create File(photo,media....)
+POST http://localhost:8080/attach/any/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="testvideo.mp4"
+
+< C:\Users\Rajabbek\Desktop\img\testvideo.mp4
+
+### Get By Id(Open)
+GET http://localhost:8080/attach/any/314d33d2-7a93-4754-8317-60d08f6500ef.jpg
+
+### Get All file (Open)
+GET http://localhost:8080/attach/any/general/testvideo.mp4
+
+
+
+
+
+
+
+
+
