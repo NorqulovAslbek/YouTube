@@ -38,10 +38,4 @@ public class CategoryController {
 
 
 
-     @DeleteMapping("/{id}")
-     @PreAuthorize(value = "hasRole('ADMIN')")
-     public ResponseEntity<?> delete(@PathVariable("id") Integer id){
-      log.info("delete category {}",id);
-      return ResponseEntity.ok(categoryService.delete(id));
-     }
 }
