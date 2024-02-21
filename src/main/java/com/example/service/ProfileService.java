@@ -73,6 +73,12 @@ public class ProfileService {
         return toDTO(profileEntity);
     }
 
+    public ProfileDTO getProfile(AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        ProfileEntity profileEntity = get(language, currentUser.getId());
+        return getProfileDTO(profileEntity);
+    }
+
 
     public ProfileEntity toEntity(CreateProfileDTO dto) {
         ProfileEntity entity = new ProfileEntity();
@@ -83,6 +89,7 @@ public class ProfileService {
         entity.setPassword(MDUtil.encode(dto.getPassword()));
         return entity;
     }
+
 
     public ProfileDTO toDTO(ProfileEntity entity) {
         ProfileDTO dto = new ProfileDTO();
@@ -95,5 +102,15 @@ public class ProfileService {
         dto.setJwt(JWTUtil.encode(entity.getId(), entity.getRole()));
         return dto;
 
+    }
+
+    public ProfileDTO getProfileDTO(ProfileEntity entity) {
+        ProfileDTO dto = new ProfileDTO();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setSurname(entity.getSurname());
+        dto.setEmail(entity.getEmail());
+        dto.setPhoto(entity.getPhoto());
+        return dto;
     }
 }
