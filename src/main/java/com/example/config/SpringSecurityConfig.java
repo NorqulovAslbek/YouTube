@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableMethodSecurity()
@@ -36,7 +38,6 @@ public class SpringSecurityConfig {
             "/auth/*", "/auth/**",
             "/category/any",
             "/attach/any/**", "attach/*",
-
 
 
     };
@@ -74,6 +75,16 @@ public class SpringSecurityConfig {
             @Override
             public boolean matches(CharSequence rawPassword, String encodedPassword) {
                 return MDUtil.encode(rawPassword.toString()).equals(encodedPassword);
+            }
+        };
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**");
             }
         };
     }

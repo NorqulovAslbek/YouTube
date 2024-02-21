@@ -4,10 +4,10 @@ Content-Type: application/json
 Accept-Language: UZ
 
 {
-  "name": "Asl",
-  "surname": "Norqul",
-  "email": "aslbeknorqulov246@gmail.com",
-  "password": "123456"
+  "name": "Rajab",
+  "surname": "Ollanazarov",
+  "email": "rajabbekollanazarov12@gmail.com",
+  "password": "123"
 }
 
 ### verification profile
@@ -20,8 +20,8 @@ Content-Type: application/json
 Accept-Language: UZ
 
 {
-  "email": "adminjon@gmail.com",
-  "password": "admin123"
+  "email": "rajabbekollanazarov12@gmail.com",
+  "password": "123"
 }
 
 ### login profile
