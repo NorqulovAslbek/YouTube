@@ -6,6 +6,7 @@ import com.example.entity.ProfileEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
 import com.example.repository.ProfileRepository;
+import com.example.util.JWTUtil;
 import com.example.util.MDUtil;
 import com.example.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,4 +64,36 @@ public class ProfileService {
     }
 
 
+    public ProfileDTO createProfile(CreateProfileDTO dto) {
+        Optional<ProfileEntity> optional = profileRepository.getByEmail(dto.getEmail());
+        if (optional.isPresent()) {
+            throw new AppBadException("email exist");
+        }
+        ProfileEntity profileEntity = profileRepository.save(toEntity(dto));
+        return toDTO(profileEntity);
+    }
+
+
+    public ProfileEntity toEntity(CreateProfileDTO dto) {
+        ProfileEntity entity = new ProfileEntity();
+        entity.setName(dto.getName());
+        entity.setSurname(dto.getSurname());
+        entity.setRole(dto.getProfileRole());
+        entity.setEmail(dto.getEmail());
+        entity.setPassword(MDUtil.encode(dto.getPassword()));
+        return entity;
+    }
+
+    public ProfileDTO toDTO(ProfileEntity entity) {
+        ProfileDTO dto = new ProfileDTO();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setSurname(entity.getSurname());
+        dto.setRole(entity.getRole());
+        dto.setEmail(entity.getEmail());
+        dto.setRole(entity.getRole());
+        dto.setJwt(JWTUtil.encode(entity.getId(), entity.getRole()));
+        return dto;
+
+    }
 }
