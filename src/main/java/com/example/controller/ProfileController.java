@@ -53,5 +53,13 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.createProfile(dto));
     }
 
+    @Operation(summary = "Api for getProfile", description = "this api used for get profile")
+    @GetMapping("/getProfile")
+    public ResponseEntity<?> getProfile(@RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                        AppLanguage appLanguage) {
+        log.info("getProfile");
+        return ResponseEntity.ok(profileService.getProfile(appLanguage));
+    }
+
 
 }
