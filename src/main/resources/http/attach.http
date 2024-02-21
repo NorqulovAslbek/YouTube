@@ -3,15 +3,29 @@ POST http://localhost:8080/attach/any/upload
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
-Content-Disposition: form-data; name="file"; filename="testvideo.mp4"
+Content-Disposition: form-data; name="file"; filename="rasm2.jpg"
 
-< C:\Users\Rajabbek\Desktop\img\testvideo.mp4
+< C:\Users\Aslbek\Desktop\Teskshirish\rasm2.jpg
 
 ### Get By Id(Open)
-GET http://localhost:8080/attach/any/314d33d2-7a93-4754-8317-60d08f6500ef.jpg
+GET http://localhost:8080/attach/any/5112368f-a066-4c26-b239-5246fd093cdd.jpg
 
 ### Get All file (Open)
-GET http://localhost:8080/attach/any/general/testvideo.mp4
+GET http://localhost:8080/attach/any/general/314d33d2-7a93-4754-8317-60d08f6500ef.jpg
+
+### Download
+GET http://localhost:8080/attach/any/download/314d33d2-7a93-4754-8317-60d08f6500ef.jpg
+Accept-Language: UZ
+
+### Get All Pagination(Admin)
+GET http://localhost:8080/attach/adm
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDM3OTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg1OTAxOTMsImlzcyI6IllvdXR1YmUifQ.sPu5hJnyzhY8-d1MYBm18ciuiPjZxeqy15Cp9GMkruqASNhOrpair3Y-RYPuEkDzy7wzzHlNpRAKklTV3mPylg
+
+### Delete By Id (Admin)
+DELETE http://localhost:8080/attach/adm/314d33d2-7a93-4754-8317-60d08f6500ef
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDM3OTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg1OTAxOTMsImlzcyI6IllvdXR1YmUifQ.sPu5hJnyzhY8-d1MYBm18ciuiPjZxeqy15Cp9GMkruqASNhOrpair3Y-RYPuEkDzy7wzzHlNpRAKklTV3mPylg
+
 
 
 
