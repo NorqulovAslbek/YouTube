@@ -1,13 +1,13 @@
 ### registration profile
 POST localhost:8080/auth/registration
 Content-Type: application/json
-Accept-Language: UZ
+Accept-Language: RU
 
 {
-  "name": "Aslbek",
-  "surname": "Norqulov",
-  "email": "norqulovaslbek920@gmail.com",
-  "password": "Asl123"
+  "name": "Shamshod",
+  "surname": "Shamshod",
+  "email": "shamshod6696odinayev@gmail.com",
+  "password": "123456"
 }
 
 ### verification profile

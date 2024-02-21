@@ -1,0 +1,21 @@
+### Change password
+PUT localhost:8080/profile/changePassword
+Content-Type: application/json
+Authorization: Bearer
+Accept-Language: UZ
+
+{
+  "oldPassword": "",
+  "newPassword": "",
+  "newPasswordConfirm": ""
+}
+
+### Update email
+PUT localhost:8080/profile/updateEmail
+Content-Type: application/json
+Authorization: Bearer
+Accept-Language: UZ
+
+{
+  "email": ""
+}
