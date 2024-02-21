@@ -1,6 +1,8 @@
 package com.example.service;
 
+import com.example.dto.AuthDTO;
 import com.example.dto.JwtDTO;
+import com.example.dto.ProfileDTO;
 import com.example.dto.RegistrationDTO;
 import com.example.entity.EmailSendHistoryEntity;
 import com.example.entity.ProfileEntity;
@@ -54,6 +56,7 @@ public class AuthService {
         entity.setStatus(ProfileStatus.REGISTRATION);
         entity.setRole(ProfileRole.ROLE_USER);
         profileRepository.save(entity);
+
         sendEmailMessage(dto, entity, language);     //  ==============> email jonaish uchun
         return true;
     }
@@ -92,12 +95,12 @@ public class AuthService {
             Optional<ProfileEntity> optional = profileRepository.findById(jwtDTO.getId());
             if (optional.isEmpty()) {
                 log.warn("Profile not found");
-                throw new AppBadException(resourceBundleService.getMessage("profile.not.found", language));
+                throw new AppBadException(resourceBundleService.getMessage("profile.not.fount",language));
             }
             ProfileEntity entity = optional.get();
             if (!entity.getStatus().equals(ProfileStatus.REGISTRATION)) {
                 log.warn("Profile in wrong status");
-                throw new AppBadException(resourceBundleService.getMessage("profile.in.wrong.status", language));
+                throw new AppBadException(resourceBundleService.getMessage("profile.in.wrong.status",language));
             }
             profileRepository.updateStatus(entity.getId(), ProfileStatus.ACTIVE);
             EmailSendHistoryEntity emailSendHistoryEntity = new EmailSendHistoryEntity();
@@ -107,10 +110,26 @@ public class AuthService {
             emailSendHistoryRepository.save(emailSendHistoryEntity);
         } catch (JwtException e) {
             log.warn("Please tyre again.");
-            throw new AppBadException(resourceBundleService.getMessage("please.tyre.again", language));
+            throw new AppBadException(resourceBundleService.getMessage("please.tyre.again",language));
         }
         return "Success";
     }
 
 
+    public ProfileDTO login(AuthDTO dto, AppLanguage language) {
+        Optional<ProfileEntity> optional = profileRepository.getProfile(dto.getEmail(), MDUtil.encode(dto.getPassword()));
+        if (optional.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("profile.not.fount", language));
+        }
+        ProfileEntity profileEntity = optional.get();
+        if (!profileEntity.getStatus().equals(ProfileStatus.ACTIVE)) {
+            throw new AppBadException(resourceBundleService.getMessage("profile.not.fount", language));
+        }
+        ProfileDTO profileDTO = new ProfileDTO();
+        profileDTO.setName(profileEntity.getName());
+        profileDTO.setSurname(profileEntity.getSurname());
+        profileDTO.setRole(profileEntity.getRole());
+        profileDTO.setJwt(JWTUtil.encode(profileEntity.getEmail(), profileEntity.getRole()));
+        return profileDTO;
+    }
 }
