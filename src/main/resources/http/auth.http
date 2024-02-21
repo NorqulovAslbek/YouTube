@@ -34,3 +34,13 @@ Accept-Language: UZ
   "password": "123456"
 }
 
+#### Admin login
+POST localhost:8080/auth/login
+Content-Type: application/json
+Accept-Language: UZ
+
+{
+  "email": "adminjon@gmail.com",
+  "password": "admin123"
+}
+

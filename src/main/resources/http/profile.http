@@ -30,3 +30,16 @@ Accept-Language: UZ
   "name": "Aslbek",
   "surname": "Norqulov"
 }
+
+### create profile admin
+POST localhost:8080/profile/adm/createProfile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjE5MjUsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2MDgzMjUsImlzcyI6IllvdXR1YmUifQ.iQZu-I5jHNdg4UyMbaaahqLcymQuzhGb7EuWrl-tipLn3k6xFWhHaRk8Zhpz_BEKVMojHJZ3l8ocECN15fbK2w
+
+{
+  "name": "Aslbek",
+  "surname": "Norqulov",
+  "email": "norqulovaslbek920@gmail.com",
+  "password": "123456",
+  "profileRole": "ROLE_MODERATOR"
+}

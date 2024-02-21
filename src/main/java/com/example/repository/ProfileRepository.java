@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.access.method.P;
 
 
 import java.util.Optional;
@@ -22,7 +23,9 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
     @Query("FROM ProfileEntity WHERE email=?1 AND password=?2 AND visible=true")
     Optional<ProfileEntity> getProfile(String email, String password);
 
-    @Query("FROM ProfileEntity WHERE id=?1 AND  visible=true AND status='ACTIVE'")
+    @Query("FROM ProfileEntity WHERE id=?1 AND  visible=true ")
     Optional<ProfileEntity> getById(Integer id);
 
+    @Query("FROM ProfileEntity WHERE email=?1 AND visible=true ")
+    Optional<ProfileEntity> getByEmail(String email);
 }
