@@ -24,24 +24,23 @@ public class AuthController {
     @Operation(summary = "Api for registration", description = "this api used for authorization")
     public ResponseEntity<?> registration(@RequestBody RegistrationDTO dto,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage appLanguage) {
-        log.info("registration {}",dto.getEmail());
+        log.info("registration {}", dto.getEmail());
         return ResponseEntity.ok(authService.registration(dto, appLanguage));
     }
 
     @Operation(summary = "Api for emailVerification", description = "this api used for authorization")
     @GetMapping("/verification/email/{jwt}")
-    public ResponseEntity<?> verification(@PathVariable("jwt") String jwt,
-                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+    public ResponseEntity<?> verification(@PathVariable("jwt") String jwt) {
         log.info("emailVerification {}", jwt);
-        return ResponseEntity.ok(authService.verification(jwt, language));
+        return ResponseEntity.ok(authService.verification(jwt));
     }
 
-    @Operation(summary = "Api for login",description = "this api used for login")
+    @Operation(summary = "Api for login", description = "this api used for login")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthDTO dto,
-                                   @RequestHeader(value = "Accept-Language",defaultValue = "UZ") AppLanguage language){
-        log.info("login {}",dto.getEmail());
-        return ResponseEntity.ok(authService.login(dto,language));
+                                   @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        log.info("login {}", dto.getEmail());
+        return ResponseEntity.ok(authService.login(dto, language));
     }
 
 }

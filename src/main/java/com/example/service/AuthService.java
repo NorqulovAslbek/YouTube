@@ -89,18 +89,18 @@ public class AuthService {
         return text;
     }
 
-    public String verification(String jwt, AppLanguage language) {
+    public String verification(String jwt) {
         try {
             JwtDTO jwtDTO = JWTUtil.decode(jwt);
             Optional<ProfileEntity> optional = profileRepository.findById(jwtDTO.getId());
             if (optional.isEmpty()) {
                 log.warn("Profile not found");
-                throw new AppBadException(resourceBundleService.getMessage("profile.not.fount",language));
+                throw new AppBadException(resourceBundleService.getMessage("profile.not.fount", AppLanguage.UZ));
             }
             ProfileEntity entity = optional.get();
             if (!entity.getStatus().equals(ProfileStatus.REGISTRATION)) {
                 log.warn("Profile in wrong status");
-                throw new AppBadException(resourceBundleService.getMessage("profile.in.wrong.status",language));
+                throw new AppBadException(resourceBundleService.getMessage("profile.in.wrong.status", AppLanguage.UZ));
             }
             profileRepository.updateStatus(entity.getId(), ProfileStatus.ACTIVE);
             EmailSendHistoryEntity emailSendHistoryEntity = new EmailSendHistoryEntity();
@@ -110,7 +110,7 @@ public class AuthService {
             emailSendHistoryRepository.save(emailSendHistoryEntity);
         } catch (JwtException e) {
             log.warn("Please tyre again.");
-            throw new AppBadException(resourceBundleService.getMessage("please.tyre.again",language));
+            throw new AppBadException(resourceBundleService.getMessage("please.tyre.again", AppLanguage.UZ));
         }
         return "Success";
     }

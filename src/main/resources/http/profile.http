@@ -1,13 +1,13 @@
 ### Change password
 PUT localhost:8080/profile/changePassword
 Content-Type: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDI1MjQsImVtYWlsIjoic2hhbXNob2Q2Njk2b2RpbmF5ZXZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODU4ODkyNCwiaXNzIjoiWW91dHViZSJ9.kVF0Ydtlw6YMJKiV8xdgJxs_V7GKvUoT9GesUEVnTsdT9juJmLQqwdQGMm-Pwxmwt12Lh-Ouk7XFfahxx5SqsA
 Accept-Language: UZ
 
 {
-  "oldPassword": "",
-  "newPassword": "",
-  "newPasswordConfirm": ""
+  "oldPassword": "123456",
+  "newPassword": "1111",
+  "newPasswordConfirm": "1111"
 }
 
 ### Update email
