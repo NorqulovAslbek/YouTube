@@ -19,3 +19,14 @@ Accept-Language: UZ
 {
   "email": ""
 }
+
+### Update name and surname
+PUT localhost:8080/profile/changeNameAndSurname
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MTA2NjcsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODU5NzA2NywiaXNzIjoiWW91dHViZSJ9.vhWxXfxfCmxH4G-c9lfMskKVbLeuj08a3j7jwJirFvKmUo9kaKQNCXxiIUv1kuvRk-J4FDhF7Yrw4pWgJPFtOw
+Accept-Language: UZ
+
+{
+  "name": "Aslbek",
+  "surname": "Norqulov"
+}

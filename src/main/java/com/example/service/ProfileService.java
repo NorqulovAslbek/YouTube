@@ -1,9 +1,7 @@
 package com.example.service;
 
 import com.example.config.CustomUserDetails;
-import com.example.dto.ChangePasswordDTO;
-import com.example.dto.RegistrationDTO;
-import com.example.dto.UpdateEmailDTO;
+import com.example.dto.*;
 import com.example.entity.ProfileEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
@@ -13,6 +11,7 @@ import com.example.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -37,7 +36,7 @@ public class ProfileService {
     }
 
     private ProfileEntity get(AppLanguage appLanguage, Integer id) {
-        Optional<ProfileEntity> profileEntityOptional = profileRepository.findById(id);
+        Optional<ProfileEntity> profileEntityOptional = profileRepository.getById(id);
         if (profileEntityOptional.isEmpty()) {
             throw new AppBadException(resourceBundleService.getMessage("profile.not.found", appLanguage));
         }
@@ -52,4 +51,16 @@ public class ProfileService {
         authService.sendEmailMessage(registrationDTO, entity, appLanguage);
         return "todo";
     }
+
+    public boolean changeNameAndSurname(ChangeNameAndSurnameDTO dto, AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        ProfileEntity profileEntity = get(language, currentUser.getId());
+        profileEntity.setName(dto.getName());
+        profileEntity.setSurname(dto.getSurname());
+        profileEntity.setUpdatedDate(LocalDateTime.now());
+        profileRepository.save(profileEntity);
+        return true;
+    }
+
+
 }
