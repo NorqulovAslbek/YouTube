@@ -10,5 +10,4 @@ public class ChannelCrudDTO {
     private String description;
     private String bannerId;
     private String photoId;
-    private Integer profileId;
 }

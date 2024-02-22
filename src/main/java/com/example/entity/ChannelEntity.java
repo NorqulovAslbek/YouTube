@@ -13,7 +13,7 @@ public class ChannelEntity extends BaseEntity {
     @Column(name = "name")
     private String name;
     @OneToOne
-    @JoinColumn(name = "photo_id",insertable = false,updatable = false)
+    @JoinColumn(name = "photo_id", insertable = false, updatable = false)
     private AttachEntity photo;
     @Column(name = "photo_id")
     private String photoId;

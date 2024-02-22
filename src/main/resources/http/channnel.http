@@ -5,7 +5,6 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTA4MDUsImVtYWlsIjoic
 
 {
   "name": "zur",
-  "profileId": 1,
   "description": "Daxshat"
 }
 

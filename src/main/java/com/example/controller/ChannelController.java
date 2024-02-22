@@ -28,11 +28,12 @@ public class ChannelController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Api for channel update", description = "this api channel update")
     public ResponseEntity<ChannelDTO> update(@PathVariable Integer id,
                                              @RequestBody ChannelCrudDTO dto,
                                              @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage appLanguage) {
         return ResponseEntity.ok(channelService.update(id, dto, appLanguage));
     }
-
+/// commit qilindi push qilish kk
 
 }
