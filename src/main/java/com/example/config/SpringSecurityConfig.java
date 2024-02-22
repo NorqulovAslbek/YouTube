@@ -34,9 +34,8 @@ public class SpringSecurityConfig {
             "/swagger-resources/**",
             "/auth/*",
             "/auth/**",
-            "/category/any"
-
-
+            "/category/any",
+            "/profile/verification/email/*"
     };
 
     @Bean
