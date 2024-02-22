@@ -156,7 +156,7 @@ public class AttachService {
             throw new AppBadException(bundleService.getMessage("delete.was.not.found", language));
         }
         AttachEntity entity = optional.get();
-        File file = new File(String.valueOf(Path.of("uploads/" + entity.getPath() + "/" + entity.getId() + "." + entity.getType())));
+        File file = new File(String.valueOf(Path.of("uploads/" + entity.getPath() + "/" + entity.getId() + "." + entity.getExtension())));
         file.delete();
         attachRepository.delete(entity);
         return true;
