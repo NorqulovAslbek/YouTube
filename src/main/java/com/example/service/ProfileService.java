@@ -68,7 +68,7 @@ public class ProfileService {
         emailSendHistoryEntity.setEmail(entity.getTempEmail());
         emailSendHistoryEntity.setMessage(jwt);
         emailSendHistoryEntity.setStatus(ProfileStatus.ACTIVE);
-        emailSendHistoryEntity.setCreatedData(LocalDateTime.now());
+        emailSendHistoryEntity.setCreatedDate(LocalDateTime.now());
         emailSendHistoryRepository.save(emailSendHistoryEntity);
         mailSender.sendEmail(entity.getTempEmail(), resourceBundleService.getMessage("complete.registration", language), text);
     }

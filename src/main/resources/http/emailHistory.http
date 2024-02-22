@@ -1,0 +1,21 @@
+### get email history pagination (ADMIN)
+GET localhost:8080/emailHistory/adm/pagination?page=1&size=3
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI2ODYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2OTkwODYsImlzcyI6IllvdXR1YmUifQ.mebhLZFCtO1TIA7Lr2S55hH_bMttJ0v9AcNAKM4USGOugh13hPqMfH4lnUB0UkQ-pRcLojDUJlA89j_J3XOzQQ
+
+### get by email pagination
+POST localhost:8080/emailHistory/adm/paginationByEmail?page=1&size=3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI2ODYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2OTkwODYsImlzcyI6IllvdXR1YmUifQ.mebhLZFCtO1TIA7Lr2S55hH_bMttJ0v9AcNAKM4USGOugh13hPqMfH4lnUB0UkQ-pRcLojDUJlA89j_J3XOzQQ
+
+{
+  "email": "aslbeknorqulov246@gmail.com"
+}
+
+### get email history filter
+POST localhost:8080/emailHistory/adm/filter?page=1&size=3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI2ODYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2OTkwODYsImlzcyI6IllvdXR1YmUifQ.mebhLZFCtO1TIA7Lr2S55hH_bMttJ0v9AcNAKM4USGOugh13hPqMfH4lnUB0UkQ-pRcLojDUJlA89j_J3XOzQQ
+
+{
+  "email": "aslbeknorqulov246@gmail.com"
+}
