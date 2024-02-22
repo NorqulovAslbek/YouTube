@@ -75,4 +75,9 @@ public class ChannelService {
         channelDTO.setProfileId(entity.getProfileId());
         return channelDTO;
     }
+
+    public ChannelDTO getById(Integer id, AppLanguage appLanguage) {
+        ChannelEntity channelEntity = get(id, appLanguage);
+        return toDTO(channelEntity);
+    }
 }
