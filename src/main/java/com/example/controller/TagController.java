@@ -16,15 +16,15 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/tag")
-public class TagContreller {
+public class TagController {
     @Autowired
-    private TagService service;
+    private TagService tagService;
 
     @PostMapping
     @Operation(summary = "Api for Tag", description = "this api used for Tag create")
     public ResponseEntity<TagDTO> create(@Valid @RequestBody CreateTagDTO dto) {
         log.info("Create tag {}", dto.getName());
-        return ResponseEntity.ok(service.create(dto));
+        return ResponseEntity.ok(tagService.create(dto));
     }
 
     @PutMapping("/{id}")
@@ -32,7 +32,7 @@ public class TagContreller {
     @Operation(summary = "Update tag", description = "this api used for tag update")
     public ResponseEntity<Boolean> update(@Valid @RequestBody TagDTO dto, @PathVariable Integer id) {
         log.info("Update tag");
-        return ResponseEntity.ok(service.update(dto, id));
+        return ResponseEntity.ok(tagService.update(dto, id));
     }
 
     @Operation(summary = "Delete tag", description = "this api used for delete tag")
@@ -40,13 +40,13 @@ public class TagContreller {
     @PreAuthorize(value = "hasRole('ADMIN')")
     public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id) {
         log.info("Delete tag {}", id);
-        return ResponseEntity.ok(service.delete(id));
+        return ResponseEntity.ok(tagService.delete(id));
     }
 
     @GetMapping
     @Operation(summary = "Api for Tag", description = "this api used for get List tag")
     public ResponseEntity<List<TagDTO>> getList() {
         log.info("Get list tag ");
-        return ResponseEntity.ok(service.getList());
+        return ResponseEntity.ok(tagService.getList());
     }
 }

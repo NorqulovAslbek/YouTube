@@ -1,0 +1,18 @@
+### Create channel
+POST localhost:8080/channel
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTA4MDUsImVtYWlsIjoic2hhbXNob2RvZGluYXlldjE3MDJAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODY5NzIwNSwiaXNzIjoiWW91dHViZSJ9.ok4NVEmd0gderKWAtfVe-3E6OYBeVdvvWp9xrlz8kpb52eRe7amHjl15z3jT5Y5y-Jt0z9ea5Fhbptl1qwI2nQ
+
+{
+  "name": "zur",
+  "description": "Daxshat"
+}
+
+### Update channel
+PUT localhost:8080/channel/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTA4MDUsImVtYWlsIjoic2hhbXNob2RvZGluYXlldjE3MDJAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODY5NzIwNSwiaXNzIjoiWW91dHViZSJ9.ok4NVEmd0gderKWAtfVe-3E6OYBeVdvvWp9xrlz8kpb52eRe7amHjl15z3jT5Y5y-Jt0z9ea5Fhbptl1qwI2nQ
+
+{
+  "description": "Tegilma!!!!"
+}
