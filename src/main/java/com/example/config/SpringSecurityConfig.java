@@ -40,6 +40,10 @@ public class SpringSecurityConfig {
             "/attach/any/**", "/attach/**",
 
 
+            "/auth/*",
+            "/auth/**",
+            "/category/any",
+            "/profile/verification/email/*"
     };
 
     @Bean
