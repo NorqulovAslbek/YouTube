@@ -42,6 +42,14 @@ public class ChannelController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> pagination(@RequestParam Integer page,
                                         @RequestParam Integer size) {
-        return ResponseEntity.ok(channelService.pagination(page,size));
+        return ResponseEntity.ok(channelService.pagination(page, size));
+    }
+
+    @GetMapping("/adm/{id}")
+    @Operation(summary = "Api for channel getById", description = "this api  get channel by id")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> getById(@PathVariable Integer id,
+                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage appLanguage) {
+        return ResponseEntity.ok(channelService.getById(id,appLanguage));
     }
 }
