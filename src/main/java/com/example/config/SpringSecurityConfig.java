@@ -37,9 +37,13 @@ public class SpringSecurityConfig {
 
             "/auth/*", "/auth/**",
             "/category/any",
-            "/attach/any/**", "attach/*",
+            "/attach/any/**", "/attach/**",
 
 
+            "/auth/*",
+            "/auth/**",
+            "/category/any",
+            "/profile/verification/email/*"
     };
 
     @Bean

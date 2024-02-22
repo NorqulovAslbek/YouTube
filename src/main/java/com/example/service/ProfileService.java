@@ -2,13 +2,18 @@ package com.example.service;
 
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
+import com.example.entity.EmailSendHistoryEntity;
 import com.example.entity.ProfileEntity;
 import com.example.enums.AppLanguage;
+import com.example.enums.ProfileStatus;
 import com.example.exp.AppBadException;
+import com.example.repository.EmailSendHistoryRepository;
 import com.example.repository.ProfileRepository;
 import com.example.util.JWTUtil;
 import com.example.util.MDUtil;
 import com.example.util.SpringSecurityUtil;
+import io.jsonwebtoken.JwtException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +21,16 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
     @Autowired
     private ResourceBundleService resourceBundleService;
     @Autowired
-    private AuthService authService;
+    private EmailSendHistoryRepository emailSendHistoryRepository;
+    @Autowired
+    private MailSenderService mailSender;
 
 
     public String changePassword(ChangePasswordDTO dto, AppLanguage appLanguage) {
@@ -47,10 +55,57 @@ public class ProfileService {
     public String updateEmail(UpdateEmailDTO dto, AppLanguage appLanguage) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         ProfileEntity entity = get(appLanguage, currentUser.getId());
-        RegistrationDTO registrationDTO = new RegistrationDTO();
-        registrationDTO.setEmail(dto.getEmail());
-        authService.sendEmailMessage(registrationDTO, entity, appLanguage);
-        return "todo";
+        entity.setTempEmail(dto.getEmail());
+        profileRepository.save(entity);
+        sendEmailMessage(entity, appLanguage);
+        return resourceBundleService.getMessage("message.has.been.sent.to.email", appLanguage);
+    }
+
+    private void sendEmailMessage(ProfileEntity entity, AppLanguage language) {
+        String jwt = JWTUtil.encode(entity.getEmail(), entity.getRole());
+        String text = getButtonLink(entity, jwt);
+        EmailSendHistoryEntity emailSendHistoryEntity = new EmailSendHistoryEntity();
+        emailSendHistoryEntity.setEmail(entity.getTempEmail());
+        emailSendHistoryEntity.setMessage(jwt);
+        emailSendHistoryEntity.setStatus(ProfileStatus.ACTIVE);
+        emailSendHistoryEntity.setCreatedData(LocalDateTime.now());
+        emailSendHistoryRepository.save(emailSendHistoryEntity);
+        mailSender.sendEmail(entity.getTempEmail(), resourceBundleService.getMessage("complete.registration", language), text);
+    }
+
+    public String getButtonLink(ProfileEntity entity, String jwt) {
+        String text = "<h1 style=\"text-align: center\">Hello %s</h1>\n" +
+                "<p style=\"background-color: indianred; color: white; padding: 30px\">To complete registration please link to the following link</p>\n" +
+                "<a style=\" background-color: #f44336;\n" +
+                "  color: white;\n" +
+                "  padding: 14px 25px;\n" +
+                "  text-align: center;\n" +
+                "  text-decoration: none;\n" +
+                "  display: inline-block;\" href=\"http://localhost:8080/profile/verification/email/%s\n" +
+                "\">Click</a>\n" +
+                "<br>\n";
+        text = String.format(text, entity.getName(), jwt);
+        return text;
+    }
+
+    public String verification(String jwt) {
+        try {
+            JwtDTO jwtDTO = JWTUtil.decodeForSpringSecurity(jwt);
+            Optional<ProfileEntity> optional = profileRepository.findByEmail(jwtDTO.getEmail());
+            if (optional.isEmpty()) {
+                log.warn("Profile not found");
+                throw new AppBadException(resourceBundleService.getMessage("profile.not.fount", AppLanguage.UZ));
+            }
+            ProfileEntity entity = optional.get();
+            entity.setEmail(entity.getTempEmail());
+            entity.setTempEmail(null);
+            entity.setUpdatedDate(LocalDateTime.now());
+            profileRepository.save(entity);
+            return resourceBundleService.getMessage("successful", AppLanguage.UZ);
+        } catch (JwtException e) {
+            log.warn("Please tyre again.");
+            throw new AppBadException(resourceBundleService.getMessage("please.tyre.again", AppLanguage.UZ));
+        }
     }
 
     public boolean changeNameAndSurname(ChangeNameAndSurnameDTO dto, AppLanguage language) {
