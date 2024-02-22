@@ -1,0 +1,29 @@
+###Create
+POST http://localhost:8080/tag
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTg2MjMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2ODUwMjMsImlzcyI6IllvdXR1YmUifQ.5e5VoYsCb06x7aybandreH_eczVqYTBHsQ-TVQ7qnR2YqJ7V-vrmBtSZEMlVLcB5gEllOayKFjcA0kJj3pWuVg
+
+{
+  "name": "#java"
+}
+
+
+###Update
+POST http://localhost:8080/tag/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTg2MjMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2ODUwMjMsImlzcyI6IllvdXR1YmUifQ.5e5VoYsCb06x7aybandreH_eczVqYTBHsQ-TVQ7qnR2YqJ7V-vrmBtSZEMlVLcB5gEllOayKFjcA0kJj3pWuVg
+
+{
+  "name": "tag yaratish"
+
+}
+
+###Delete
+DELETE http://localhost:8080/tag/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTg2MjMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2ODUwMjMsImlzcyI6IllvdXR1YmUifQ.5e5VoYsCb06x7aybandreH_eczVqYTBHsQ-TVQ7qnR2YqJ7V-vrmBtSZEMlVLcB5gEllOayKFjcA0kJj3pWuVg
+
+###Get List
+GET http://localhost:8080/tag
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTg2MjMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2ODUwMjMsImlzcyI6IllvdXR1YmUifQ.5e5VoYsCb06x7aybandreH_eczVqYTBHsQ-TVQ7qnR2YqJ7V-vrmBtSZEMlVLcB5gEllOayKFjcA0kJj3pWuVg
