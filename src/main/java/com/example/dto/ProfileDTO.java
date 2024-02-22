@@ -19,6 +19,7 @@ public class ProfileDTO {
     private String email;
     private String tempEmail;
     private String password;
+    private String photo;
     private ProfileStatus status;
     private ProfileRole role;
     protected LocalDateTime createdDate;

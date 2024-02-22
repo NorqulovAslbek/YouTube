@@ -59,5 +59,13 @@ public class ProfileController {
         log.info("emailVerification {}", jwt);
         return ResponseEntity.ok(profileService.verification(jwt));
     }
+    @Operation(summary = "Api for getProfile", description = "this api used for get profile")
+    @GetMapping("/getProfile")
+    public ResponseEntity<?> getProfile(@RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                        AppLanguage appLanguage) {
+        log.info("getProfile");
+        return ResponseEntity.ok(profileService.getProfile(appLanguage));
+    }
+
 
 }
