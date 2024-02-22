@@ -70,11 +70,11 @@ public class AttachService {
 
             AttachEntity entity = new AttachEntity();
             entity.setSize(file.getSize());
-            entity.setType(extension);
+            entity.setExtension(extension);
             entity.setOriginalName(file.getOriginalFilename());
             entity.setCreatedDate(LocalDateTime.now());
             entity.setId(key);
-            entity.setPath("uploads/" + pathFolder + "/" + key + "." + extension);
+            entity.setPath("uploads/" + path + "/" + key + "." + extension);
 
             attachRepository.save(entity);
 

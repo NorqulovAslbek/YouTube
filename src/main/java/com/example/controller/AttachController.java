@@ -99,5 +99,9 @@ public class AttachController {
         return ResponseEntity.ok(attachService.delete(id, language));
     }
 
-
+    @GetMapping("/getUrl/{id}")
+    public ResponseEntity<?> getUrl(@PathVariable("id") String id) {
+        log.info("file not found {}", id);
+        return ResponseEntity.ok(attachService.getURl(id));
+    }
 }
