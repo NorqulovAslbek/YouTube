@@ -8,8 +8,11 @@ import com.example.exp.AppBadException;
 import com.example.repository.ChannelRepository;
 import com.example.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,16 +34,6 @@ public class ChannelService {
         return toDTO(entity);
     }
 
-    private static ChannelDTO toDTO(ChannelEntity entity) {
-        ChannelDTO channelDTO = new ChannelDTO();
-        channelDTO.setName(entity.getName());
-        channelDTO.setDescription(entity.getDescription());
-        channelDTO.setBannerId(entity.getBannerId());
-        channelDTO.setPhotoId(entity.getPhotoId());
-        channelDTO.setProfileId(entity.getProfileId());
-        return channelDTO;
-    }
-
     public ChannelDTO update(Integer id, ChannelCrudDTO dto, AppLanguage appLanguage) {
         ChannelEntity entity = get(id, appLanguage);
         entity.setName(dto.getName() != null ? dto.getName() : entity.getName());
@@ -52,11 +45,34 @@ public class ChannelService {
 
     }
 
+    public PageImpl<ChannelDTO> pagination(Integer page, Integer size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
+        Page<ChannelEntity> all = channelRepository.findAll(pageable);
+        List<ChannelEntity> content = all.getContent();
+        long totalElements = all.getTotalElements();
+        List<ChannelDTO> channelDTOS = new LinkedList<>();
+        for (ChannelEntity channelEntity : content) {
+            channelDTOS.add(toDTO(channelEntity));
+        }
+        return new PageImpl<>(channelDTOS, pageable, totalElements);
+    }
+
     private ChannelEntity get(Integer id, AppLanguage appLanguage) {
         Optional<ChannelEntity> optionalChannelEntity = channelRepository.findById(id);
         if (optionalChannelEntity.isEmpty()) {
             throw new AppBadException(resourceBundleService.getMessage("channel.not.found", appLanguage));
         }
         return optionalChannelEntity.get();
+    }
+
+    private static ChannelDTO toDTO(ChannelEntity entity) {
+        ChannelDTO channelDTO = new ChannelDTO();
+        channelDTO.setName(entity.getName());
+        channelDTO.setDescription(entity.getDescription());
+        channelDTO.setBannerId(entity.getBannerId());
+        channelDTO.setPhotoId(entity.getPhotoId());
+        channelDTO.setProfileId(entity.getProfileId());
+        return channelDTO;
     }
 }
