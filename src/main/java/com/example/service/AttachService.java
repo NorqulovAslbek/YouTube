@@ -54,6 +54,7 @@ public class AttachService {
 
     public AttachDTO save(MultipartFile file) { // mazgi.png
         try {
+
             String pathFolder = getYmDString(); // 2022/04/23
             File folder = new File("uploads/" + pathFolder);
             if (!folder.exists()) { // uploads/2022/04/23
@@ -69,12 +70,12 @@ public class AttachService {
             Files.write(path, bytes);
 
             AttachEntity entity = new AttachEntity();
+            entity.setId(key);
             entity.setSize(file.getSize());
             entity.setExtension(extension);
             entity.setOriginalName(file.getOriginalFilename());
             entity.setCreatedDate(LocalDateTime.now());
-            entity.setId(key);
-            entity.setPath("uploads/" + path + "/" + key + "." + extension);
+            entity.setPath(pathFolder);
 
             attachRepository.save(entity);
 
@@ -156,7 +157,7 @@ public class AttachService {
             throw new AppBadException(bundleService.getMessage("delete.was.not.found", language));
         }
         AttachEntity entity = optional.get();
-        File file = new File(String.valueOf(Path.of("uploads/" + entity.getPath() + "/" + entity.getId() + "." + entity.getType())));
+        File file = new File(String.valueOf(Path.of("uploads/" + entity.getPath() + "/" + entity.getId() + "." + entity.getExtension())));
         file.delete();
         attachRepository.delete(entity);
         return true;
@@ -167,7 +168,7 @@ public class AttachService {
         dto.setId(entity.getId());
         dto.setPath(entity.getPath());
         dto.setSize(entity.getSize());
-        dto.setType(entity.getType());
+        dto.setExtension(entity.getExtension());
         dto.setOriginalName(entity.getOriginalName());
         dto.setCreatedData(entity.getCreatedDate());
 
@@ -190,14 +191,23 @@ public class AttachService {
     public AttachDTO toDTO(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
         dto.setId(entity.getId());
-        dto.setType(serverUrl + "/attach/open_general/" + entity.getId() + "." + entity.getType());
+        dto.setExtension(serverUrl + "/attach/any/general/" + entity.getId() + "." + entity.getExtension());
         return dto;
     }
+
+    public AttachDTO getURL(String id) {
+        AttachDTO dto = new AttachDTO();
+        AttachEntity entity = get(id);
+        dto.setUrl(serverUrl + "/attach/any/" + entity.getId() + "." + entity.getExtension());
+        return dto;
+    }
+
 
     public AttachEntity get(String id) {
         log.info("File not found", id);
         return attachRepository.findById(id).orElseThrow(() ->
                 new AppBadException("File not found"));
     }
+
 
 }

@@ -2,6 +2,7 @@ package com.example.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -20,11 +21,6 @@ public class AttachEntity {
     private String path;
     @Column(name = "duration")
     private Long duration;
-    @Column(name = "profile_id")
-    private Integer profileId;
-    @ManyToOne
-    @JoinColumn(name = "profile_id", insertable = false, updatable = false)
-    private ProfileEntity profile;
     @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
 }
