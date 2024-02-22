@@ -26,7 +26,8 @@ DELETE http://localhost:8080/attach/adm/314d33d2-7a93-4754-8317-60d08f6500ef
 Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDM3OTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg1OTAxOTMsImlzcyI6IllvdXR1YmUifQ.sPu5hJnyzhY8-d1MYBm18ciuiPjZxeqy15Cp9GMkruqASNhOrpair3Y-RYPuEkDzy7wzzHlNpRAKklTV3mPylg
 
-
+### getUrl
+GET http://localhost:8080/attach/getUrl/eb02a020-62a2-42ce-865d-9da3f9855b86
 
 
 

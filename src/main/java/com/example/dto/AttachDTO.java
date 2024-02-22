@@ -11,9 +11,10 @@ public class AttachDTO {
     private String id;
     private String originalName;
     private Long size;
-    private String type;
+    private String extension;
     private String path;
     private Long duration;
+    private String url;
     private LocalDateTime createdData;
 
 }

@@ -14,8 +14,8 @@ public class AttachEntity {
     private String originalName;
     @Column(name = "size")
     private Long size;
-    @Column(name = "type")
-    private String type;
+    @Column(name = "extension")
+    private String extension;
     @Column(name = "path")
     private String path;
     @Column(name = "duration")
