@@ -9,6 +9,7 @@ import com.example.exp.AppBadException;
 import com.example.repository.EmailSendHistoryFilterRepository;
 import com.example.repository.EmailSendHistoryRepository;
 import com.example.util.SpringSecurityUtil;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,6 @@ public class EmailSendHistoryService {
     @Autowired
     private EmailSendHistoryFilterRepository repository;
 
-
     public PageImpl<EmailSendHistoryDTO> getEmailPagination(Integer page, Integer size) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
         Pageable pageable = PageRequest.of(page - 1, size, sort);
@@ -33,13 +33,9 @@ public class EmailSendHistoryService {
     }
 
     public PageImpl<EmailSendHistoryDTO> getByEmailPagination(Integer page, Integer size, UpdateEmailDTO dto) {
-        String email = SpringSecurityUtil.getCurrentUser().getEmail();
-        if (!email.equals(dto.getEmail())) {
-            throw new AppBadException("you are not allowed");
-        }
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
         Pageable pageable = PageRequest.of(page - 1, size, sort);
-        Page<EmailSendHistoryEntity> all = emailSendHistoryRepository.findByEmail(email, pageable);
+        Page<EmailSendHistoryEntity> all = emailSendHistoryRepository.findByEmail(dto.getEmail(), pageable);
         return getEmailSendHistoryDTOS(pageable, all);
     }
 
