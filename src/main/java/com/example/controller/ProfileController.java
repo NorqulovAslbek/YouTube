@@ -33,7 +33,7 @@ public class ProfileController {
 
     @Operation(summary = "Api for updateEmail ", description = "this api used for change email")
     @PutMapping("/updateEmail")
-    public ResponseEntity<?> updateEmail(@RequestBody UpdateEmailDTO dto,
+    public ResponseEntity<String> updateEmail(@RequestBody UpdateEmailDTO dto,
                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage appLanguage) {
         return ResponseEntity.ok(profileService.updateEmail(dto, appLanguage));
     }
@@ -53,6 +53,12 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.createProfile(dto));
     }
 
+    @Operation(summary = "Api for email update Verification", description = "User update email")
+    @GetMapping("/verification/email/{jwt}")
+    public ResponseEntity<?> verification(@PathVariable("jwt") String jwt) {
+        log.info("emailVerification {}", jwt);
+        return ResponseEntity.ok(profileService.verification(jwt));
+    }
     @Operation(summary = "Api for getProfile", description = "this api used for get profile")
     @GetMapping("/getProfile")
     public ResponseEntity<?> getProfile(@RequestHeader(value = "Accept-Language", defaultValue = "UZ")

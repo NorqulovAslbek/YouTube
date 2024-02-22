@@ -15,9 +15,10 @@ public class EmailSendHistoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(columnDefinition = "text")
     private String message;
     private String email;
     @Enumerated(EnumType.STRING)
     private ProfileStatus status;
-    private LocalDateTime createdData=LocalDateTime.now();
+    private LocalDateTime createdData = LocalDateTime.now();
 }

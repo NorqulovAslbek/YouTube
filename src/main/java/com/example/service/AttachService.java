@@ -70,11 +70,11 @@ public class AttachService {
 
             AttachEntity entity = new AttachEntity();
             entity.setSize(file.getSize());
-            entity.setType(extension);
+            entity.setExtension(extension);
             entity.setOriginalName(file.getOriginalFilename());
             entity.setCreatedDate(LocalDateTime.now());
             entity.setId(key);
-            entity.setPath("uploads/" + pathFolder + "/" + key + "." + extension);
+            entity.setPath("uploads/" + path + "/" + key + "." + extension);
 
             attachRepository.save(entity);
 
@@ -156,7 +156,7 @@ public class AttachService {
             throw new AppBadException(bundleService.getMessage("delete.was.not.found", language));
         }
         AttachEntity entity = optional.get();
-        File file = new File(String.valueOf(Path.of("uploads/" + entity.getPath() + "/" + entity.getId() + "." + entity.getType())));
+        File file = new File(String.valueOf(Path.of("uploads/" + entity.getPath() + "/" + entity.getId() + "." + entity.getExtension())));
         file.delete();
         attachRepository.delete(entity);
         return true;
@@ -167,7 +167,7 @@ public class AttachService {
         dto.setId(entity.getId());
         dto.setPath(entity.getPath());
         dto.setSize(entity.getSize());
-        dto.setType(entity.getType());
+        dto.setExtension(entity.getExtension());
         dto.setOriginalName(entity.getOriginalName());
         dto.setCreatedData(entity.getCreatedDate());
 
@@ -190,7 +190,7 @@ public class AttachService {
     public AttachDTO toDTO(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
         dto.setId(entity.getId());
-        dto.setType(serverUrl + "/attach/open_general/" + entity.getId() + "." + entity.getType());
+        dto.setExtension(serverUrl + "/attach/open_general/" + entity.getId() + "." + entity.getExtension());
         return dto;
     }
 
