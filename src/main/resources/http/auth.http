@@ -20,8 +20,8 @@ Content-Type: application/json
 Accept-Language: UZ
 
 {
-  "email": "shamshododinayev1702@gmail.com",
-  "password": "123456"
+  "email": "adminjon@gmail.com",
+  "password": "admin123"
 }
 
 ### login profile
@@ -30,8 +30,8 @@ Content-Type: application/json
 Accept-Language: UZ
 
 {
-  "email": "aslbeknorqulov246@gmail.com",
-  "password": "123456"
+  "email": "rajabbekollanazarov12@gmail.com",
+  "password": "123"
 }
 
 #### Admin login

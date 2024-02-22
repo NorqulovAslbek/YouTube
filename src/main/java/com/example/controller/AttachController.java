@@ -33,10 +33,9 @@ public class AttachController {
     @PostMapping("/any/upload")
     @Operation(summary = "This api to create", description = "This api is for file upload")
     public ResponseEntity<AttachDTO> create(@RequestParam("file") MultipartFile file) {
-        AttachDTO dto = attachService.save(file);
 
         log.info("file not found {}", file);
-        return ResponseEntity.ok().body(dto);
+        return ResponseEntity.ok().body(attachService.save(file));
     }
 
     @GetMapping(value = "/any/{fileName}", produces = MediaType.IMAGE_PNG_VALUE)
@@ -99,5 +98,10 @@ public class AttachController {
         return ResponseEntity.ok(attachService.delete(id, language));
     }
 
+    @GetMapping("/getUrl/{id}")
+    public ResponseEntity<?> getUrl(@PathVariable("id") String id) {
+        log.info("file not found {}", id);
+        return ResponseEntity.ok(attachService.getURL(id));
+    }
 
 }
