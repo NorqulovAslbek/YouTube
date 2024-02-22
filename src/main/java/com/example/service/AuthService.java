@@ -61,7 +61,7 @@ public class AuthService {
         return true;
     }
 
-    public void sendEmailMessage(RegistrationDTO dto, ProfileEntity entity, AppLanguage language) {
+    private void sendEmailMessage(RegistrationDTO dto, ProfileEntity entity, AppLanguage language) {
         String jwt = JWTUtil.encodeForEmail(entity.getId());
         String text = getButtonLink(entity, jwt);
         EmailSendHistoryEntity emailSendHistoryEntity = new EmailSendHistoryEntity();
@@ -73,8 +73,7 @@ public class AuthService {
         mailSender.sendEmail(dto.getEmail(), resourceBundleService.getMessage("complete.registration", language), text);
     }
 
-
-    private static String getButtonLink(ProfileEntity entity, String jwt) {
+    public String getButtonLink(ProfileEntity entity, String jwt) {
         String text = "<h1 style=\"text-align: center\">Hello %s</h1>\n" +
                 "<p style=\"background-color: indianred; color: white; padding: 30px\">To complete registration please link to the following link</p>\n" +
                 "<a style=\" background-color: #f44336;\n" +

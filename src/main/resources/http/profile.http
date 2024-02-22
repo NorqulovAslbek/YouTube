@@ -13,12 +13,15 @@ Accept-Language: UZ
 ### Update email
 PUT localhost:8080/profile/updateEmail
 Content-Type: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDAxMTMsImVtYWlsIjoic2hhbXNob2RvZGluYXlldjE3MDJAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODY4NjUxMywiaXNzIjoiWW91dHViZSJ9.6U9GLhKUmVnCqB03j2hFZxyhsilPvlQ9sahxrjNYGdvebnjwWfFAP1IVXD4dmzIxDWK_5jmEt7FmGy6Xa9QOsQ
 Accept-Language: UZ
 
 {
-  "email": ""
+  "email": "shamshod6696odinayev@gmail.com"
 }
+
+### Verification
+GET localhost:8080/profile/verification/email/eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTc4NDQsImlkIjoxMCwiZXhwIjoxNzA4NjAxNDQ0LCJpc3MiOiJZb3V0dWJlIn0.pkf8v_pRp-PkWJGa8Sc3b7xoC59rqMQoMT-dQOqteiG3liFYDR6q_IJQxdLpUrlDi6xPvMakjUtYc532sX5Idw
 
 ### Update name and surname
 PUT localhost:8080/profile/changeNameAndSurname
