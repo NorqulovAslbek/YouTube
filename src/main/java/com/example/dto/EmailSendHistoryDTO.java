@@ -4,6 +4,7 @@ import com.example.enums.ProfileStatus;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Getter
 @Setter
@@ -12,5 +13,5 @@ public class EmailSendHistoryDTO {
     private String message;
     private String email;
     private ProfileStatus status;
-    private LocalDateTime createdData;
+    private LocalDateTime createdDate;
 }

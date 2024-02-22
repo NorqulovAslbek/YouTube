@@ -3,10 +3,19 @@ GET localhost:8080/emailHistory/adm/pagination?page=2&size=3
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTc2NzksImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2ODQwNzksImlzcyI6IllvdXR1YmUifQ.-Dcxd1jKymqY-_cx7lezXCwGIYjzTDgRqLzLkiS70pGneuVfiPsns6DYqW6hPBJN6n7HYcjI4jBBDGI97ILYYQ
 
 ### get by email pagination
-POST localhost:8080/emailHistory/paginationByEmail?page=1&size=3
+POST localhost:8080/emailHistory/adm/paginationByEmail?page=1&size=3
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDQ3NzEsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODY5MTE3MSwiaXNzIjoiWW91dHViZSJ9.WFPFcv5anUO8idOfz6kT6qfeHQbBORzMnGZGSlef84SKltrrUsQfP7358yYCQjQb0tlztCC-LEn8lHsmu3GcwQ
 
 {
   "email": "aslbeknorqulov24@gmail.com"
+}
+
+### get email history filter
+POST localhost:8080/emailHistory/adm/filter?page=1&size=3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTExNTYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2OTc1NTYsImlzcyI6IllvdXR1YmUifQ.34SPTHCf1lafx17uw0EITdOQBoj0b3__wV728rXzlqts8xTS-1ei3oDehTgsY5XoUHiruZksx7vhE5eSHq6NxQ
+
+{
+  "fromDate": "2024-02-22"
 }
