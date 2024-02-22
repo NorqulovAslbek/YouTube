@@ -23,8 +23,6 @@ public class ProfileService {
     private ResourceBundleService resourceBundleService;
     @Autowired
     private AuthService authService;
-
-
     public String changePassword(ChangePasswordDTO dto, AppLanguage appLanguage) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         ProfileEntity entity = get(appLanguage, currentUser.getId());

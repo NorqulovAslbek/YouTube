@@ -4,9 +4,9 @@ Content-Type: application/json
 Accept-Language: UZ
 
 {
-  "name": "Rajab",
-  "surname": "Ollanazarov",
-  "email": "rajabbekollanazarov12@gmail.com",
+  "name": "Og'abek",
+  "surname": "Muhammadov",
+  "email": "ogabekm007@gmail.com",
   "password": "123"
 }
 
