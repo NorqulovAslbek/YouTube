@@ -4,7 +4,9 @@ import com.example.entity.ChannelEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface ChannelRepository extends CrudRepository<ChannelEntity, Integer> , PagingAndSortingRepository<ChannelEntity, Integer> {
+import java.util.List;
 
+public interface ChannelRepository extends CrudRepository<ChannelEntity, Integer>, PagingAndSortingRepository<ChannelEntity, Integer> {
+    List<ChannelEntity> findByProfileIdAndVisible(Integer profileId, Boolean visible);
 
 }

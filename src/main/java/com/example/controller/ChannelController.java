@@ -65,5 +65,10 @@ public class ChannelController {
         return ResponseEntity.ok(channelService.changeChannelStatus(id, dto, language));
     }
 
+    @PutMapping("/updatePhoto/{id}")
+    public ResponseEntity<?> updateChannelPhoto(@PathVariable String id) {
+        return ResponseEntity.ok(channelService.updatePhoto(id));
+    }
+
 
 }

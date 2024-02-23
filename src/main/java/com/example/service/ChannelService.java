@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.config.CustomUserDetails;
 import com.example.dto.ChangeChannelStatusDTO;
 import com.example.dto.ChannelCrudDTO;
 import com.example.dto.ChannelDTO;
@@ -96,5 +97,13 @@ public class ChannelService {
             channelRepository.save(entity);
         }
         return true;
+    }
+
+    public Boolean updatePhoto(String id) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        List<ChannelEntity> byProfileIdAndVisible = channelRepository.findByProfileIdAndVisible(currentUser.getId(), true);
+        //todo
+        return true;
+
     }
 }
