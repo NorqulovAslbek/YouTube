@@ -44,3 +44,13 @@ Accept-Language: UZ
   "password": "admin123"
 }
 
+#### Moderator login
+POST localhost:8080/auth/login
+Content-Type: application/json
+Accept-Language: UZ
+
+{
+  "email": "moderatorjon@gmail.com",
+  "password": "moderator123"
+}
+
