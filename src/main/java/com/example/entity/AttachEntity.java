@@ -19,6 +19,8 @@ public class AttachEntity {
     private String extension;
     @Column(name = "path")
     private String path;
+    @Column(name = "url")
+    private String url;
     @Column(name = "duration")
     private Long duration;
     @Column(name = "created_date")
