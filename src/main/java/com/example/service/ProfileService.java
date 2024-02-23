@@ -145,6 +145,7 @@ public class ProfileService {
         entity.setRole(dto.getProfileRole());
         entity.setEmail(dto.getEmail());
         entity.setPassword(MDUtil.encode(dto.getPassword()));
+        entity.setStatus(ProfileStatus.ACTIVE);
         entity.setPhotoId(dto.getPhoto());
         return entity;
     }
