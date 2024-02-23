@@ -64,7 +64,9 @@ public class AttachService {
             String extension = getExtension(file.getOriginalFilename()); // mp3/jpg/npg/mp4
 
             byte[] bytes = file.getBytes();
-            Path path = Paths.get("uploads/" + pathFolder + "/" + key + "." + extension);
+
+            Path path = Paths.get(extension);
+            Path url = Paths.get("uploads/" + pathFolder + "/" + key + "." + extension);
             //                         uploads/2022/04/23/dasdasd-dasdasda-asdasda-asdasd.jpg
             //                         uploads/ + Path + id + extension
             Files.write(path, bytes);
@@ -76,7 +78,7 @@ public class AttachService {
             entity.setOriginalName(file.getOriginalFilename());
             entity.setCreatedDate(LocalDateTime.now());
             entity.setPath(pathFolder);
-
+            entity.setUrl(url.toString());
             attachRepository.save(entity);
 
             return toDTO(entity);
@@ -191,7 +193,7 @@ public class AttachService {
     public AttachDTO toDTO(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
         dto.setId(entity.getId());
-        dto.setExtension(serverUrl + "/attach/any/general/" + entity.getId() + "." + entity.getExtension());
+        dto.setExtension(entity.getExtension());
         return dto;
     }
 
