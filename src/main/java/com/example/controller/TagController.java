@@ -1,7 +1,7 @@
 package com.example.controller;
 
-import com.example.dto.CreateTagDTO;
 import com.example.dto.TagDTO;
+import com.example.dto.CreateTagDTO;
 import com.example.service.TagService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

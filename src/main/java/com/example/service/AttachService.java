@@ -69,13 +69,13 @@ public class AttachService {
             Files.write(path, bytes);
 
             AttachEntity entity = new AttachEntity();
+            entity.setId(key);
             entity.setSize(file.getSize());
             entity.setExtension(extension);
             entity.setOriginalName(file.getOriginalFilename());
             entity.setCreatedDate(LocalDateTime.now());
-            entity.setId(key);
-            entity.setPath("uploads/" + path + "/" + key + "." + extension);
-
+            entity.setPath(pathFolder);
+            entity.setUrl(path.toString());
             attachRepository.save(entity);
 
             return toDTO(entity);
@@ -190,7 +190,14 @@ public class AttachService {
     public AttachDTO toDTO(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
         dto.setId(entity.getId());
-        dto.setExtension(serverUrl + "/attach/open_general/" + entity.getId() + "." + entity.getExtension());
+        dto.setExtension(serverUrl + "/attach/any/general/" + entity.getId() + "." + entity.getExtension());
+        return dto;
+    }
+
+    public AttachDTO getURL(String id) {
+        AttachDTO dto = new AttachDTO();
+        AttachEntity entity = get(id);
+        dto.setUrl(serverUrl + "/attach/any/" + entity.getId() + "." + entity.getExtension());
         return dto;
     }
 

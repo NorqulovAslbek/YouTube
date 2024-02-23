@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.dto.FilterEmailDTO;
 import com.example.dto.UpdateEmailDTO;
 import com.example.service.EmailSendHistoryService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,12 +25,22 @@ public class EmailHistoryController {
     }
 
 
-    @PostMapping("/paginationByEmail")
-    @Operation(summary = "Api for getEmailPagination", description = "this api to get email history in paginated view")
+    @PostMapping("/adm/paginationByEmail")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Api for getBYEmailPagination", description = "this api to get email history by email paginated view")
     public ResponseEntity<?> getByEmailPagination(@RequestParam Integer page,
                                                   @RequestParam Integer size,
                                                   @RequestBody UpdateEmailDTO dto) {
         return ResponseEntity.ok(sendEmailHistoryService.getByEmailPagination(page,size,dto));
+    }
+
+    @PostMapping("/adm/filter")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Api for filter", description = "this api to get email history filter")
+    public ResponseEntity<?> filter(@RequestParam Integer page,
+                                    @RequestParam Integer size,
+                                    @RequestBody FilterEmailDTO dto){
+        return ResponseEntity.ok(sendEmailHistoryService.filter(dto,page,size));
     }
 
 }
