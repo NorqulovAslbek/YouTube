@@ -33,8 +33,8 @@ public class ChannelService {
         entity.setPhotoId(dto.getPhotoId());
         entity.setDescription(dto.getDescription());
         entity.setProfileId(profileId);
+        entity.setStatus(ChannelStatus.ACTIVE);
         channelRepository.save(entity);
-
         return toDTO(entity);
     }
 
@@ -77,6 +77,7 @@ public class ChannelService {
         channelDTO.setBannerId(entity.getBannerId());
         channelDTO.setPhotoId(entity.getPhotoId());
         channelDTO.setProfileId(entity.getProfileId());
+        channelDTO.setStatus(entity.getStatus());
         return channelDTO;
     }
 
