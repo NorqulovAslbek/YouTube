@@ -1,0 +1,36 @@
+### Create channel
+POST localhost:8080/channel
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MjA4MjEsImlzcyI6IllvdXR1YmUifQ.D2_Pvz0e249r1ydO0NN2YVGnPd3gArOjvPm6lYL7w0wdh9a5EJSe6s9N-pUdUwH38ydJYVBSkztFB6JaBkvGPw
+
+{
+  "name": "jallimi",
+  "photoId": "ae93d61f-2cbf-46a3-bcee-46ce97927f5c",
+  "description": "janli"
+}
+
+### Update channel
+PUT localhost:8080/channel/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MjA4MjEsImlzcyI6IllvdXR1YmUifQ.D2_Pvz0e249r1ydO0NN2YVGnPd3gArOjvPm6lYL7w0wdh9a5EJSe6s9N-pUdUwH38ydJYVBSkztFB6JaBkvGPw
+
+{
+  "description": "Tegilma!!!!"
+}
+
+### channel pagination
+GET localhost:8080/channel/adm/pagination?page=1&size=4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MjA4MjEsImlzcyI6IllvdXR1YmUifQ.D2_Pvz0e249r1ydO0NN2YVGnPd3gArOjvPm6lYL7w0wdh9a5EJSe6s9N-pUdUwH38ydJYVBSkztFB6JaBkvGPw
+
+### get by id channel
+GET localhost:8080/channel/adm/3
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MjA4MjEsImlzcyI6IllvdXR1YmUifQ.D2_Pvz0e249r1ydO0NN2YVGnPd3gArOjvPm6lYL7w0wdh9a5EJSe6s9N-pUdUwH38ydJYVBSkztFB6JaBkvGPw
+
+### Change channel status
+PUT http://localhost:8080/channel/adm/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MjA4MjEsImlzcyI6IllvdXR1YmUifQ.D2_Pvz0e249r1ydO0NN2YVGnPd3gArOjvPm6lYL7w0wdh9a5EJSe6s9N-pUdUwH38ydJYVBSkztFB6JaBkvGPw
+
+{
+"status": "ACTIVE"
+}

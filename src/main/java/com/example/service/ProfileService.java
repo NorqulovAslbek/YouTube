@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
+import com.example.dto.CreateProfileDTO;
 import com.example.entity.EmailSendHistoryEntity;
 import com.example.entity.ProfileEntity;
 import com.example.enums.AppLanguage;
@@ -68,7 +69,7 @@ public class ProfileService {
         emailSendHistoryEntity.setEmail(entity.getTempEmail());
         emailSendHistoryEntity.setMessage(jwt);
         emailSendHistoryEntity.setStatus(ProfileStatus.ACTIVE);
-        emailSendHistoryEntity.setCreatedData(LocalDateTime.now());
+        emailSendHistoryEntity.setCreatedDate(LocalDateTime.now());
         emailSendHistoryRepository.save(emailSendHistoryEntity);
         mailSender.sendEmail(entity.getTempEmail(), resourceBundleService.getMessage("complete.registration", language), text);
     }

@@ -2,7 +2,6 @@ package com.example.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
 
@@ -16,17 +15,14 @@ public class AttachEntity {
     private String originalName;
     @Column(name = "size")
     private Long size;
-    @Column(name = "type")
-    private String type;
+    @Column(name = "extension")
+    private String extension;
     @Column(name = "path")
     private String path;
+    @Column(name = "url")
+    private String url;
     @Column(name = "duration")
     private Long duration;
-    @Column(name = "profile_id")
-    private Integer profileId;
-    @ManyToOne
-    @JoinColumn(name = "profile_id", insertable = false, updatable = false)
-    private ProfileEntity profile;
     @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
 }
