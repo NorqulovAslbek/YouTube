@@ -14,8 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.image.RescaleOp;
-
 @Tag(name = "Profile Api list", description = "Api list for Profile")
 @RestController
 @RequestMapping("/profile")
