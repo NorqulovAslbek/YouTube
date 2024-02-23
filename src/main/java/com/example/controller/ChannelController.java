@@ -50,6 +50,12 @@ public class ChannelController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getById(@PathVariable Integer id,
                                      @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage appLanguage) {
-        return ResponseEntity.ok(channelService.getById(id,appLanguage));
+        return ResponseEntity.ok(channelService.getById(id, appLanguage));
+    }
+
+    @GetMapping("/channelList")
+    @Operation(summary = "Api for channel getChannelList", description = "this api  get channel list")
+    public ResponseEntity<?> getChannelList() {
+        return ResponseEntity.ok(channelService.getChannelList());
     }
 }

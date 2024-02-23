@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.config.CustomUserDetails;
 import com.example.dto.ChannelCrudDTO;
 import com.example.dto.ChannelDTO;
 import com.example.entity.ChannelEntity;
@@ -79,5 +80,15 @@ public class ChannelService {
     public ChannelDTO getById(Integer id, AppLanguage appLanguage) {
         ChannelEntity channelEntity = get(id, appLanguage);
         return toDTO(channelEntity);
+    }
+
+    public List<ChannelDTO> getChannelList() {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        List<ChannelEntity> channelEntities = channelRepository.byUserIdGetChannelList(currentUser.getId());
+        List<ChannelDTO> list = new LinkedList<>();
+        for (ChannelEntity channelEntity : channelEntities) {
+            list.add(toDTO(channelEntity));
+        }
+        return list;
     }
 }
