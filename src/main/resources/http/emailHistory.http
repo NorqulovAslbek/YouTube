@@ -10,3 +10,12 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MDQ3NzEsImVtYWlsIjoiY
 {
   "email": "aslbeknorqulov24@gmail.com"
 }
+
+### get email history filter
+POST localhost:8080/emailHistory/adm/filter?page=1&size=3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MTI2ODYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2OTkwODYsImlzcyI6IllvdXR1YmUifQ.mebhLZFCtO1TIA7Lr2S55hH_bMttJ0v9AcNAKM4USGOugh13hPqMfH4lnUB0UkQ-pRcLojDUJlA89j_J3XOzQQ
+
+{
+  "fromDate": "2024-02-22"
+}

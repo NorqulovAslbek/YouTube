@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.dto.ChangeChannelStatusDTO;
 import com.example.dto.ChannelCrudDTO;
 import com.example.dto.ChannelDTO;
 import com.example.enums.AppLanguage;
@@ -7,7 +8,6 @@ import com.example.service.ChannelService;
 import com.example.util.SpringSecurityUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +49,21 @@ public class ChannelController {
     @Operation(summary = "Api for channel getById", description = "this api  get channel by id")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getById(@PathVariable Integer id,
-                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage appLanguage) {
-        return ResponseEntity.ok(channelService.getById(id,appLanguage));
+                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                     AppLanguage appLanguage) {
+
+        log.info("channel not found {}", id);
+        return ResponseEntity.ok(channelService.getById(id, appLanguage));
     }
+
+    @PutMapping("/adm/{id}")
+    @Operation(summary = "Api for channel change channel status", description = "this api change channel status")
+    @PreAuthorize("hasAnyRole('ADMIN','MODERATOR','USER')")
+    public ResponseEntity<?> changeChannelStatus(@PathVariable("id") Integer id, @RequestBody ChangeChannelStatusDTO dto,
+                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                 AppLanguage language) {
+        return ResponseEntity.ok(channelService.changeChannelStatus(id, dto, language));
+    }
+
+
 }

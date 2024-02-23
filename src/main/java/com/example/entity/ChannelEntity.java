@@ -20,7 +20,7 @@ public class ChannelEntity extends BaseEntity {
     @Column(name = "description", columnDefinition = "text")
     private String description;
     @Enumerated(EnumType.STRING)
-    private ChannelStatus status;
+    private ChannelStatus status=ChannelStatus.ACTIVE;
     @OneToOne
     @JoinColumn(name = "banner_id", insertable = false, updatable = false)
     private AttachEntity banner;

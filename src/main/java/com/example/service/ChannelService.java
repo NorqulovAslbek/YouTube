@@ -1,9 +1,11 @@
 package com.example.service;
 
+import com.example.dto.ChangeChannelStatusDTO;
 import com.example.dto.ChannelCrudDTO;
 import com.example.dto.ChannelDTO;
 import com.example.entity.ChannelEntity;
 import com.example.enums.AppLanguage;
+import com.example.enums.ChannelStatus;
 import com.example.exp.AppBadException;
 import com.example.repository.ChannelRepository;
 import com.example.util.SpringSecurityUtil;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +34,7 @@ public class ChannelService {
         entity.setDescription(dto.getDescription());
         entity.setProfileId(profileId);
         channelRepository.save(entity);
+
         return toDTO(entity);
     }
 
@@ -79,5 +83,17 @@ public class ChannelService {
     public ChannelDTO getById(Integer id, AppLanguage appLanguage) {
         ChannelEntity channelEntity = get(id, appLanguage);
         return toDTO(channelEntity);
+    }
+
+    public Boolean changeChannelStatus(Integer id, ChangeChannelStatusDTO dto, AppLanguage language) {
+        ChannelEntity entity = get(id, language);
+        Integer currentUserId = SpringSecurityUtil.getCurrentUser().getId();
+
+        if (entity.getVisible() && entity.getProfileId().equals(currentUserId)) {
+            entity.setStatus(dto.getStatus());
+            entity.setUpdatedDate(LocalDateTime.now());
+            channelRepository.save(entity);
+        }
+        return true;
     }
 }

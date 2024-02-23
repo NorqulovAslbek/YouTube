@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
+import com.example.dto.CreateProfileDTO;
 import com.example.entity.EmailSendHistoryEntity;
 import com.example.entity.ProfileEntity;
 import com.example.enums.AppLanguage;
