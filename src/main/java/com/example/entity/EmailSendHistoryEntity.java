@@ -20,5 +20,5 @@ public class EmailSendHistoryEntity {
     private String email;
     @Enumerated(EnumType.STRING)
     private ProfileStatus status;
-    private LocalDateTime createdData = LocalDateTime.now();
+    private LocalDateTime createdDate = LocalDateTime.now();
 }
