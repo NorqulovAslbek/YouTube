@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.dto.ChangeChannelStatusDTO;
 import com.example.dto.ChannelCrudDTO;
 import com.example.dto.ChannelDTO;
 import com.example.enums.AppLanguage;
@@ -8,6 +7,7 @@ import com.example.service.ChannelService;
 import com.example.util.SpringSecurityUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +54,12 @@ public class ChannelController {
 
         log.info("channel not found {}", id);
         return ResponseEntity.ok(channelService.getById(id, appLanguage));
+    }
+
+    @GetMapping("/channelList")
+    @Operation(summary = "Api for channel getChannelList", description = "this api  get channel list")
+    public ResponseEntity<?> getChannelList() {
+        return ResponseEntity.ok(channelService.getChannelList());
     }
 
     @PutMapping("/adm/{id}")

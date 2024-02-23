@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.config.CustomUserDetails;
 import com.example.dto.ChangeChannelStatusDTO;
 import com.example.dto.ChannelCrudDTO;
 import com.example.dto.ChannelDTO;
@@ -33,8 +34,8 @@ public class ChannelService {
         entity.setPhotoId(dto.getPhotoId());
         entity.setDescription(dto.getDescription());
         entity.setProfileId(profileId);
+        entity.setStatus(ChannelStatus.ACTIVE);
         channelRepository.save(entity);
-
         return toDTO(entity);
     }
 
@@ -95,5 +96,15 @@ public class ChannelService {
             channelRepository.save(entity);
         }
         return true;
+    }
+
+    public List<ChannelDTO> getChannelList() {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        List<ChannelEntity> channelEntities = channelRepository.byUserIdGetChannelList(currentUser.getId());
+        List<ChannelDTO> list = new LinkedList<>();
+        for (ChannelEntity channelEntity : channelEntities) {
+            list.add(toDTO(channelEntity));
+        }
+        return list;
     }
 }
