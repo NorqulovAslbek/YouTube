@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.dto.UpdateStatusVideoDTO;
 import com.example.dto.VideoCreateDTO;
 import com.example.dto.VideoDTO;
+import com.example.dto.VideoUpdateDetailDTO;
 import com.example.enums.AppLanguage;
 import com.example.enums.VideoStatus;
 import com.example.service.VideoService;
