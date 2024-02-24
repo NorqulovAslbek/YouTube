@@ -2,14 +2,12 @@ package com.example.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.web.client.RestTemplate;
+
 
 import javax.sql.DataSource;
-import java.time.Duration;
 import java.util.Locale;
 
 @Configuration
