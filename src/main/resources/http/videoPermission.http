@@ -1,0 +1,10 @@
+### man qandaydr vidio qoydim ulardan private bor publigi bor qaysidir userga qaysidir vidiomni ochib bermoqchiman manashu api dan foydalanaman
+POST localhost:8080/permission
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzk3MTUsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4NjYxMTUsImlzcyI6IllvdXR1YmUifQ.0YqeDlC0UYTtnDDIWFpUtX1ZWmXzsh7Ql2-xTHctxUaaWvgPnWjUSLCQIo_EqsmjV9VUYEAPsr8mtMUBa57-Tw
+Accept-Language: UZ
+
+{
+  "profileId": 1,
+  "videoId": "e96683e7-bc88-4a03-a806-25ec21db902d"
+}

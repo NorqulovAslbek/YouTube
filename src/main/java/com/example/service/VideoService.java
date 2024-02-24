@@ -72,11 +72,4 @@ public class VideoService {
         }
         return optional.get();
     }
-
-    public Long increaseVideoViewCountById(String id, AppLanguage language) {
-        VideoEntity video = get(id, language);
-        video.setViewCount(video.getViewCount() + 1);
-        videoRepository.save(video);
-        return video.getViewCount();
-    }
 }
