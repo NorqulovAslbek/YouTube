@@ -14,3 +14,12 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzk3MTUsImVtYWlsIjoiY
   "type": "VIDEO"
 }
 
+### Update Status Video
+PUT http://localhost:8080/video/any/updateStatus
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzc4OTcsImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg4NjQyOTcsImlzcyI6IllvdXR1YmUifQ.wd6-oFxZE9xTTZvy_fV5HrVmnGaL_Kgb8ROHMwLBSy9wYRbb6jzhuDvjJzgOf5Pvtw3wzATrroxf3kChQAl2ug
+
+{
+  "id": "74782efe-13a3-452c-9bc2-b086808d1a2a",
+  "status": "PUBLIC"
+}
