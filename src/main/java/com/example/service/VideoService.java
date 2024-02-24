@@ -77,6 +77,7 @@ public class VideoService {
         VideoEntity video = get(id, language);
         video.setViewCount(video.getViewCount() + 1);
         videoRepository.save(video);
+
         return video.getViewCount();
     }
 }
