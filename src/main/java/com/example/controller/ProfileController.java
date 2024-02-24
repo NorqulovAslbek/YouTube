@@ -8,13 +8,13 @@ import com.example.enums.AppLanguage;
 import com.example.service.ProfileService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.awt.image.RescaleOp;
 
 @Tag(name = "Profile Api list", description = "Api list for Profile")
 @RestController
@@ -34,7 +34,7 @@ public class ProfileController {
     @Operation(summary = "Api for updateEmail ", description = "this api used for change email")
     @PutMapping("/updateEmail")
     public ResponseEntity<String> updateEmail(@RequestBody UpdateEmailDTO dto,
-                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage appLanguage) {
+                                              @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage appLanguage) {
         return ResponseEntity.ok(profileService.updateEmail(dto, appLanguage));
     }
 
@@ -49,7 +49,7 @@ public class ProfileController {
     @Operation(summary = "Api for changeNameAndSurname", description = "this api used for change name and surname")
     @PostMapping("/adm/createProfile")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> createProfile(@RequestBody CreateProfileDTO dto) {
+    public ResponseEntity<?> createProfile(@Valid @RequestBody CreateProfileDTO dto) {
         return ResponseEntity.ok(profileService.createProfile(dto));
     }
 
@@ -59,6 +59,7 @@ public class ProfileController {
         log.info("emailVerification {}", jwt);
         return ResponseEntity.ok(profileService.verification(jwt));
     }
+
     @Operation(summary = "Api for getProfile", description = "this api used for get profile")
     @GetMapping("/getProfile")
     public ResponseEntity<?> getProfile(@RequestHeader(value = "Accept-Language", defaultValue = "UZ")

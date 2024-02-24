@@ -68,7 +68,7 @@ public class AuthService {
         emailSendHistoryEntity.setEmail(dto.getEmail());
         emailSendHistoryEntity.setMessage(jwt);
         emailSendHistoryEntity.setStatus(ProfileStatus.REGISTRATION);
-        emailSendHistoryEntity.setCreatedData(LocalDateTime.now());
+        emailSendHistoryEntity.setCreatedDate(LocalDateTime.now());
         emailSendHistoryRepository.save(emailSendHistoryEntity);
         mailSender.sendEmail(dto.getEmail(), resourceBundleService.getMessage("complete.registration", language), text);
     }

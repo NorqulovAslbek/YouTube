@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import com.example.enums.VideoStatus;
+import com.example.enums.VideoType;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
@@ -17,13 +18,13 @@ public class VideoEntity {
     private String id;
     @Column(name = "title", nullable = false)
     private String title;
-    @Column(name = "description")
+    @Column(name = "description",nullable = false)
     private String description;
 
     @Column(name = "category_id")
     private Integer categoryId;
-    @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "category_id", insertable = false, updatable = false)
+    @OneToOne
+    @JoinColumn(name = "category_id", insertable = false, updatable = false)
     private CategoryEntity category;
 
     @Column(name = "attach_id")
@@ -39,14 +40,21 @@ public class VideoEntity {
     private AttachEntity preview;
 
     @Column(name = "channel_id")
-    private String channelId;
+    private Integer channelId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "channel_id", insertable = false, updatable = false)
+    private ChannelEntity channel;
 
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private VideoStatus status;
+    @Column(name = "type")
+    @Enumerated(EnumType.STRING)
+    private VideoType type;
     @Column(name = "created_date")
     private LocalDateTime createdDate;
     @Column(name = "published_date")
     private LocalDateTime publishedDate;
-    @Column(name = "status")
-    private VideoStatus status;
     @Column(name = "view_count")
     private Long viewCount = 0l;
     @Column(name = "shared_count")

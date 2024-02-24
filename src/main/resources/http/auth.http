@@ -4,10 +4,11 @@ Content-Type: application/json
 Accept-Language: UZ
 
 {
-  "name": "Asl",
-  "surname": "Norqul",
-  "email": "aslbeknorqulov246@gmail.com",
-  "password": "123456"
+  "name": "rajab",
+  "surname": "ollanazarov",
+  "email": "rajabbekollanazarov12@gmail.com",
+  "password": "123456",
+  "mainPhoto": "uploads/2024/2/23/2f7fe3f8-1f3d-4a54-b4bd-5a083aa143c2.png"
 }
 
 ### verification profile
@@ -31,7 +32,7 @@ Accept-Language: UZ
 
 {
   "email": "rajabbekollanazarov12@gmail.com",
-  "password": "123"
+  "password": "123456"
 }
 
 #### Admin login
@@ -42,5 +43,15 @@ Accept-Language: UZ
 {
   "email": "adminjon@gmail.com",
   "password": "admin123"
+}
+
+#### Moderator login
+POST localhost:8080/auth/login
+Content-Type: application/json
+Accept-Language: UZ
+
+{
+  "email": "moderatorjon@gmail.com",
+  "password": "moderator123"
 }
 

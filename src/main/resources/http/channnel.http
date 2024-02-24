@@ -1,0 +1,38 @@
+### Create channel
+POST localhost:8080/channel
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Njg1NTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4NTQ5NTMsImlzcyI6IllvdXR1YmUifQ.bLhau3IdNbokj20ycBmU24SgZ4t9JTVt4dumOTSRQPlyZdJzv-9Vm3W_VipeFIQVOHA_wTevVLotAJPyJfqAEg
+
+{
+  "name": "jallimi",
+  "description": "janli"
+}
+
+### Update channel
+PUT localhost:8080/channel/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MjA4MjEsImlzcyI6IllvdXR1YmUifQ.D2_Pvz0e249r1ydO0NN2YVGnPd3gArOjvPm6lYL7w0wdh9a5EJSe6s9N-pUdUwH38ydJYVBSkztFB6JaBkvGPw
+
+{
+  "description": "Tegilma!!!!"
+}
+
+### channel pagination
+GET localhost:8080/channel/adm/pagination?page=1&size=4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MjA4MjEsImlzcyI6IllvdXR1YmUifQ.D2_Pvz0e249r1ydO0NN2YVGnPd3gArOjvPm6lYL7w0wdh9a5EJSe6s9N-pUdUwH38ydJYVBSkztFB6JaBkvGPw
+
+### get by id channel
+GET localhost:8080/channel/adm/3
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MjA4MjEsImlzcyI6IllvdXR1YmUifQ.D2_Pvz0e249r1ydO0NN2YVGnPd3gArOjvPm6lYL7w0wdh9a5EJSe6s9N-pUdUwH38ydJYVBSkztFB6JaBkvGPw
+
+### User ni Channel List
+GET localhost:8080/channel/channelList
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3MTQ2NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODgwMTA0NiwiaXNzIjoiWW91dHViZSJ9.4w7_1hU6atlntrqrg028mEfeoPQHZbvHJVEOvclm3CSTIGUyn0avF0fVs0AaR12uwh9_E4x7kQhztmvMEizPZQ
+### Change channel status
+PUT http://localhost:8080/channel/adm/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3MjA4MjEsImlzcyI6IllvdXR1YmUifQ.D2_Pvz0e249r1ydO0NN2YVGnPd3gArOjvPm6lYL7w0wdh9a5EJSe6s9N-pUdUwH38ydJYVBSkztFB6JaBkvGPw
+
+{
+"status": "ACTIVE"
+}
