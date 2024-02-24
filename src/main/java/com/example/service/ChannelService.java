@@ -116,4 +116,14 @@ public class ChannelService {
         channelRepository.save(entity);
         return true;
     }
+
+    public List<ChannelDTO> getChannelList() {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        List<ChannelEntity> channelEntities = channelRepository.byUserIdGetChannelList(currentUser.getId());
+        List<ChannelDTO> list = new LinkedList<>();
+        for (ChannelEntity channelEntity : channelEntities) {
+            list.add(toDTO(channelEntity));
+        }
+        return list;
+    }
 }
