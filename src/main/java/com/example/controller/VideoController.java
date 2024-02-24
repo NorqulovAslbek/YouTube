@@ -24,7 +24,6 @@ public class VideoController {
     private VideoService videoService;
 
     @PostMapping("/any")
-    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "This api Video Create", description = "This api is used to create video")
     public ResponseEntity<VideoDTO> create(@RequestBody VideoCreateDTO dto,
                                            @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
@@ -42,5 +41,6 @@ public class VideoController {
         log.info("Video not found {}", dto.getId());
         return ResponseEntity.ok(videoService.updateStatus(dto, language));
     }
+
 
 }
