@@ -1,8 +1,6 @@
 package com.example.service;
 
 import com.example.dto.VideoPermissionDTO;
-import com.example.entity.ProfileEntity;
-import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
@@ -11,6 +9,8 @@ import com.example.repository.VideoPermissionRepository;
 import com.example.repository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class VideoPermissionService {
@@ -24,6 +24,10 @@ public class VideoPermissionService {
     private ResourceBundleService resourceBundleService;
 
     public Boolean permission(VideoPermissionDTO dto, AppLanguage language) {
+        Optional<VideoPermissionEntity> optional = permissionRepository.existsByVideoIdAndProfileId(dto.getProfileId(), dto.getVideoId());
+        if (optional.isPresent()){
+            throw new AppBadException("permission has already been granted!");
+        }
         permissionRepository.save(getEntity(dto, language));
         return true;
     }
