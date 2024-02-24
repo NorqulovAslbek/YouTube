@@ -1,0 +1,13 @@
+### Create Playlist
+POST localhost:8080/playlist
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODczOTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4NzM3OTMsImlzcyI6IllvdXR1YmUifQ._av_eovBZi-9HLGoyHW281_WowoBXrzL3lkA7yM6SrjomGN1cNIKoWUYzuD_wAdBo2tKUdy3HzMxa7hnEOdyOw
+Accept-Language: UZ
+
+{
+  "channelId": 6,
+  "description": "Tegma",
+  "name": "Zur",
+  "status": "PRIVATE",
+  "orderNum": 1
+}
