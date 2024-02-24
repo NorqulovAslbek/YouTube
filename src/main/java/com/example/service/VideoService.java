@@ -1,7 +1,9 @@
 package com.example.service;
 
+import com.example.dto.UpdateStatusVideoDTO;
 import com.example.dto.VideoCreateDTO;
 import com.example.dto.VideoUpdateDetailDTO;
+import com.example.dto.VideoDTO;
 import com.example.entity.VideoEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
@@ -27,7 +29,7 @@ public class VideoService {
     @Autowired
     private ResourceBundleService bundleService;
 
-    public VideoCreateDTO create(VideoCreateDTO dto, AppLanguage language) {
+    public VideoDTO create(VideoCreateDTO dto, AppLanguage language) {
         VideoEntity entity = new VideoEntity();
         if (dto.getType() == null && dto.getDescription() == null && dto.getStatus() == null && dto.getTitle() == null &&
                 dto.getAttachId() == null && dto.getCategoryId() == null && dto.getChannelId() == null && dto.getPreviewAttachId() == null) {
@@ -43,8 +45,20 @@ public class VideoService {
         entity.setType(dto.getType());
         entity.setStatus(dto.getStatus());
         entity.setCreatedDate(LocalDateTime.now());
+
         videoRepository.save(entity);
-        return dto;
+        VideoDTO videoDTO = new VideoDTO();
+        videoDTO.setId(entity.getId());
+        videoDTO.setCreatedDate(entity.getCreatedDate());
+        return videoDTO;
+    }
+
+    public Boolean updateStatus(UpdateStatusVideoDTO dto, AppLanguage language) {
+
+        VideoEntity entity = get(dto.getId(), language);
+        entity.setStatus(dto.getStatus());
+        videoRepository.save(entity);
+        return true;
     }
 
 

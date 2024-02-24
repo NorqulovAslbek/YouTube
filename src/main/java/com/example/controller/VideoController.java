@@ -1,8 +1,11 @@
 package com.example.controller;
 
 import com.example.dto.VideoUpdateDetailDTO;
+import com.example.dto.UpdateStatusVideoDTO;
 import com.example.dto.VideoCreateDTO;
+import com.example.dto.VideoDTO;
 import com.example.enums.AppLanguage;
+import com.example.enums.VideoStatus;
 import com.example.service.VideoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -35,4 +38,13 @@ public class VideoController {
                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(videoService.updateDetail(dto, videoId, language));
     }
+    @PutMapping("/any/updateStatus")
+    @Operation(summary = "This api Video Create", description = "This api is used to create video")
+    public ResponseEntity<?> updateStatus(@RequestBody UpdateStatusVideoDTO dto,
+                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        log.info("Video not found {}", dto.getId());
+        return ResponseEntity.ok(videoService.updateStatus(dto, language));
+    }
+
 }
