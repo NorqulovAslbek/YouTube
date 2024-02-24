@@ -26,7 +26,7 @@ public class VideoPermissionService {
     public Boolean permission(VideoPermissionDTO dto, AppLanguage language) {
         Optional<VideoPermissionEntity> optional = permissionRepository.existsByVideoIdAndProfileId(dto.getProfileId(), dto.getVideoId());
         if (optional.isPresent()){
-            throw new AppBadException("permission has already been granted!");
+            throw new AppBadException(resourceBundleService.getMessage("permission.has.already",language));
         }
         permissionRepository.save(getEntity(dto, language));
         return true;
@@ -43,5 +43,10 @@ public class VideoPermissionService {
         permission.setVideoId(dto.getVideoId());
         permission.setProfileId(dto.getProfileId());
         return permission;
+    }
+
+    public Boolean removePermission(Integer profileId, AppLanguage language) {
+        Integer effectiveRow = permissionRepository.getByProfileId(profileId);
+        return effectiveRow!=0;
     }
 }
