@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.security.access.method.P;
 
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer> {
@@ -28,4 +29,11 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
 
     @Query("FROM ProfileEntity WHERE email=?1 AND visible=true ")
     Optional<ProfileEntity> getByEmail(String email);
+
+    @Transactional
+    @Modifying
+    @Query("Update ProfileEntity  set updatedDate =?2, photoId =?3 where id = ?1")
+    void updatePhoto(Integer profileId, LocalDateTime updateDate, String photoId);
+
+
 }

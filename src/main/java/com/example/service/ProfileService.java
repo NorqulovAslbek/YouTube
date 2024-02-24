@@ -3,11 +3,13 @@ package com.example.service;
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
 import com.example.dto.CreateProfileDTO;
+import com.example.entity.AttachEntity;
 import com.example.entity.EmailSendHistoryEntity;
 import com.example.entity.ProfileEntity;
 import com.example.enums.AppLanguage;
 import com.example.enums.ProfileStatus;
 import com.example.exp.AppBadException;
+import com.example.repository.AttachRepository;
 import com.example.repository.EmailSendHistoryRepository;
 import com.example.repository.ProfileRepository;
 import com.example.util.JWTUtil;
@@ -30,6 +32,8 @@ public class ProfileService {
     private ResourceBundleService resourceBundleService;
     @Autowired
     private EmailSendHistoryRepository emailSendHistoryRepository;
+    @Autowired
+    private AttachRepository attachRepository;
     @Autowired
     private MailSenderService mailSender;
     @Autowired
@@ -175,5 +179,35 @@ public class ProfileService {
         dto.setSurname(entity.getSurname());
         dto.setEmail(entity.getEmail());
         return dto;
+    }
+
+    public Object updateAttach(String photoId, Integer profileId, AppLanguage language) {
+        ProfileEntity profile = get(language, profileId);
+        if (!profile.getStatus().equals(ProfileStatus.ACTIVE)) {
+            throw new AppBadException(resourceBundleService.getMessage("not.allowed", language));
+        }
+        Optional<AttachEntity> attach = attachRepository.findById(photoId);
+        if (attach.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("attach.not.found", language));
+        }
+
+        if (profile.getPhotoId() == null) {
+            profileRepository.updatePhoto(profileId,LocalDateTime.now(), photoId);
+            return true;
+        }
+        else {
+            String oldPhotoId = profile.getPhotoId();
+            if (oldPhotoId.equals(photoId)){
+                profileRepository.updatePhoto(profileId,LocalDateTime.now(), photoId);
+                return true;
+            }
+            else {
+                profileRepository.updatePhoto(profileId,LocalDateTime.now(), photoId);
+                attachService.delete(oldPhotoId,language);
+                attachRepository.deleteById(oldPhotoId);
+                return true;
+            }
+        }
+
     }
 }

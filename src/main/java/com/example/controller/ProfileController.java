@@ -6,6 +6,7 @@ import com.example.dto.CreateProfileDTO;
 import com.example.dto.UpdateEmailDTO;
 import com.example.enums.AppLanguage;
 import com.example.service.ProfileService;
+import com.example.util.SpringSecurityUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -66,6 +67,15 @@ public class ProfileController {
                                         AppLanguage appLanguage) {
         log.info("getProfile");
         return ResponseEntity.ok(profileService.getProfile(appLanguage));
+    }
+    @Operation(summary = "Api for update photo", description = "this api used for update photo")
+    @PutMapping("/updatePhoto/{photoId}")
+    public ResponseEntity<?> updatePhoto(@PathVariable("photoId") String photoId,
+                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                 AppLanguage language){
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        log.info("update photo {} ",profileId);
+        return ResponseEntity.ok(profileService.updateAttach(photoId,profileId,language));
     }
 
 
