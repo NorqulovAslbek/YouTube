@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -29,9 +30,9 @@ public class VideoController {
     }
 
     @PutMapping("/updateDetail/{videoId}")
-    public ResponseEntity<?> updateDetail(@RequestBody VideoUpdateDetailDTO dto,
-                                          @PathVariable String videoId,
-                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+    public ResponseEntity<Boolean> updateDetail(@RequestBody VideoUpdateDetailDTO dto,
+                                                @PathVariable String videoId,
+                                                @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(videoService.updateDetail(dto, videoId, language));
     }
 }

@@ -78,6 +78,7 @@ public class ChannelService {
 
     private static ChannelDTO toDTO(ChannelEntity entity) {
         ChannelDTO channelDTO = new ChannelDTO();
+        channelDTO.setId(entity.getId());
         channelDTO.setName(entity.getName());
         channelDTO.setDescription(entity.getDescription());
         channelDTO.setBannerId(entity.getBannerId());
