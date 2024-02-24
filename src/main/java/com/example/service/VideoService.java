@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.dto.VideoCreateDTO;
+import com.example.dto.VideoUpdateDetailDTO;
 import com.example.entity.VideoEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -51,5 +53,10 @@ public class VideoService {
     }
 
 
-
+    public Object updateDetail(VideoUpdateDetailDTO dto, String videoId, AppLanguage language) {
+        Optional<VideoEntity> optionalVideoEntity = videoRepository.findById(videoId);
+        if (optionalVideoEntity.isEmpty()) {
+        }
+        return null;
+    }
 }
