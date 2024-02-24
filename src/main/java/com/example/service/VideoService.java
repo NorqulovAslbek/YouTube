@@ -142,4 +142,12 @@ public class VideoService {
         dto.setChannel(channelDTO);
         return dto;
     }
+
+    public Long increaseVideoViewCountById(String id, AppLanguage language) {
+        VideoEntity video = get(id, language);
+        video.setViewCount(video.getViewCount() + 1);
+        videoRepository.save(video);
+
+        return video.getViewCount();
+    }
 }
