@@ -27,13 +27,9 @@ public class VideoService {
     @Autowired
     private ResourceBundleService bundleService;
 
-    public VideoCreateDTO create(VideoCreateDTO dto, AppLanguage language) {
+    public VideoDTO create(VideoCreateDTO dto, AppLanguage language) {
         VideoEntity entity = new VideoEntity();
 
-        if (!(dto.getAttachId().equals(attachService.get(dto.getAttachId())) && dto.getChannelId().equals(channelService.get(dto.getChannelId(), language)))) {
-            log.info("There is an error in what you sent {}", dto.getAttachId());
-            throw new AppBadException(bundleService.getMessage("there.error.in.what.you.sent", language));
-        }
         if (dto.getType() == null && dto.getDescription() == null && dto.getStatus() == null && dto.getTitle() == null &&
                 dto.getAttachId() == null && dto.getCategoryId() == null && dto.getChannelId() == null && dto.getPreviewAttachId() == null) {
             log.info("There is an error in what you sent {}", dto);
@@ -73,7 +69,6 @@ public class VideoService {
         return optional.get();
     }
 
-//    public Object getVideoByCategoryId(Integer id, Integer page, Integer size, AppLanguage language) {
-//
-//    }
+
+
 }

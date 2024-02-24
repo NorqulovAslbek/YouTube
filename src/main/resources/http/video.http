@@ -7,9 +7,9 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzk3MTUsImVtYWlsIjoiY
   "title": "cccc",
   "description": "ccccc",
   "attachId": "caca75b1-73be-42a4-9ffa-993f471e02c7",
-  "categoryId": 6,
-  "previewAttachId": "9ca5bd65-56da-49f3-bb86-381bbba00bfb",
-  "channelId": 3,
+  "categoryId": 4,
+  "previewAttachId": "caca75b1-73be-42a4-9ffa-993f471e02c7",
+  "channelId": 2,
   "status": "PUBLIC",
   "type": "VIDEO"
 }
