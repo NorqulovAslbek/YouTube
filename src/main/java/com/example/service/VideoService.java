@@ -7,12 +7,15 @@ import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
-import com.example.repository.VideoPermissionRepository;
 import com.example.repository.VideoRepository;
 import com.example.util.SpringSecurityUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -32,12 +35,14 @@ public class VideoService {
     private ChannelService channelService;
     @Autowired
     private ResourceBundleService bundleService;
-    @Autowired
-    private VideoPermissionRepository permissionRepository;
 
     public VideoDTO create(VideoCreateDTO dto, AppLanguage language) {
         VideoEntity entity = new VideoEntity();
 
+        if (!(dto.getAttachId().equals(attachService.get(dto.getAttachId())) && dto.getChannelId().equals(channelService.get(dto.getChannelId(), language)))) {
+            log.info("There is an error in what you sent {}", dto.getAttachId());
+            throw new AppBadException(bundleService.getMessage("there.error.in.what.you.sent", language));
+        }
         if (dto.getType() == null && dto.getDescription() == null && dto.getStatus() == null && dto.getTitle() == null &&
                 dto.getAttachId() == null && dto.getCategoryId() == null && dto.getChannelId() == null && dto.getPreviewAttachId() == null) {
             log.info("There is an error in what you sent {}", dto);
@@ -88,8 +93,6 @@ public class VideoService {
         }
         return optionalVideoEntity.get();
     }
-
-
     public PageImpl<VideoShortInfoDTO> getVideoByCategoryId(Integer id, Integer page, Integer size, AppLanguage language) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         Pageable pageable = PageRequest.of(page - 1, size);
