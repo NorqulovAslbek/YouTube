@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.dto.ChangeChannelStatusDTO;
 import com.example.dto.ChannelCrudDTO;
 import com.example.dto.ChannelDTO;
+import com.example.dto.ChannelUpdatePhotoDTO;
 import com.example.enums.AppLanguage;
 import com.example.service.ChannelService;
 import com.example.util.SpringSecurityUtil;
@@ -59,15 +60,16 @@ public class ChannelController {
     @PutMapping("/adm/{id}")
     @Operation(summary = "Api for channel change channel status", description = "this api change channel status")
     @PreAuthorize("hasAnyRole('ADMIN','MODERATOR','USER')")
-    public ResponseEntity<?> changeChannelStatus(@PathVariable("id") Integer id, @RequestBody ChangeChannelStatusDTO dto,
-                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                                 AppLanguage language) {
+    public ResponseEntity<?> changeChannelStatus(@PathVariable("id") Integer id,
+                                                 @RequestBody ChangeChannelStatusDTO dto,
+                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(channelService.changeChannelStatus(id, dto, language));
     }
 
-    @PutMapping("/updatePhoto/{id}")
-    public ResponseEntity<?> updateChannelPhoto(@PathVariable String id) {
-        return ResponseEntity.ok(channelService.updatePhoto(id));
+    @PutMapping("/updatePhoto")
+    public ResponseEntity<?> updateChannelPhoto(@RequestBody ChannelUpdatePhotoDTO dto,
+                                                @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(channelService.updatePhoto(dto,language));
     }
 
 

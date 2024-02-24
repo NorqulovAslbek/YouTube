@@ -4,6 +4,7 @@ import com.example.config.CustomUserDetails;
 import com.example.dto.ChangeChannelStatusDTO;
 import com.example.dto.ChannelCrudDTO;
 import com.example.dto.ChannelDTO;
+import com.example.dto.ChannelUpdatePhotoDTO;
 import com.example.entity.ChannelEntity;
 import com.example.enums.AppLanguage;
 import com.example.enums.ChannelStatus;
@@ -25,6 +26,8 @@ public class ChannelService {
     private ChannelRepository channelRepository;
     @Autowired
     private ResourceBundleService resourceBundleService;
+    @Autowired
+    private AttachService attachService;
 
     public ChannelDTO create(ChannelCrudDTO dto) {
         ChannelEntity entity = new ChannelEntity();
@@ -99,11 +102,18 @@ public class ChannelService {
         return true;
     }
 
-    public Boolean updatePhoto(String id) {
+    public Boolean updatePhoto(ChannelUpdatePhotoDTO dto, AppLanguage language) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
-        List<ChannelEntity> byProfileIdAndVisible = channelRepository.findByProfileIdAndVisible(currentUser.getId(), true);
-        //todo
+        Optional<ChannelEntity> byIdAndProfileIdAndVisibleAndStatus = channelRepository.findByIdAndProfileIdAndVisibleAndStatus(dto.getChannelId(), currentUser.getId(), true, ChannelStatus.ACTIVE);
+        if (byIdAndProfileIdAndVisibleAndStatus.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("channel.not.found", language));
+        }
+        ChannelEntity entity = byIdAndProfileIdAndVisibleAndStatus.get();
+        if (entity.getPhotoId() != null) {
+            attachService.delete(entity.getPhotoId(), language);
+        }
+        entity.setPhotoId(dto.getPhotoId());
+        channelRepository.save(entity);
         return true;
-
     }
 }

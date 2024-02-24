@@ -34,3 +34,14 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2MzQ0MjEsImVtYWlsIjoiY
 {
 "status": "ACTIVE"
 }
+
+### Channel update photo
+PUT localhost:8080/channel/updatePhoto
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzM0NTAsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4NTk4NTAsImlzcyI6IllvdXR1YmUifQ.sJRKGKJKqJHssu7hqfSP5JDl7HUoFhhEycWuoYbzdQ8aaOmDtOMtVaoRyLMnscyeZkOgOIZ0sE58fgOOrXn6eA
+Accept-Language: UZ
+
+{
+  "photoId": "sdsf",
+  "channelId": 2
+}
