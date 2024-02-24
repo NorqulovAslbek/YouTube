@@ -49,7 +49,13 @@ public class VideoController {
         return ResponseEntity.ok(videoService.getVideoByCategoryId(id, page, size, language));
     }
 
-
+    @Operation(summary = "This api increase video view count", description = "This api is used to increase video view count")
+    @PutMapping("/increaseVideoViewCount/{id}")
+    public ResponseEntity<?> increaseVideoViewCountById(@PathVariable("id") String id,
+                                                        @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                        AppLanguage language){
+        return ResponseEntity.ok(videoService.increaseVideoViewCountById(id,language));
+    }
 
 
 }
