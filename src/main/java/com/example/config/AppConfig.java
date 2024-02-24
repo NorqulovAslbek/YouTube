@@ -37,27 +37,5 @@ public class AppConfig {
         dataSourceBuilder.password(dataSourcePassword);
         return dataSourceBuilder.build();
     }
-    @Bean
-    public RestTemplate restTemplate() {
-        RestTemplateBuilder builder = new RestTemplateBuilder();
-        return builder
-                .setConnectTimeout(Duration.ofSeconds(3l))
-                .setReadTimeout(Duration.ofSeconds(3l))
-                .build();
-//        RestTemplate restTemplate = new RestTemplate();
-//        return restTemplate;
-    }
-
-    @Bean
-    public RestTemplate restTemplate() {
-        RestTemplateBuilder builder = new RestTemplateBuilder();
-        return builder
-                .setConnectTimeout(Duration.ofSeconds(3l))
-                .setReadTimeout(Duration.ofSeconds(3l))
-                .build();
-//        RestTemplate restTemplate = new RestTemplate();
-//        return restTemplate;
-    }
-
 
 }
