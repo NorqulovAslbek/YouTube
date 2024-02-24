@@ -1,0 +1,10 @@
+### man qandaydr vidio qoydim ulardan private bor publigi bor qaysidir userga qaysidir vidiomni ochib bermoqchiman manashu api dan foydalanaman
+POST localhost:8080/permission
+Content-Type: application/json
+Authorization:
+Accept-Language: UZ
+
+{
+  "profileId": 1,
+  "videoId": "1"
+}

@@ -21,7 +21,6 @@ public class VideoController {
     private VideoService videoService;
 
     @PostMapping("/any")
-    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "This api Video Create", description = "This api is used to create video")
     public ResponseEntity<VideoCreateDTO> create(@RequestBody VideoCreateDTO dto,
                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
@@ -30,5 +29,14 @@ public class VideoController {
         log.info("There is an error in what you sent {}", dto);
         return ResponseEntity.ok(videoService.create(dto, language));
     }
+
+//    @GetMapping("/byCategoryId")
+//    public ResponseEntity<?> getVideoByCategoryId(@RequestParam Integer id,
+//                                                  @RequestParam Integer page,
+//                                                  @RequestParam Integer size,
+//                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+//                                                  AppLanguage language) {
+//        return ResponseEntity.ok(videoService.getVideoByCategoryId(id, page, size, language));
+//    }
 
 }
