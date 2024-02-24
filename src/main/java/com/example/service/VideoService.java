@@ -7,6 +7,7 @@ import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
+import com.example.repository.VideoPermissionRepository;
 import com.example.repository.VideoRepository;
 import com.example.util.SpringSecurityUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,8 @@ public class VideoService {
     private ChannelService channelService;
     @Autowired
     private ResourceBundleService bundleService;
+    @Autowired
+    private VideoPermissionRepository permissionRepository;
 
     public VideoDTO create(VideoCreateDTO dto, AppLanguage language) {
         VideoEntity entity = new VideoEntity();
