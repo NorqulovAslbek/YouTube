@@ -5,7 +5,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="2.png"
 
-< /Users/macbookpro/Downloads/img/gg/sv.mp4
+< C:\Users\Aslbek\Desktop\Teskshirish\photo_2024-02-01_13-29-34.jpg
 
 ### Get By Id(Open)
 GET http://localhost:8080/attach/any/5112368f-a066-4c26-b239-5246fd093cdd.jpg
