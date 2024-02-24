@@ -1,19 +1,23 @@
 package com.example.service;
 
-import com.example.dto.UpdateStatusVideoDTO;
-import com.example.dto.VideoCreateDTO;
-import com.example.dto.VideoUpdateDetailDTO;
-import com.example.dto.VideoDTO;
+import com.example.config.CustomUserDetails;
+import com.example.dto.*;
+import com.example.entity.ChannelEntity;
 import com.example.entity.VideoEntity;
+import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
+import com.example.repository.VideoPermissionRepository;
 import com.example.repository.VideoRepository;
+import com.example.util.SpringSecurityUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -28,6 +32,8 @@ public class VideoService {
     private ChannelService channelService;
     @Autowired
     private ResourceBundleService bundleService;
+    @Autowired
+    private VideoPermissionRepository permissionRepository;
 
     public VideoDTO create(VideoCreateDTO dto, AppLanguage language) {
         VideoEntity entity = new VideoEntity();
@@ -84,5 +90,50 @@ public class VideoService {
     }
 
 
+    public PageImpl<VideoShortInfoDTO> getVideoByCategoryId(Integer id, Integer page, Integer size, AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        Pageable pageable = PageRequest.of(page - 1, size);
 
+        Page<VideoPermissionEntity> permission = permissionRepository.getPermission(currentUser.getId(), pageable);
+        long totalElements = permission.getTotalElements();
+        List<VideoShortInfoDTO> shortInfoDTOS = new LinkedList<>();
+        for (VideoPermissionEntity videoPermissionEntity : permission) {
+            shortInfoDTOS.add(get(videoPermissionEntity.getVideoId(), id, language));
+        }
+
+        List<VideoEntity> categoryIdList = videoRepository.getByCategoryId(id);
+        for (VideoEntity videoEntity : categoryIdList) {
+            shortInfoDTOS.add(get(videoEntity.getId(), id, language));
+        }
+        return new PageImpl<>(shortInfoDTOS, pageable, totalElements);
+    }
+
+    private VideoShortInfoDTO get(String videoId, Integer categoryId, AppLanguage language) {
+        Optional<VideoEntity> optional = videoRepository.getVideoByVideoIdAndCategoryId(videoId, categoryId);
+        if (optional.isEmpty()) {
+            throw new AppBadException(bundleService.getMessage("video.not.found", language));
+        }
+        return getVideoShortInfoDTO(optional.get(), language);
+    }
+
+    private VideoShortInfoDTO getVideoShortInfoDTO(VideoEntity entity, AppLanguage language) {
+        VideoShortInfoDTO dto = new VideoShortInfoDTO();
+        dto.setId(entity.getId());
+        dto.setTitle(entity.getTitle());
+        dto.setPreviewAttach(attachService.getURL(entity.getPreviewId()));
+        dto.setPublishedDate(entity.getPublishedDate());
+
+        ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
+        ChannelDTO channelDTO = new ChannelDTO();
+        channelDTO.setId(channelEntity.getId());
+        channelDTO.setName(channelEntity.getName());
+        if (channelEntity.getPhotoId()!=null) {
+            AttachDTO attachDTO = attachService.getURL(channelEntity.getPhotoId());
+            channelDTO.setPhotoId(attachDTO.getUrl());
+        }
+        dto.setViewCount(entity.getViewCount());
+
+        dto.setChannel(channelDTO);
+        return dto;
+    }
 }

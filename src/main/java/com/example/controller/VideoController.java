@@ -9,6 +9,7 @@ import com.example.enums.VideoStatus;
 import com.example.service.VideoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,14 +48,15 @@ public class VideoController {
         log.info("Video not found {}", dto.getId());
         return ResponseEntity.ok(videoService.updateStatus(dto, language));
     }
-//    @GetMapping("/byCategoryId")
-//    public ResponseEntity<?> getVideoByCategoryId(@RequestParam Integer id,
-//                                                  @RequestParam Integer page,
-//                                                  @RequestParam Integer size,
-//                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-//                                                  AppLanguage language) {
-//        return ResponseEntity.ok(videoService.getVideoByCategoryId(id, page, size, language));
-//    }
+    @GetMapping("/getCategoryId")
+    @Operation(summary = "This api getVideoByCategoryId", description = "This api is used to get Video By Category Id")
+    public ResponseEntity<?> getVideoByCategoryId(@RequestParam Integer id,
+                                                  @RequestParam Integer page,
+                                                  @RequestParam Integer size,
+                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                  AppLanguage language) {
+        return ResponseEntity.ok(videoService.getVideoByCategoryId(id, page, size, language));
+    }
 
 
 

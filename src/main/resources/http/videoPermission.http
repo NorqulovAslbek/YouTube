@@ -5,6 +5,6 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzk3MTUsImVtYWlsIjoiY
 Accept-Language: UZ
 
 {
-  "profileId": 1,
-  "videoId": "e96683e7-bc88-4a03-a806-25ec21db902d"
+  "profileId": 4,
+  "videoId": "e7c50fbe-0e5b-43b6-b821-13cf17b7a269"
 }

@@ -1,11 +1,13 @@
 package com.example.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class VideoShortInfo {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class VideoShortInfoDTO {
     private String id;
     private String title;
     private AttachDTO previewAttach;
