@@ -11,14 +11,10 @@ import lombok.Setter;
 @Entity
 @Table(name = "category")
 public class CategoryEntity extends BaseEntity {
-    @Column(name = "name_uz",nullable = false)
+    @Column(name = "name_uz", nullable = false)
     private String nameUz;
-    @Column(name = "name_ru",nullable = false)
+    @Column(name = "name_ru", nullable = false)
     private String nameRU;
-    @Column(name = "name_en",nullable = false)
+    @Column(name = "name_en", nullable = false)
     private String nameEn;
-
-
-
-
 }
