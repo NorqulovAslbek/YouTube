@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.dto.VideoUpdateDetailDTO;
 import com.example.dto.UpdateStatusVideoDTO;
 import com.example.dto.VideoCreateDTO;
 import com.example.dto.VideoDTO;
@@ -25,14 +26,18 @@ public class VideoController {
 
     @PostMapping("/any")
     @Operation(summary = "This api Video Create", description = "This api is used to create video")
-    public ResponseEntity<VideoDTO> create(@RequestBody VideoCreateDTO dto,
-                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                           AppLanguage language) {
-
+    public ResponseEntity<VideoCreateDTO> create(@RequestBody VideoCreateDTO dto,
+                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("There is an error in what you sent {}", dto);
         return ResponseEntity.ok(videoService.create(dto, language));
     }
 
+    @PutMapping("/updateDetail/{videoId}")
+    public ResponseEntity<Boolean> updateDetail(@RequestBody VideoUpdateDetailDTO dto,
+                                                @PathVariable String videoId,
+                                                @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(videoService.updateDetail(dto, videoId, language));
+    }
     @PutMapping("/any/updateStatus")
     @Operation(summary = "This api Video Create", description = "This api is used to create video")
     public ResponseEntity<?> updateStatus(@RequestBody UpdateStatusVideoDTO dto,
