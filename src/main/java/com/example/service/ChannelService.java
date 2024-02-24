@@ -11,6 +11,7 @@ import com.example.enums.ChannelStatus;
 import com.example.exp.AppBadException;
 import com.example.repository.ChannelRepository;
 import com.example.util.SpringSecurityUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class ChannelService {
     @Autowired
@@ -66,7 +68,7 @@ public class ChannelService {
         return new PageImpl<>(channelDTOS, pageable, totalElements);
     }
 
-    private ChannelEntity get(Integer id, AppLanguage appLanguage) {
+    public ChannelEntity get(Integer id, AppLanguage appLanguage) {
         Optional<ChannelEntity> optionalChannelEntity = channelRepository.findById(id);
         if (optionalChannelEntity.isEmpty()) {
             throw new AppBadException(resourceBundleService.getMessage("channel.not.found", appLanguage));

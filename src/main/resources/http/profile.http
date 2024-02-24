@@ -40,10 +40,10 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2OTU0NzQsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3ODE4NzQsImlzcyI6IllvdXR1YmUifQ.zUOfhYp49BL0z43kIBiU6Y2Q0rRR7VJ5Y7NKZgximx5j8xuFs5Bnj5B-9qPXXLT2oT563m7-nPjEaxncC8lehg
 
 {
-  "name": "Aslbek",
-  "surname": "Norqulov",
-  "email": "norqulovaslbek920@gmail.com",
-  "password": "123456",
+  "name": "rajab",
+  "surname": "ollanazarov",
+  "email": "rajabbekollanazarov12@gmail.com",
+  "password": "123",
   "profileRole": "ROLE_MODERATOR",
   "photo": "eb02a020-62a2-42ce-865d-9da3f9855b86"
 }

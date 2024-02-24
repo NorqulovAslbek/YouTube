@@ -27,7 +27,7 @@ Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MDM3OTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg1OTAxOTMsImlzcyI6IllvdXR1YmUifQ.sPu5hJnyzhY8-d1MYBm18ciuiPjZxeqy15Cp9GMkruqASNhOrpair3Y-RYPuEkDzy7wzzHlNpRAKklTV3mPylg
 
 ### getUrl
-GET http://localhost:8080/attach/getUrl/b86d3868-28b2-4537-9225-96946a85eb66
+GET http://localhost:8080/attach/getUrl/2f7fe3f8-1f3d-4a54-b4bd-5a083aa143c2
 
 
 
