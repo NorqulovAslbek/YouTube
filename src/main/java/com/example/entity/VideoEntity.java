@@ -16,9 +16,9 @@ public class VideoEntity {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
-    @Column(name = "title", nullable = false)
+    @Column(name = "title", nullable = false, columnDefinition = "Text")
     private String title;
-    @Column(name = "description",nullable = false)
+    @Column(name = "description", nullable = false,columnDefinition = "Text")
     private String description;
 
     @Column(name = "category_id")

@@ -45,6 +45,16 @@ public class VideoController {
         log.info("Video not found {}", dto.getId());
         return ResponseEntity.ok(videoService.updateStatus(dto, language));
     }
+//    @GetMapping("/byCategoryId")
+//    public ResponseEntity<?> getVideoByCategoryId(@RequestParam Integer id,
+//                                                  @RequestParam Integer page,
+//                                                  @RequestParam Integer size,
+//                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+//                                                  AppLanguage language) {
+//        return ResponseEntity.ok(videoService.getVideoByCategoryId(id, page, size, language));
+//    }
+
+
 
 
 }
