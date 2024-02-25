@@ -11,3 +11,13 @@ Accept-Language: UZ
   "status": "PRIVATE",
   "orderNum": 1
 }
+
+### Change Playlist Status
+PUT localhost:8080/playlist/changeStatus/1?status=PRIVATE
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjI4NDEsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5NDkyNDEsImlzcyI6IllvdXR1YmUifQ.i70F4nRdXZ71-6M4SKolSWu73P09cRuwb4e-pTYV29OVB0BlBP7Sr3tmTrc_8Ne1Dx_cFJUsrRi2A6D3lWWVEQ
+
+### Delete Playlist
+DELETE localhost:8080/playlist/1
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjQ5NTgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5NTEzNTgsImlzcyI6IllvdXR1YmUifQ.ljwomDxnDMwUaptmlhvUbOZYSel_8JCCePU69BFc95Wd8XakJIynzTj4X3-bpWabmjU4LjNC1o8ERHyYBo_6ig
