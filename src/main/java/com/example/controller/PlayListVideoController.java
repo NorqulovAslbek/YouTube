@@ -30,4 +30,13 @@ public class PlayListVideoController {
         return ResponseEntity.ok(playListVideoService.create(dto, language));
     }
 
+    @PutMapping("/{id}")
+    @Operation(summary = "This api playList video update", description = "This api is used to create a playlist video")
+    public ResponseEntity<Boolean> update(@PathVariable("id") Integer id, @Valid @RequestBody CreatePlayListVideoDTO dto,
+                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        log.info("playlist video  was en error creating {}", dto.getOrderNumber());
+        return ResponseEntity.ok(playListVideoService.update(id,dto, language));
+    }
+
 }

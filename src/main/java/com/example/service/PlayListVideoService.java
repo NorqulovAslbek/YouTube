@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -52,4 +53,22 @@ public class PlayListVideoService {
 
         return playListVideoDTO;
     }
+
+    public Boolean update(Integer id, CreatePlayListVideoDTO dto, AppLanguage language) {
+        PlayListVideoEntity entity = get(id, language);
+        entity.setVideoId(dto.getVideoId());
+        entity.setPlayListId(dto.getPlaylistId());
+        entity.setOrderNum(entity.getOrderNum());
+        playListVideoRepository.save(entity);
+        return true;
+    }
+
+    private PlayListVideoEntity get(Integer id, AppLanguage language) {
+        Optional<PlayListVideoEntity> optional = playListVideoRepository.findById(id);
+        if (optional.isEmpty()) {
+            throw new AppBadException(bundleService.getMessage("playlist.not.found", language));
+        }
+        return optional.get();
+    }
+
 }
