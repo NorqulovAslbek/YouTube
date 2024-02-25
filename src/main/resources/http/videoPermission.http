@@ -1,15 +1,15 @@
 ### man qandaydr vidio qoydim ulardan private bor publigi bor qaysidir userga qaysidir vidiomni ochib bermoqchiman manashu api dan foydalanaman
 POST localhost:8080/permission
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzk3MTUsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4NjYxMTUsImlzcyI6IllvdXR1YmUifQ.0YqeDlC0UYTtnDDIWFpUtX1ZWmXzsh7Ql2-xTHctxUaaWvgPnWjUSLCQIo_EqsmjV9VUYEAPsr8mtMUBa57-Tw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
 Accept-Language: UZ
 
 {
-  "profileId": 4,
-  "videoId": "e7c50fbe-0e5b-43b6-b821-13cf17b7a269"
+  "profileId": 6,
+  "videoId": "613131b7-1dd0-4b2a-b432-b57790b349f9"
 }
 
 ### vidioga berilgan ruxsatni olib tashlash
-DELETE localhost:8080/permission/1
+DELETE localhost:8080/permission/6
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzk3MTUsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4NjYxMTUsImlzcyI6IllvdXR1YmUifQ.0YqeDlC0UYTtnDDIWFpUtX1ZWmXzsh7Ql2-xTHctxUaaWvgPnWjUSLCQIo_EqsmjV9VUYEAPsr8mtMUBa57-Tw
 

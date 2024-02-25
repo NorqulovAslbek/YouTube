@@ -25,7 +25,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzc4OTcsImVtYWlsIjoic
 }
 
 ### Get Video Pagination by CategoryId  VideShortInfo
-GET localhost:8080/video/getCategoryId?page=1&size=2&id=4
+GET localhost:8080/video/getCategoryId?page=1&size=3&id=6
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
 Accept-Language: UZ
 
