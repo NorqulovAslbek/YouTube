@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
 import com.example.entity.ChannelEntity;
+import com.example.entity.ProfileEntity;
 import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
@@ -141,27 +142,6 @@ public class VideoService {
         return getVideoShortInfoDTO(optional.get(), language);
     }
 
-    private VideoShortInfoDTO getVideoShortInfoDTO(VideoEntity entity, AppLanguage language) {
-        VideoShortInfoDTO dto = new VideoShortInfoDTO();
-        dto.setId(entity.getId());
-        dto.setTitle(entity.getTitle());
-        dto.setPreviewAttach(attachService.getURL(entity.getPreviewId()));
-        dto.setPublishedDate(entity.getPublishedDate());
-
-        ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
-        ChannelDTO channelDTO = new ChannelDTO();
-        channelDTO.setId(channelEntity.getId());
-        channelDTO.setName(channelEntity.getName());
-        if (channelEntity.getPhotoId() != null) {
-            AttachDTO attachDTO = attachService.getURL(channelEntity.getPhotoId());
-            channelDTO.setPhotoId(attachDTO.getUrl());
-        }
-        dto.setViewCount(entity.getViewCount());
-
-        dto.setChannel(channelDTO);
-        return dto;
-    }
-
     public PageImpl<VideoShortInfoDTO> searchVideoByTitle(Integer page, Integer size, VideoFilterDTO dto, AppLanguage language) {
         PaginationResultDTO<VideoEntity> filter = videoSearchRepository.filter(dto, page, size);
 
@@ -179,5 +159,42 @@ public class VideoService {
         videoRepository.save(video);
 
         return video.getViewCount();
+    }
+
+    public PageImpl<VideoShortInfoDTO> getVideoByTagId(Integer page, Integer size, String tagId, AppLanguage language) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
+        Page<VideoEntity> entityPage = videoRepository.findAll(pageable);
+
+        List<VideoEntity> entityList = entityPage.getContent();
+        long totalElements = entityPage.getTotalElements();
+
+        List<VideoShortInfoDTO> dtoList = new LinkedList<>();
+        for (VideoEntity entity : entityList) {
+            dtoList.add(getVideoShortInfoDTO(entity, language));
+        }
+        return new PageImpl<>(dtoList, pageable, totalElements);
+    }
+
+    private VideoShortInfoDTO getVideoShortInfoDTO(VideoEntity entity, AppLanguage language) {
+        VideoShortInfoDTO dto = new VideoShortInfoDTO();
+        dto.setId(entity.getId());
+        dto.setTitle(entity.getTitle());
+        dto.setPreviewAttach(attachService.getURL(entity.getPreviewId()));
+        dto.setPublishedDate(entity.getPublishedDate());
+
+        ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
+        ChannelDTO channelDTO = new ChannelDTO();
+        channelDTO.setId(channelEntity.getId());
+        channelDTO.setName(channelEntity.getName());
+        if (channelEntity.getPhotoId() != null) {
+            AttachDTO attachDTO = attachService.getURL(channelEntity.getPhotoId());
+            channelDTO.setPhotoId(attachDTO.getUrl());
+            dto.setDuration(attachDTO.getDuration());
+        }
+        dto.setViewCount(entity.getViewCount());
+
+        dto.setChannel(channelDTO);
+        return dto;
     }
 }
