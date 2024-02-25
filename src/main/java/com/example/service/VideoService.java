@@ -7,6 +7,8 @@ import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
+import com.example.repository.*;
+import com.example.util.SpringSecurityUtil;
 import com.example.repository.VideoPermissionRepository;
 import com.example.repository.VideoRepository;
 import com.example.repository.VideoSearchRepository;
@@ -40,9 +42,20 @@ public class VideoService {
     private AttachService attachService;
     @Autowired
     private ChannelService channelService;
+    @Autowired
+    private AttachRepository attachRepository;
+    @Autowired
+    private ChannelRepository channelRepository;
 
-    public VideoDTO create(VideoCreateDTO dto, AppLanguage language) {
+    public VideoDTO create(VideoCreateDTO dto, AppLanguage language, Integer profileId) {
         VideoEntity entity = new VideoEntity();
+
+        if (!channelRepository.existsById(dto.getChannelId())) {
+            throw new AppBadException(bundleService.getMessage("problem.do.not.channel", language));
+        }
+        if (!attachRepository.existsById(dto.getAttachId())) {
+            throw new AppBadException(bundleService.getMessage("video.could.not.found", language));
+        }
 
         if (dto.getType() == null && dto.getDescription() == null && dto.getStatus() == null && dto.getTitle() == null &&
                 dto.getAttachId() == null && dto.getCategoryId() == null && dto.getChannelId() == null && dto.getPreviewAttachId() == null) {
@@ -59,7 +72,12 @@ public class VideoService {
         entity.setStatus(dto.getStatus());
         entity.setCreatedDate(LocalDateTime.now());
 
-        videoRepository.save(entity);
+        VideoEntity save = videoRepository.save(entity);
+        VideoPermissionEntity permissionEntity = new VideoPermissionEntity();
+        permissionEntity.setProfileId(profileId);
+        permissionEntity.setVideoId(save.getId());
+        permissionRepository.save(permissionEntity);
+
         VideoDTO videoDTO = new VideoDTO();
         videoDTO.setId(entity.getId());
         videoDTO.setCreatedDate(entity.getCreatedDate());
