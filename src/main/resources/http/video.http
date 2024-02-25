@@ -1,15 +1,15 @@
 ### Create video (User)
 POST http://localhost:8080/video/any
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzk3MTUsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4NjYxMTUsImlzcyI6IllvdXR1YmUifQ.0YqeDlC0UYTtnDDIWFpUtX1ZWmXzsh7Ql2-xTHctxUaaWvgPnWjUSLCQIo_EqsmjV9VUYEAPsr8mtMUBa57-Tw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODc1MjIsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzkyMiwiaXNzIjoiWW91dHViZSJ9.CBzrWkLqNemeDKbPKVN1Jh5hO5CMVbZloOPJJFYQFPrW9wKzNGJiXK5ikycuBgiqovM3Iu13J43fVAlVlquEvQ
 
 {
-  "title": "bbc",
-  "description": "cc",
-  "attachId": "774293ad-eba4-439b-9b1d-2bc11312f1b4",
-  "categoryId": 6,
-  "previewAttachId": "2f7fe3f8-1f3d-4a54-b4bd-5a083aa143c2",
-  "channelId": 7,
+  "title": "cccc",
+  "description": "ccccc",
+  "attachId": "03dbf476-04ac-40cc-b259-1883bcf5ff16",
+  "categoryId": 4,
+  "previewAttachId": "03dbf476-04ac-40cc-b259-1883bcf5ff16",
+  "channelId": 2,
   "status": "PRIVATE",
   "type": "VIDEO"
 }
@@ -23,6 +23,11 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzc4OTcsImVtYWlsIjoic
   "id": "74782efe-13a3-452c-9bc2-b086808d1a2a",
   "status": "PUBLIC"
 }
+
+### Get Video Pagination by CategoryId  VideShortInfo
+GET localhost:8080/video/getCategoryId?page=1&size=2&id=4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
+Accept-Language: UZ
 
 ### Search video by title
 POST http://localhost:8080/video/searchByTitle
