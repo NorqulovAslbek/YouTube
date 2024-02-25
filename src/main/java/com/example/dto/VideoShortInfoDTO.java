@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class VideoShortInfo {
+public class VideoShortInfoDTO {
     private String id;
     private String title;
     private AttachDTO previewAttach;

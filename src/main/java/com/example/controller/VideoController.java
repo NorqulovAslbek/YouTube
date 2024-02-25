@@ -1,14 +1,13 @@
 package com.example.controller;
 
-import com.example.dto.UpdateStatusVideoDTO;
-import com.example.dto.VideoCreateDTO;
-import com.example.dto.VideoDTO;
+import com.example.dto.*;
 import com.example.enums.AppLanguage;
 import com.example.service.VideoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +31,7 @@ public class VideoController {
     }
 
     @PutMapping("/any/updateStatus")
-    @Operation(summary = "This api Video Create", description = "This api is used to create video")
+    @Operation(summary = "This api Video updateStatus", description = "This api is used to updateStatus video")
     public ResponseEntity<?> updateStatus(@RequestBody UpdateStatusVideoDTO dto,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         log.info("Video not found {}", dto.getId());
@@ -47,6 +46,15 @@ public class VideoController {
 //        return ResponseEntity.ok(videoService.getVideoByCategoryId(id, page, size, language));
 //    }
 
+    @PostMapping("/searchByTitle")
+    @Operation(summary = "This api Video search video by title", description = "This api is used to Search video by Title video")
+    public ResponseEntity<PageImpl<VideoShortInfoDTO>> searchVideoByTitle(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                                          @RequestParam(value = "size", defaultValue = "6") Integer size,
+                                                                          @RequestBody VideoFilterDTO dto) {
+
+        log.info("Title not found {}", dto.getTitle());
+        return ResponseEntity.ok(videoService.searchVideoByTitle(page, size, dto));
+    }
 
 
 

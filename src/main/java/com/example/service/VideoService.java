@@ -1,17 +1,23 @@
 package com.example.service;
 
-import com.example.dto.UpdateStatusVideoDTO;
-import com.example.dto.VideoCreateDTO;
-import com.example.dto.VideoDTO;
+import com.example.dto.*;
+import com.example.entity.AttachEntity;
+import com.example.entity.ChannelEntity;
 import com.example.entity.VideoEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
 import com.example.repository.VideoRepository;
+import com.example.repository.VideoSearchRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -21,9 +27,7 @@ public class VideoService {
     @Autowired
     private VideoRepository videoRepository;
     @Autowired
-    private AttachService attachService;
-    @Autowired
-    private ChannelService channelService;
+    private VideoSearchRepository videoSearchRepository;
     @Autowired
     private ResourceBundleService bundleService;
 
@@ -70,5 +74,40 @@ public class VideoService {
     }
 
 
+    public PageImpl<VideoShortInfoDTO> searchVideoByTitle(Integer page, Integer size, VideoFilterDTO dto) {
+        PaginationResultDTO<VideoEntity> filter = videoSearchRepository.filter(dto, page, size);
+
+        List<VideoShortInfoDTO> dtoList = new LinkedList<>();
+        for (VideoEntity entity : filter.getList()) {
+            dtoList.add(toDTO(entity));
+        }
+        Pageable paging = PageRequest.of(page - 1, size);
+        return new PageImpl<>(dtoList, paging, filter.getTotalSize());
+    }
+
+    public VideoShortInfoDTO toDTO(VideoEntity entity) {
+        VideoShortInfoDTO dto = new VideoShortInfoDTO();
+        dto.setId(entity.getId());
+        dto.setTitle(entity.getTitle());
+
+        AttachEntity preview = entity.getPreview();
+        AttachDTO attach = new AttachDTO();
+        attach.setId(preview.getId());
+        attach.setUrl(preview.getUrl());
+        dto.setPreviewAttach(attach);
+
+        ChannelEntity channelEntity = entity.getChannel();
+        ChannelDTO channel = new ChannelDTO();
+        AttachDTO attachDTO = new AttachDTO();
+        attachDTO.setUrl(channelEntity.getPhoto().getUrl());
+
+        channel.setId(channelEntity.getId());
+        channel.setName(channelEntity.getName());
+        channel.setPhoto(attachDTO);
+
+        dto.setViewCount(entity.getViewCount());
+        dto.setDuration(attachDTO.getDuration());
+        return dto;
+    }
 
 }
