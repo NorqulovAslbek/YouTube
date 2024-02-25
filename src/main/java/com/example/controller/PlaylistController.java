@@ -1,7 +1,9 @@
 package com.example.controller;
 
 import com.example.dto.CreatePlaylistDTO;
+import com.example.dto.PlaylistDTO;
 import com.example.enums.AppLanguage;
+import com.example.enums.PlaylistStatus;
 import com.example.service.PlaylistService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,9 +22,21 @@ public class PlaylistController {
 
     @PostMapping("")
     @Operation(summary = "Api for create playlist ", description = "this api used for create playlist ")
-    public ResponseEntity<?> create(@RequestBody CreatePlaylistDTO dto,
-                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+    public ResponseEntity<PlaylistDTO> create(@RequestBody CreatePlaylistDTO dto,
+                                              @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(playlistService.create(dto, language));
     }
 
+    @PutMapping("/changeStatus/{id}")
+    public ResponseEntity<Boolean> changeStatus(@PathVariable Integer id,
+                                                @RequestParam(name = "status") PlaylistStatus status,
+                                                @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(playlistService.changeStatus(id, status, language));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePlaylist(@PathVariable Integer id,
+                                            @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(playlistService.deletePlaylist(id, language));
+    }
 }
