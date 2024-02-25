@@ -6,10 +6,10 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NTU4MzIsImVtYWlsIjoiY
 {
   "title": "cccc",
   "description": "ccccc",
-  "attachId": "03dbf476-04ac-40cc-b259-1883bcf5ff16",
+  "attachId": "774293ad-eba4-439b-9b1d-2bc11312f1b4",
   "categoryId": 4,
-  "previewAttachId": "03dbf476-04ac-40cc-b259-1883bcf5ff16",
-  "channelId": 2,
+  "previewAttachId": "774293ad-eba4-439b-9b1d-2bc11312f1b4",
+  "channelId": 7,
   "status": "PRIVATE",
   "type": "VIDEO"
 }

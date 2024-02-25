@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.dto.*;
 import com.example.enums.AppLanguage;
 import com.example.service.VideoService;
+import com.example.util.SpringSecurityUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +26,10 @@ public class VideoController {
     @Operation(summary = "This api Video Create", description = "This api is used to create video")
     public ResponseEntity<VideoDTO> create(@RequestBody VideoCreateDTO dto,
                                            @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                           AppLanguage language) {
+                                           AppLanguage language){
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         log.info("There is an error in what you sent {}", dto);
-        return ResponseEntity.ok(videoService.create(dto, language));
+        return ResponseEntity.ok(videoService.create(dto, language,profileId));
     }
 
     @PutMapping("/any/updateStatus")
