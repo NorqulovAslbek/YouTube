@@ -1,7 +1,6 @@
 package com.example.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
 import java.time.LocalDateTime;
