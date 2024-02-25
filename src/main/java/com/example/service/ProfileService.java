@@ -4,6 +4,7 @@ import com.example.config.CustomUserDetails;
 import com.example.dto.*;
 import com.example.dto.CreateProfileDTO;
 import com.example.entity.AttachEntity;
+import com.example.entity.ChannelEntity;
 import com.example.entity.EmailSendHistoryEntity;
 import com.example.entity.ProfileEntity;
 import com.example.enums.AppLanguage;
@@ -154,6 +155,18 @@ public class ProfileService {
         return entity;
     }
 
+    public ProfileEntity get(Integer id, AppLanguage appLanguage) {
+        Optional<ProfileEntity> optional = profileRepository.findById(id);
+        if (optional.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("channel.not.found", appLanguage));
+        }
+        return optional.get();
+    }
+
+    public ProfileDTO getById(Integer id, AppLanguage appLanguage) {
+        ProfileEntity profileEntity = get(id, appLanguage);
+        return toDTO(profileEntity);
+    }
 
     public ProfileDTO toDTO(ProfileEntity entity) {
         ProfileDTO dto = new ProfileDTO();
@@ -193,18 +206,16 @@ public class ProfileService {
         }
 
         if (profile.getPhotoId() == null) {
-            profileRepository.updatePhoto(profileId,LocalDateTime.now(), photoId);
+            profileRepository.updatePhoto(profileId, LocalDateTime.now(), photoId);
             return true;
-        }
-        else {
+        } else {
             String oldPhotoId = profile.getPhotoId();
-            if (oldPhotoId.equals(photoId)){
-                profileRepository.updatePhoto(profileId,LocalDateTime.now(), photoId);
+            if (oldPhotoId.equals(photoId)) {
+                profileRepository.updatePhoto(profileId, LocalDateTime.now(), photoId);
                 return true;
-            }
-            else {
-                profileRepository.updatePhoto(profileId,LocalDateTime.now(), photoId);
-                attachService.delete(oldPhotoId,language);
+            } else {
+                profileRepository.updatePhoto(profileId, LocalDateTime.now(), photoId);
+                attachService.delete(oldPhotoId, language);
                 attachRepository.deleteById(oldPhotoId);
                 return true;
             }

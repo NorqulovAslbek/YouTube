@@ -3,7 +3,7 @@ package com.example.service;
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
 import com.example.entity.ChannelEntity;
-import com.example.entity.ProfileEntity;
+import com.example.entity.PlaylistEntity;
 import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
@@ -13,7 +13,6 @@ import com.example.util.SpringSecurityUtil;
 import com.example.repository.VideoPermissionRepository;
 import com.example.repository.VideoRepository;
 import com.example.repository.VideoSearchRepository;
-import com.example.util.SpringSecurityUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -44,9 +43,13 @@ public class VideoService {
     @Autowired
     private ChannelService channelService;
     @Autowired
+    private ProfileService profileService;
+    @Autowired
     private AttachRepository attachRepository;
     @Autowired
     private ChannelRepository channelRepository;
+    @Autowired
+    private PlaylistService playlistService;
 
     public VideoDTO create(VideoCreateDTO dto, AppLanguage language, Integer profileId) {
         VideoEntity entity = new VideoEntity();
@@ -176,6 +179,21 @@ public class VideoService {
         return new PageImpl<>(dtoList, pageable, totalElements);
     }
 
+    public PageImpl<VideoListPaginationDTO> getVideoList(Integer page, Integer size, AppLanguage language) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
+        Page<VideoEntity> entityPage = videoRepository.findAll(pageable);
+
+        List<VideoEntity> entityList = entityPage.getContent();
+        long totalElements = entityPage.getTotalElements();
+
+        List<VideoListPaginationDTO> dtoList = new LinkedList<>();
+        for (VideoEntity entity : entityList) {
+            dtoList.add(getVideoList(entity, language));
+        }
+        return new PageImpl<>(dtoList, pageable, totalElements);
+    }
+
     private VideoShortInfoDTO getVideoShortInfoDTO(VideoEntity entity, AppLanguage language) {
         VideoShortInfoDTO dto = new VideoShortInfoDTO();
         dto.setId(entity.getId());
@@ -195,6 +213,25 @@ public class VideoService {
         dto.setViewCount(entity.getViewCount());
 
         dto.setChannel(channelDTO);
+        return dto;
+    }
+
+    private VideoListPaginationDTO getVideoList(VideoEntity entity, AppLanguage language) {
+        VideoListPaginationDTO dto = new VideoListPaginationDTO();
+        dto.setShortInfo(getVideoShortInfoDTO(entity, language));
+
+        Integer channelId = entity.getChannelId();
+        ChannelDTO channel = channelService.getById(channelId, language);
+        Integer profileId = channel.getProfileId();
+        ProfileDTO profileDTO = profileService.getById(profileId, language);
+        ProfileDTO profile = new ProfileDTO();
+        profile.setId(profileDTO.getId());
+        profile.setName(profileDTO.getName());
+        profile.setSurname(profileDTO.getSurname());
+        dto.setProfile(profile); //profile (is,name,surname)
+
+        dto.setPlaylist(playlistService.getByChannelId(channelId));  //playlist (id,name))
+
         return dto;
     }
 }
