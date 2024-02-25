@@ -109,7 +109,7 @@ public class VideoService {
         return true;
     }
 
-    private VideoEntity get(String videoId, AppLanguage language) {
+    public VideoEntity get(String videoId, AppLanguage language) {
         Optional<VideoEntity> optionalVideoEntity = videoRepository.findById(videoId);
         if (optionalVideoEntity.isEmpty()) {
             throw new AppBadException(bundleService.getMessage("video.not.found", language));

@@ -18,3 +18,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTM1MjgsImVtYWlsIjoiY
 {
   "content": "Tre"
 }
+
+### Delete Comment (USER AND OWNER, ADMIN)
+DELETE localhost:8080/comment/2
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTkzNTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5ODU3NTMsImlzcyI6IllvdXR1YmUifQ.asLyzd2FeE4by9oirCO4B8S-Jw13xo8xG_udoueTiVjVReeMERvT-mCyo9SwGZ0lRf5Xv5BBmCxEEVwiPzTl6A

@@ -1,3 +1,99 @@
+DELETE http://localhost:8080/comment/2
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTkzNTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5ODU3NTMsImlzcyI6IllvdXR1YmUifQ.asLyzd2FeE4by9oirCO4B8S-Jw13xo8xG_udoueTiVjVReeMERvT-mCyo9SwGZ0lRf5Xv5BBmCxEEVwiPzTl6A
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=C6A140174DC25D287978601557BF8DB6
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-26T031612.400.txt
+
+###
+
+DELETE http://localhost:8080/comment/2
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTkzNTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5ODU3NTMsImlzcyI6IllvdXR1YmUifQ.asLyzd2FeE4by9oirCO4B8S-Jw13xo8xG_udoueTiVjVReeMERvT-mCyo9SwGZ0lRf5Xv5BBmCxEEVwiPzTl6A
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=C6A140174DC25D287978601557BF8DB6
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-26T031610.200.json
+
+###
+
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+Accept-Language: UZ
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=C6A140174DC25D287978601557BF8DB6
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "adminjon@gmail.com",
+  "password": "admin123"
+}
+
+<> 2024-02-26T031553.200.json
+
+###
+
+DELETE http://localhost:8080/comment/2
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTkzMTcsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODk4NTcxNywiaXNzIjoiWW91dHViZSJ9.7A45SpOX9Oe-vdwLrj-rP8QnArlxJi7NG57xhWuhB4UUMu0jRxZvWaqZGcrj913ik7yNC6DPT8G6kspi01GL-A
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=C6A140174DC25D287978601557BF8DB6
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-26T031538.400.txt
+
+###
+
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+Accept-Language: UZ
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=C6A140174DC25D287978601557BF8DB6
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "moderatorjon@gmail.com",
+  "password": "moderator123"
+}
+
+<> 2024-02-26T031517.200.json
+
+###
+
+DELETE http://localhost:8080/comment/1
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTM1MjgsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk3OTkyOCwiaXNzIjoiWW91dHViZSJ9.1VYkemMQSsigKCpHf6MifAAy7-7WpFOT8mIfP2FRIcnlGcpnT7I3wqFg75lnG4vkspvmHKewds4eja-zNCHnyA
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=C6A140174DC25D287978601557BF8DB6
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-26T031410.400.txt
+
+###
+
+DELETE http://localhost:8080/comment/1
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTM1MjgsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk3OTkyOCwiaXNzIjoiWW91dHViZSJ9.1VYkemMQSsigKCpHf6MifAAy7-7WpFOT8mIfP2FRIcnlGcpnT7I3wqFg75lnG4vkspvmHKewds4eja-zNCHnyA
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=C6A140174DC25D287978601557BF8DB6
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-26T031408.200.json
+
+###
+
 PUT http://localhost:8080/comment/1
 Content-Type: application/json
 Accept-Language: UZ
@@ -706,102 +802,6 @@ Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
 Cookie: JSESSIONID=7235B10E46A7930E636D23EC3E11B85D
 Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/auth/login
-Content-Type: application/json
-Accept-Language: UZ
-Content-Length: 72
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=7235B10E46A7930E636D23EC3E11B85D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "rajabbekollanazarov12@gmail.com",
-  "password": "123456"
-}
-
-<> 2024-02-25T134106.200.json
-
-###
-
-GET http://localhost:8080/video/getCategoryId?page=1&size=3&id=6
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=7235B10E46A7930E636D23EC3E11B85D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-25T133741.200.json
-
-###
-
-DELETE http://localhost:8080/permission/6
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzk3MTUsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg4NjYxMTUsImlzcyI6IllvdXR1YmUifQ.0YqeDlC0UYTtnDDIWFpUtX1ZWmXzsh7Ql2-xTHctxUaaWvgPnWjUSLCQIo_EqsmjV9VUYEAPsr8mtMUBa57-Tw
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=7235B10E46A7930E636D23EC3E11B85D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-25T133725.200.json
-
-###
-
-GET http://localhost:8080/video/getCategoryId?page=1&size=3&id=6
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzc4OTcsImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg4NjQyOTcsImlzcyI6IllvdXR1YmUifQ.wd6-oFxZE9xTTZvy_fV5HrVmnGaL_Kgb8ROHMwLBSy9wYRbb6jzhuDvjJzgOf5Pvtw3wzATrroxf3kChQAl2ug
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=7235B10E46A7930E636D23EC3E11B85D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-25T133631.200.json
-
-###
-
-GET http://localhost:8080/video/getCategoryId?page=1&size=3&id=6
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=7235B10E46A7930E636D23EC3E11B85D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-25T133606.200.json
-
-###
-
-GET http://localhost:8080/video/getCategoryId?page=2&size=3&id=6
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=7235B10E46A7930E636D23EC3E11B85D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-25T133553.200.json
-
-###
-
-POST http://localhost:8080/permission
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
-Accept-Language: UZ
-Content-Length: 73
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=7235B10E46A7930E636D23EC3E11B85D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "profileId": 6,
-  "videoId": "613131b7-1dd0-4b2a-b432-b57790b349f9"
-}
-
-<> 2024-02-25T133521.400.txt
 
 ###
 

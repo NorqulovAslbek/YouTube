@@ -36,4 +36,11 @@ public class CommentController {
         return ResponseEntity.ok(commentService.update(commentId,dto,language));
     }
 
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Api for comment delete", description = "this api delete comment")
+    public ResponseEntity<?> delete(@PathVariable("id") Integer commentId,
+                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                    AppLanguage language){
+        return ResponseEntity.ok(commentService.delete(commentId,language));
+    }
 }

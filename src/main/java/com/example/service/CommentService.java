@@ -1,10 +1,13 @@
 package com.example.service;
 
+import com.example.config.CustomUserDetails;
 import com.example.dto.CommentDTO;
 import com.example.dto.CreateCommentDTO;
 import com.example.dto.UpdateCommentDTO;
+import com.example.entity.ChannelEntity;
 import com.example.entity.CommentEntity;
 import com.example.enums.AppLanguage;
+import com.example.enums.ProfileRole;
 import com.example.exp.AppBadException;
 import com.example.repository.CommentRepository;
 import com.example.repository.VideoRepository;
@@ -22,6 +25,10 @@ public class CommentService {
     private VideoRepository videoRepository;
     @Autowired
     private ResourceBundleService resourceBundleService;
+    @Autowired
+    private VideoService videoService;
+    @Autowired
+    private ChannelService channelService;
 
     public CommentDTO create(CreateCommentDTO dto, AppLanguage language) {
         if (!videoRepository.existsById(dto.getVideoId())) {
@@ -42,11 +49,26 @@ public class CommentService {
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         CommentEntity commentEntity = get(commentId, language);
         if (!commentEntity.getProfileId().equals(profileId)) {
-          throw new AppBadException(resourceBundleService.getMessage("this.comment.does.not",language));
+            throw new AppBadException(resourceBundleService.getMessage("this.comment.does.not", language));
         }
         commentEntity.setContent(dto.getContent());
         CommentEntity updateComment = commentRepository.save(commentEntity);
         return toDTO(updateComment);
+    }
+
+    public boolean delete(Integer commentId, AppLanguage language) {
+        CommentEntity commentEntity = get(commentId, language);
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        String videoId = get(commentId, language).getVideoId();
+        Integer channelId = videoService.get(videoId, language).getChannelId();
+        ChannelEntity channelEntity = channelService.get(channelId, language);
+        if (commentEntity.getProfileId().equals(currentUser.getId())
+                || currentUser.getRole().equals(ProfileRole.ROLE_ADMIN)
+                || channelEntity.getProfileId().equals(currentUser.getId())) {
+            commentRepository.deleteById(commentId);
+            return true;
+        }
+        throw new AppBadException(resourceBundleService.getMessage("this.comment.does.not", language));
     }
 
     public CommentDTO toDTO(CommentEntity entity) {
@@ -63,8 +85,8 @@ public class CommentService {
 
     public CommentEntity get(Integer commentId, AppLanguage language) {
         Optional<CommentEntity> optional = commentRepository.findById(commentId);
-        if (optional.isEmpty()){
-            throw new AppBadException(resourceBundleService.getMessage("comment.not.found",language));
+        if (optional.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("comment.not.found", language));
         }
         return optional.get();
     }
