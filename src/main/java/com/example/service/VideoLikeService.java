@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.config.CustomUserDetails;
 import com.example.dto.*;
 import com.example.entity.AttachEntity;
 import com.example.entity.ChannelEntity;
@@ -108,4 +109,9 @@ public class VideoLikeService {
         return optionalAttach.get();
     }
 
+    public boolean remove(String videoId, AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        Integer effectiveRow = videoLikeRepository.deleteByAttachIdAndProfileId(videoId, currentUser.getId());
+        return effectiveRow != 0;
+    }
 }
