@@ -10,6 +10,7 @@ import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
 import com.example.repository.VideoPermissionRepository;
 import com.example.repository.VideoRepository;
+import com.example.repository.VideoSearchRepository;
 import com.example.util.SpringSecurityUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
