@@ -1,5 +1,6 @@
 package com.example.dto;
 
+import com.example.entity.ChannelEntity;
 import com.example.enums.VideoStatus;
 import com.example.enums.VideoType;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -15,6 +16,7 @@ public class VideoDTO {
     private String description;
     private CategoryDTO category;
     private AttachDTO attach;
+    private ChannelDTO channel;
     private VideoStatus status;
     private VideoType type;
     private Long viewCount;
