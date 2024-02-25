@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dto.CommentDTO;
 import com.example.dto.CreateCommentDTO;
+import com.example.dto.UpdateCommentDTO;
 import com.example.entity.CommentEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
@@ -10,6 +11,8 @@ import com.example.repository.VideoRepository;
 import com.example.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CommentService {
@@ -35,6 +38,17 @@ public class CommentService {
         return toDTO(comment);
     }
 
+    public CommentDTO update(Integer commentId, UpdateCommentDTO dto, AppLanguage language) {
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        CommentEntity commentEntity = get(commentId, language);
+        if (!commentEntity.getProfileId().equals(profileId)) {
+          throw new AppBadException(resourceBundleService.getMessage("this.comment.does.not",language));
+        }
+        commentEntity.setContent(dto.getContent());
+        CommentEntity updateComment = commentRepository.save(commentEntity);
+        return toDTO(updateComment);
+    }
+
     public CommentDTO toDTO(CommentEntity entity) {
         CommentDTO dto = new CommentDTO();
         dto.setId(entity.getId());
@@ -45,5 +59,13 @@ public class CommentService {
         dto.setVideoId(entity.getVideoId());
         dto.setContent(entity.getContent());
         return dto;
+    }
+
+    public CommentEntity get(Integer commentId, AppLanguage language) {
+        Optional<CommentEntity> optional = commentRepository.findById(commentId);
+        if (optional.isEmpty()){
+            throw new AppBadException(resourceBundleService.getMessage("comment.not.found",language));
+        }
+        return optional.get();
     }
 }

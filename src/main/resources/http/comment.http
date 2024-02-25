@@ -8,3 +8,13 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTM1MjgsImVtYWlsIjoiY
   "videoId": "e96683e7-bc88-4a03-a806-25ec21db902d",
   "content": "Salom"
 }
+
+### update Comment
+PUT localhost:8080/comment/1
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTM1MjgsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk3OTkyOCwiaXNzIjoiWW91dHViZSJ9.1VYkemMQSsigKCpHf6MifAAy7-7WpFOT8mIfP2FRIcnlGcpnT7I3wqFg75lnG4vkspvmHKewds4eja-zNCHnyA
+
+{
+  "content": "Tre"
+}
