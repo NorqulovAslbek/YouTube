@@ -1,3 +1,45 @@
+GET http://localhost:8080/comment?page=1&size=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTkzNTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5ODU3NTMsImlzcyI6IllvdXR1YmUifQ.asLyzd2FeE4by9oirCO4B8S-Jw13xo8xG_udoueTiVjVReeMERvT-mCyo9SwGZ0lRf5Xv5BBmCxEEVwiPzTl6A
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=DB3383A49E4FEDCFF34ABED83023EFB9
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-26T033652.200.json
+
+###
+
+GET http://localhost:8080/comment?page=1&size=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTM1MjgsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk3OTkyOCwiaXNzIjoiWW91dHViZSJ9.1VYkemMQSsigKCpHf6MifAAy7-7WpFOT8mIfP2FRIcnlGcpnT7I3wqFg75lnG4vkspvmHKewds4eja-zNCHnyA
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=DB3383A49E4FEDCFF34ABED83023EFB9
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-26T033644.500.txt
+
+###
+
+GET http://localhost:8080/comment?page=1&size=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTkzNTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5ODU3NTMsImlzcyI6IllvdXR1YmUifQ.asLyzd2FeE4by9oirCO4B8S-Jw13xo8xG_udoueTiVjVReeMERvT-mCyo9SwGZ0lRf5Xv5BBmCxEEVwiPzTl6A
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=DB3383A49E4FEDCFF34ABED83023EFB9
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-26T033632.200.json
+
+###
+
+GET http://localhost:8080/comment
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTkzNTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5ODU3NTMsImlzcyI6IllvdXR1YmUifQ.asLyzd2FeE4by9oirCO4B8S-Jw13xo8xG_udoueTiVjVReeMERvT-mCyo9SwGZ0lRf5Xv5BBmCxEEVwiPzTl6A
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=C6A140174DC25D287978601557BF8DB6
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
 DELETE http://localhost:8080/comment/2
 Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4OTkzNTMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5ODU3NTMsImlzcyI6IllvdXR1YmUifQ.asLyzd2FeE4by9oirCO4B8S-Jw13xo8xG_udoueTiVjVReeMERvT-mCyo9SwGZ0lRf5Xv5BBmCxEEVwiPzTl6A
@@ -752,56 +794,6 @@ Cookie: JSESSIONID=C02991C8E352FA53ED71A1539B93ABA3
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 <> 2024-02-25T142608.400.txt
-
-###
-
-PUT http://localhost:8080/profile/updatePhoto/c95248e9-0ba0-4669-8fba-b8b36fbfcd16
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
-Accept-Language: UZ
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=C02991C8E352FA53ED71A1539B93ABA3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-25T142304.500.txt
-
-###
-
-PUT http://localhost:8080/profile/updatePhoto/c95248e9-0ba0-4669-8fba-b8b36fbfcd16
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
-Accept-Language: EN
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=C02991C8E352FA53ED71A1539B93ABA3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-25T141929.500.txt
-
-###
-
-PUT http://localhost:8080/profile/updatePhoto/c95248e9-0ba0-4669-8fba-b8b36fbfcd16
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
-Accept-Language: UZ
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=C02991C8E352FA53ED71A1539B93ABA3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-25T141857.500.txt
-
-###
-
-PUT http://localhost:8080/profile/updatePhoto/c95248e9-0ba0-4669-8fba-b8b36fbfcd16
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzYxOTMsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MjU5MywiaXNzIjoiWW91dHViZSJ9.Kt00yq9BMmuSb5kzMEtzskR3o78zWU0ibShXhghqIEtEJyLvJAQQO5cRAvrHVT-GPrH91i6E8z06vCiannT0vQ
-Accept-Language: UZ
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=7235B10E46A7930E636D23EC3E11B85D
-Accept-Encoding: br,deflate,gzip,x-gzip
 
 ###
 

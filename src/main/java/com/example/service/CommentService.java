@@ -13,8 +13,14 @@ import com.example.repository.CommentRepository;
 import com.example.repository.VideoRepository;
 import com.example.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -59,16 +65,41 @@ public class CommentService {
     public boolean delete(Integer commentId, AppLanguage language) {
         CommentEntity commentEntity = get(commentId, language);
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
-        String videoId = get(commentId, language).getVideoId();
-        Integer channelId = videoService.get(videoId, language).getChannelId();
-        ChannelEntity channelEntity = channelService.get(channelId, language);
+
         if (commentEntity.getProfileId().equals(currentUser.getId())
                 || currentUser.getRole().equals(ProfileRole.ROLE_ADMIN)
-                || channelEntity.getProfileId().equals(currentUser.getId())) {
+                || getOwner(commentId, currentUser.getId(), language)) {
             commentRepository.deleteById(commentId);
             return true;
         }
         throw new AppBadException(resourceBundleService.getMessage("this.comment.does.not", language));
+    }
+
+
+    public PageImpl<CommentDTO> commentListPagination(Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+        Page<CommentEntity> all = commentRepository.findAll(pageable);
+        long totalElements = all.getTotalElements();
+        List<CommentDTO> list = new LinkedList<>();
+        for (CommentEntity commentEntity : all) {
+            list.add(toDTO(commentEntity));
+        }
+        return new PageImpl<>(list, pageable, totalElements);
+    }
+
+    /**
+     * Bu method jwt dan kelgan id vidioni create qilganmi yani ownermi shuni tekshirib beradi
+     *
+     * @param commentId
+     * @param profileId
+     * @param language
+     * @return
+     */
+    private Boolean getOwner(Integer commentId, Integer profileId, AppLanguage language) {
+        String videoId = get(commentId, language).getVideoId();
+        Integer channelId = videoService.get(videoId, language).getChannelId();
+        ChannelEntity channelEntity = channelService.get(channelId, language);
+        return channelEntity.getProfileId().equals(profileId);
     }
 
     public CommentDTO toDTO(CommentEntity entity) {
@@ -90,4 +121,5 @@ public class CommentService {
         }
         return optional.get();
     }
+
 }

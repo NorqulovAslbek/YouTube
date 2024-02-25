@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,5 +43,11 @@ public class CommentController {
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                     AppLanguage language){
         return ResponseEntity.ok(commentService.delete(commentId,language));
+    }
+    @GetMapping()
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Api for  commentListPagination", description = "this api comment list pagination")
+    public ResponseEntity<?> commentListPagination(@RequestParam Integer page,@RequestParam Integer size){
+        return ResponseEntity.ok(commentService.commentListPagination(page,size));
     }
 }
