@@ -7,20 +7,21 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "playList_video")
+@Table(name = "play_list_video")
 public class PlayListVideoEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "playlist_id")
     private Integer playListId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "playlist_id",insertable = false,updatable = false)
     private PlaylistEntity playlist;
 
     @Column(name = "video_id")
     private String videoId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "video_id",insertable = false,updatable = false)
     private VideoEntity video;
 

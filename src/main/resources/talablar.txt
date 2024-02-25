@@ -168,7 +168,7 @@
           (playlist_id,video_id) front dan keladigan malumotlar
     4. Get Video list by playListId (video status published)
         PlaylistVideoInfo
-        example: (right side) https://www.youtube.com/playlist?list=PLeUA5nZ_B5224RX0IDQlM11hsKZuW9iUA
+        example: (right side)
                               https://www.youtube.com/watch?v=QSQIxgnisP0&list=PLeUA5nZ_B5224RX0IDQlM11hsKZuW9iUA
 
         PlaylistVideoInfo
