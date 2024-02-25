@@ -3,9 +3,7 @@ package com.example.service;
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
 import com.example.entity.ChannelEntity;
-import com.example.dto.*;
 import com.example.entity.AttachEntity;
-import com.example.entity.ChannelEntity;
 import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
@@ -39,6 +37,10 @@ public class VideoService {
     private ResourceBundleService bundleService;
     @Autowired
     private VideoPermissionRepository permissionRepository;
+    @Autowired
+    private AttachService attachService;
+    @Autowired
+    private ChannelService channelService;
 
     public VideoDTO create(VideoCreateDTO dto, AppLanguage language) {
         VideoEntity entity = new VideoEntity();
@@ -116,7 +118,7 @@ public class VideoService {
     private VideoShortInfoDTO get(String videoId, Integer categoryId, AppLanguage language) {
         Optional<VideoEntity> optional = videoRepository.getVideoByVideoIdAndCategoryId(videoId, categoryId);
         if (optional.isEmpty()) {
-            log.info("Video not found {}", id);
+            log.info("Video not found {}", videoId);
             throw new AppBadException(bundleService.getMessage("video.not.found", language));
         }
         return getVideoShortInfoDTO(optional.get(), language);
@@ -129,46 +131,11 @@ public class VideoService {
         dto.setPreviewAttach(attachService.getURL(entity.getPreviewId()));
         dto.setPublishedDate(entity.getPublishedDate());
 
-    public PageImpl<VideoShortInfoDTO> searchVideoByTitle(Integer page, Integer size, VideoFilterDTO dto) {
-        PaginationResultDTO<VideoEntity> filter = videoSearchRepository.filter(dto, page, size);
-
-        List<VideoShortInfoDTO> dtoList = new LinkedList<>();
-        for (VideoEntity entity : filter.getList()) {
-            dtoList.add(toDTO(entity));
-        }
-        Pageable paging = PageRequest.of(page - 1, size);
-        return new PageImpl<>(dtoList, paging, filter.getTotalSize());
-    }
-
-    public VideoShortInfoDTO toDTO(VideoEntity entity) {
-        VideoShortInfoDTO dto = new VideoShortInfoDTO();
-        dto.setId(entity.getId());
-        dto.setTitle(entity.getTitle());
-
-        AttachEntity preview = entity.getPreview();
-        AttachDTO attach = new AttachDTO();
-        attach.setId(preview.getId());
-        attach.setUrl(preview.getUrl());
-        dto.setPreviewAttach(attach);
-
-        ChannelEntity channelEntity = entity.getChannel();
-        ChannelDTO channel = new ChannelDTO();
-        AttachDTO attachDTO = new AttachDTO();
-        attachDTO.setUrl(channelEntity.getPhoto().getUrl());
-
-        channel.setId(channelEntity.getId());
-        channel.setName(channelEntity.getName());
-        channel.setPhoto(attachDTO);
-
-        dto.setViewCount(entity.getViewCount());
-        dto.setDuration(attachDTO.getDuration());
-        return dto;
-    }
         ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
         ChannelDTO channelDTO = new ChannelDTO();
         channelDTO.setId(channelEntity.getId());
         channelDTO.setName(channelEntity.getName());
-        if (channelEntity.getPhotoId()!=null) {
+        if (channelEntity.getPhotoId() != null) {
             AttachDTO attachDTO = attachService.getURL(channelEntity.getPhotoId());
             channelDTO.setPhotoId(attachDTO.getUrl());
         }
@@ -176,6 +143,17 @@ public class VideoService {
 
         dto.setChannel(channelDTO);
         return dto;
+    }
+
+    public PageImpl<VideoShortInfoDTO> searchVideoByTitle(Integer page, Integer size, VideoFilterDTO dto, AppLanguage language) {
+        PaginationResultDTO<VideoEntity> filter = videoSearchRepository.filter(dto, page, size);
+
+        List<VideoShortInfoDTO> dtoList = new LinkedList<>();
+        for (VideoEntity entity : filter.getList()) {
+            dtoList.add(getVideoShortInfoDTO(entity, language));
+        }
+        Pageable paging = PageRequest.of(page - 1, size);
+        return new PageImpl<>(dtoList, paging, filter.getTotalSize());
     }
 
     public Long increaseVideoViewCountById(String id, AppLanguage language) {

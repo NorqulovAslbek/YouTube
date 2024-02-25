@@ -1,9 +1,6 @@
 package com.example.repository;
 
 import com.example.entity.VideoEntity;
-import jakarta.transaction.Transactional;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -18,3 +15,4 @@ public interface VideoRepository extends CrudRepository<VideoEntity, String>, Pa
     @Query(value = " SELECT * FROM video WHERE category_id=?1 AND status= 'PUBLIC' ", nativeQuery = true)
     List<VideoEntity> getByCategoryId(Integer id);
 
+}
