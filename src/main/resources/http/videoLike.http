@@ -6,7 +6,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjQ5NTMsImVtYWlsIjoib
 
 {
   "videoId": "e96683e7-bc88-4a03-a806-25ec21db902d",
-  "type": "DISLIKE"
+  "type": "LIKE"
 }
 
 ### remove Video Like
@@ -14,5 +14,10 @@ DELETE localhost:8080/videoLike/e96683e7-bc88-4a03-a806-25ec21db902d
 Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjQ5NTMsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODk1MTM1MywiaXNzIjoiWW91dHViZSJ9.TmHI-iDCyhrz7m4bMXfVMMkDgK1iupeD6EIO8QfI3Ho4xTj3zwU6MRMNcH7EmVtXONL2aMTTTPmjXr8Nc9vESg
 
+### user Liked Video List
+GET localhost:8080/videoLike
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjQ5NTMsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODk1MTM1MywiaXNzIjoiWW91dHViZSJ9.TmHI-iDCyhrz7m4bMXfVMMkDgK1iupeD6EIO8QfI3Ho4xTj3zwU6MRMNcH7EmVtXONL2aMTTTPmjXr8Nc9vESg
 
-
+### get User LikedVideo List By UserId
+GET localhost:8080/videoLike/adm/4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NzMwNzAsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5NTk0NzAsImlzcyI6IllvdXR1YmUifQ.Mg6vfwuFHTEKaf7VWP2xW1yVDp9F7cbbOIsIIe34dlkClJfMgzB_VuJcZIWbk9akCX0d0VmZP7tayXj5MOn98w

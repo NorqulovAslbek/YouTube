@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,6 +50,32 @@ public class VideoLikeService {
     }
 
 
+    public List<VideoLikeInfoDTO> getUserLikedVideoList(AppLanguage language) {
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        List<VideoLikeEntity> likeEntityList = videoLikeRepository.getByProfileId(profileId);
+        List<VideoLikeInfoDTO>list=new LinkedList<>();
+        for (VideoLikeEntity videoLikeEntity : likeEntityList) {
+           list.add(getVideoLikeInfoDTO(videoLikeEntity,language));
+        }
+        return list;
+    }
+
+    public List<VideoLikeInfoDTO> getGetUserLikedVideoListByUserId(Integer profileId, AppLanguage language) {
+        List<VideoLikeEntity> likeEntityList = videoLikeRepository.getByProfileId(profileId);
+        List<VideoLikeInfoDTO>list=new LinkedList<>();
+        for (VideoLikeEntity videoLikeEntity : likeEntityList) {
+            list.add(getVideoLikeInfoDTO(videoLikeEntity,language));
+        }
+        return list;
+    }
+
+    public boolean remove(String videoId, AppLanguage language) {
+        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
+        Integer effectiveRow = videoLikeRepository.deleteByAttachIdAndProfileId(videoId, currentUser.getId());
+        return effectiveRow != 0;
+    }
+
+
     public VideoLikeEntity toEntity(CreateVideoLikeDTO dto, Integer profileId) {
         VideoLikeEntity entity = new VideoLikeEntity();
         entity.setVideoId(dto.getVideoId());
@@ -59,10 +87,9 @@ public class VideoLikeService {
 
 
     public VideoLikeInfoDTO getVideoLikeInfoDTO(VideoLikeEntity entity, AppLanguage language) {
-//        id,video(id,name,channel(id,name),duration),preview_attach(id,url)
         VideoLikeInfoDTO dto = new VideoLikeInfoDTO();
         dto.setId(entity.getId());
-//        dto.setVideo();
+
         VideoDTO videoDTO = new VideoDTO();
 
         videoDTO.setId(entity.getVideoId());
@@ -109,9 +136,4 @@ public class VideoLikeService {
         return optionalAttach.get();
     }
 
-    public boolean remove(String videoId, AppLanguage language) {
-        CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
-        Integer effectiveRow = videoLikeRepository.deleteByAttachIdAndProfileId(videoId, currentUser.getId());
-        return effectiveRow != 0;
-    }
 }
