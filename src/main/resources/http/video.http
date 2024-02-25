@@ -1,7 +1,7 @@
 ### Create video (User)
 POST http://localhost:8080/video/any
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODc1MjIsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzkyMiwiaXNzIjoiWW91dHViZSJ9.CBzrWkLqNemeDKbPKVN1Jh5hO5CMVbZloOPJJFYQFPrW9wKzNGJiXK5ikycuBgiqovM3Iu13J43fVAlVlquEvQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NTU4MzIsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5NDIyMzIsImlzcyI6IllvdXR1YmUifQ.ALtNaOCO5ieZJQE8MrvY2-F1dwavO3PP91OTF89r7BoYXscPnREzaXaF99OdC1LEBL4XdmBuR15uTaeMI40jQQ
 
 {
   "title": "cccc",
@@ -25,8 +25,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzc4OTcsImVtYWlsIjoic
 }
 
 ### Get Video Pagination by CategoryId  VideShortInfo
-GET localhost:8080/video/getCategoryId?page=1&size=2&id=4
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODY2MTQsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzAxNCwiaXNzIjoiWW91dHViZSJ9.eGtc_WBxbHDL28ciRG7O0uMvYBlGJrx3YChzLdo3duWzzQ-TzYtIa5N7NCYNXc1CqEgK6jGDthYYBRfdVXQNBg
+GET localhost:8080/video/getCategoryId?page=1&size=3&id=4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NTYxMDcsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5NDI1MDcsImlzcyI6IllvdXR1YmUifQ.fYqXSt2_mpx-U1Kl7RiP8AAKWTIeg3iJX9rIM0aObBpL2hNBzoAZxlIFbJOq8y_UtlbZAqGPpGIaqPam89EIPQ
 Accept-Language: UZ
 
 ### Search video by title
