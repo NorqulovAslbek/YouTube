@@ -234,4 +234,35 @@ public class VideoService {
 
         return dto;
     }
+
+    public PageImpl<VidePlayListInfoDTO> getChannelVideoListPagination(Integer page, Integer size, AppLanguage language) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
+        Page<VideoEntity> entityPage = videoRepository.findAll(pageable);
+
+        List<VideoEntity> entityList = entityPage.getContent();
+        long totalElements = entityPage.getTotalElements();
+
+        List<VidePlayListInfoDTO> dtoList = new LinkedList<>();
+        for (VideoEntity entity : entityList) {
+            dtoList.add(getVideoPlayList(entity, language));
+        }
+        return new PageImpl<>(dtoList, pageable, totalElements);
+    }
+    private VidePlayListInfoDTO getVideoPlayList(VideoEntity entity, AppLanguage language) {
+        VidePlayListInfoDTO dto = new VidePlayListInfoDTO();
+        dto.setId(entity.getId());
+        dto.setViewCount(entity.getViewCount());
+
+        PreviewAttachDTO previewAttachDTO = new PreviewAttachDTO();
+        previewAttachDTO.setId(entity.getPreviewId());
+        previewAttachDTO.setUrl(entity.getPreview().getUrl());
+
+        dto.setPreviewAttach(previewAttachDTO);
+        dto.setTitle(entity.getTitle());
+        dto.setPublishedDate(entity.getPublishedDate());
+        dto.setDuration(entity.getAttach().getDuration());
+
+        return dto;
+    }
 }

@@ -92,4 +92,13 @@ public class VideoController {
         return ResponseEntity.ok(videoService.getVideoList(page, size,language));
     }
 
+    @GetMapping("/getChannelVideoListPagination")
+    @Operation(summary = "This api get channel video list pagination ", description = "This api get channel video list pagination ")
+    public ResponseEntity<PageImpl<VidePlayListInfoDTO>> getChannelVideoListPagination(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                                                       @RequestParam(value = "size", defaultValue = "6") Integer size,
+                                                                                       @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language){
+        return ResponseEntity.ok(videoService.getChannelVideoListPagination(page,size,language));
+    }
+
+
 }
