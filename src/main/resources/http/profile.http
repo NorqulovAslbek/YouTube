@@ -37,17 +37,27 @@ Accept-Language: UZ
 ### create profile admin
 POST localhost:8080/profile/adm/createProfile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjE5MjUsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2MDgzMjUsImlzcyI6IllvdXR1YmUifQ.iQZu-I5jHNdg4UyMbaaahqLcymQuzhGb7EuWrl-tipLn3k6xFWhHaRk8Zhpz_BEKVMojHJZ3l8ocECN15fbK2w
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2OTU0NzQsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3ODE4NzQsImlzcyI6IllvdXR1YmUifQ.zUOfhYp49BL0z43kIBiU6Y2Q0rRR7VJ5Y7NKZgximx5j8xuFs5Bnj5B-9qPXXLT2oT563m7-nPjEaxncC8lehg
 
 {
   "name": "Aslbek",
   "surname": "Norqulov",
   "email": "norqulovaslbek920@gmail.com",
   "password": "123456",
-  "profileRole": "ROLE_MODERATOR"
+  "profileRole": "ROLE_MODERATOR",
+  "photo": "eb02a020-62a2-42ce-865d-9da3f9855b86"
 }
 
 ### get profile
 GET localhost:8080/profile/getProfile
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1MjE5MjUsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2MDgzMjUsImlzcyI6IllvdXR1YmUifQ.iQZu-I5jHNdg4UyMbaaahqLcymQuzhGb7EuWrl-tipLn3k6xFWhHaRk8Zhpz_BEKVMojHJZ3l8ocECN15fbK2w
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg2OTU0NzQsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg3ODE4NzQsImlzcyI6IllvdXR1YmUifQ.zUOfhYp49BL0z43kIBiU6Y2Q0rRR7VJ5Y7NKZgximx5j8xuFs5Bnj5B-9qPXXLT2oT563m7-nPjEaxncC8lehg
 Accept-Language: UZ
+
+### Update photo
+PUT localhost:8080/profile/updatePhoto/c95248e9-0ba0-4669-8fba-b8b36fbfcd16
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3NzYxOTMsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODg2MjU5MywiaXNzIjoiWW91dHViZSJ9.Kt00yq9BMmuSb5kzMEtzskR3o78zWU0ibShXhghqIEtEJyLvJAQQO5cRAvrHVT-GPrH91i6E8z06vCiannT0vQ
+Accept-Language: UZ
+
+
+
+

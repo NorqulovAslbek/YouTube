@@ -19,4 +19,5 @@ public class CreateProfileDTO {
     private String password;
     @NotNull
     private ProfileRole profileRole;
+    private String photo;
 }

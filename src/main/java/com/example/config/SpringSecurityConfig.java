@@ -39,7 +39,6 @@ public class SpringSecurityConfig {
             "/category/any",
             "/attach/any/**", "/attach/getUrl",
 
-
             "/auth/*",
             "/auth/**",
             "/category/any",

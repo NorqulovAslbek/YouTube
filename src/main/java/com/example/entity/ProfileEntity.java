@@ -27,6 +27,9 @@ public class ProfileEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private ProfileRole role;
-    @Column(name = "photo")
-    private String photo;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "photo_id", insertable = false, updatable = false)
+    private AttachEntity photo;
+    @Column(name = "photo_id")
+    private String photoId;
 }

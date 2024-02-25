@@ -3,11 +3,13 @@ package com.example.service;
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
 import com.example.dto.CreateProfileDTO;
+import com.example.entity.AttachEntity;
 import com.example.entity.EmailSendHistoryEntity;
 import com.example.entity.ProfileEntity;
 import com.example.enums.AppLanguage;
 import com.example.enums.ProfileStatus;
 import com.example.exp.AppBadException;
+import com.example.repository.AttachRepository;
 import com.example.repository.EmailSendHistoryRepository;
 import com.example.repository.ProfileRepository;
 import com.example.util.JWTUtil;
@@ -31,7 +33,11 @@ public class ProfileService {
     @Autowired
     private EmailSendHistoryRepository emailSendHistoryRepository;
     @Autowired
+    private AttachRepository attachRepository;
+    @Autowired
     private MailSenderService mailSender;
+    @Autowired
+    private AttachService attachService;
 
 
     public String changePassword(ChangePasswordDTO dto, AppLanguage appLanguage) {
@@ -143,6 +149,7 @@ public class ProfileService {
         entity.setRole(dto.getProfileRole());
         entity.setEmail(dto.getEmail());
         entity.setPassword(MDUtil.encode(dto.getPassword()));
+        entity.setPhotoId(dto.getPhoto());
         return entity;
     }
 
@@ -161,12 +168,46 @@ public class ProfileService {
     }
 
     public ProfileDTO getProfileDTO(ProfileEntity entity) {
+        String photoId = entity.getPhotoId();
         ProfileDTO dto = new ProfileDTO();
+        if (photoId != null) {
+            AttachDTO attachDTO = attachService.getURL(photoId);
+            dto.setPhoto(attachDTO.getUrl());
+        }
         dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setSurname(entity.getSurname());
         dto.setEmail(entity.getEmail());
-        dto.setPhoto(entity.getPhoto());
         return dto;
+    }
+
+    public Object updateAttach(String photoId, Integer profileId, AppLanguage language) {
+        ProfileEntity profile = get(language, profileId);
+        if (!profile.getStatus().equals(ProfileStatus.ACTIVE)) {
+            throw new AppBadException(resourceBundleService.getMessage("not.allowed", language));
+        }
+        Optional<AttachEntity> attach = attachRepository.findById(photoId);
+        if (attach.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("attach.not.found", language));
+        }
+
+        if (profile.getPhotoId() == null) {
+            profileRepository.updatePhoto(profileId,LocalDateTime.now(), photoId);
+            return true;
+        }
+        else {
+            String oldPhotoId = profile.getPhotoId();
+            if (oldPhotoId.equals(photoId)){
+                profileRepository.updatePhoto(profileId,LocalDateTime.now(), photoId);
+                return true;
+            }
+            else {
+                profileRepository.updatePhoto(profileId,LocalDateTime.now(), photoId);
+                attachService.delete(oldPhotoId,language);
+                attachRepository.deleteById(oldPhotoId);
+                return true;
+            }
+        }
+
     }
 }
