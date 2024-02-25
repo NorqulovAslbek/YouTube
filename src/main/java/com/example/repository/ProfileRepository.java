@@ -22,7 +22,7 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
     void updateStatus(Integer id, ProfileStatus active);
 
 
-    @Query("FROM ProfileEntity WHERE email=?1 AND password=?2 AND visible=true")
+    @Query(value = "SELECT * FROM profile WHERE email=?1 AND password=?2 AND visible=true AND status='ACTIVE' ",nativeQuery = true)
     Optional<ProfileEntity> getProfile(String email, String password);
 
     @Query("FROM ProfileEntity WHERE id=?1 AND  visible=true ")
