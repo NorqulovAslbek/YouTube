@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -81,5 +82,14 @@ public class VideoController {
         return ResponseEntity.ok(videoService.getVideoByTagId(page, size, tagId, language));
     }
 
+    @GetMapping("")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "This api Video by tagId", description = "This api Get video by tag_id with pagination")
+    public ResponseEntity<PageImpl<VideoListPaginationDTO>> getVideoList(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                                         @RequestParam(value = "size", defaultValue = "6") Integer size,
+                                                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        return ResponseEntity.ok(videoService.getVideoList(page, size,language));
+    }
 
 }

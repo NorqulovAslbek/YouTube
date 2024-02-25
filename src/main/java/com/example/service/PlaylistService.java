@@ -4,9 +4,13 @@ import com.example.dto.CreatePlaylistDTO;
 import com.example.dto.PlaylistDTO;
 import com.example.entity.PlaylistEntity;
 import com.example.enums.AppLanguage;
+import com.example.exp.AppBadException;
 import com.example.repository.PlaylistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.sound.midi.MidiFileFormat;
+import java.util.Optional;
 
 @Service
 public class PlaylistService {
@@ -34,5 +38,16 @@ public class PlaylistService {
         playlistDTO.setChannelId(entity.getChannelId());
         playlistDTO.setDescription(entity.getDescription());
         return playlistDTO;
+    }
+
+    public PlaylistDTO getByChannelId(Integer id) {
+        Optional<PlaylistEntity> optional = playlistRepository.getByChannelId(id);
+        if (optional.isEmpty()) {
+            throw new AppBadException("Play list not found");
+        }
+        PlaylistDTO dto = new PlaylistDTO();
+        dto.setId(optional.get().getId());
+        dto.setName(optional.get().getName());
+        return dto;
     }
 }

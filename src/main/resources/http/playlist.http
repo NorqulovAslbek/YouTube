@@ -5,7 +5,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODczOTMsImVtYWlsIjoiY
 Accept-Language: UZ
 
 {
-  "channelId": 6,
+  "channelId": 7,
   "description": "Tegma",
   "name": "Zur",
   "status": "PRIVATE",
