@@ -26,10 +26,10 @@ public class VideoController {
     @Operation(summary = "This api Video Create", description = "This api is used to create video")
     public ResponseEntity<VideoDTO> create(@RequestBody VideoCreateDTO dto,
                                            @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                           AppLanguage language){
+                                           AppLanguage language) {
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         log.info("There is an error in what you sent {}", dto);
-        return ResponseEntity.ok(videoService.create(dto, language,profileId));
+        return ResponseEntity.ok(videoService.create(dto, language, profileId));
     }
 
     @PutMapping("/any/updateStatus")
@@ -68,6 +68,17 @@ public class VideoController {
 
         log.info("Title not found {}", dto.getTitle());
         return ResponseEntity.ok(videoService.searchVideoByTitle(page, size, dto, language));
+    }
+
+    @GetMapping("/{tagId}")
+    @Operation(summary = "This api Video by tagId", description = "This api Get video by tag_id with pagination")
+    public ResponseEntity<PageImpl<VideoShortInfoDTO>> getVideoByTagId(@PathVariable("tagId") String tagId,
+                                                                       @RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                                       @RequestParam(value = "size", defaultValue = "6") Integer size,
+                                                                       @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        log.info("Title not found {}", tagId);
+        return ResponseEntity.ok(videoService.getVideoByTagId(page, size, tagId, language));
     }
 
 
