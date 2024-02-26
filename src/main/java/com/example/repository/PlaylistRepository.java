@@ -29,4 +29,8 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
 
     @Query("from PlaylistEntity where channelId=?1")
     List<PlaylistEntity> getByChannelId(Integer id);
+
+    @Query(value = "SELECT p.id, p.name FROM Playlist p WHERE p.id IN (SELECT plv.playlist_id FROM Video v INNER JOIN play_list_video plv ON v.id = plv.video_id)",nativeQuery = true)
+    List<PlaylistEntity> getPlayList(String id);
+
 }

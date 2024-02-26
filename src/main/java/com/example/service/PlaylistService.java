@@ -92,4 +92,23 @@ public class PlaylistService {
         playlistRepository.delete(playlistEntity.getId());
         return null;
     }
+
+    public List<PlaylistDTO> getPlayList(String id, AppLanguage language) {
+        List<PlaylistEntity> playList = playlistRepository.getPlayList(id);
+        if (playList.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("playlist.not.found", language));
+        }
+        List<PlaylistDTO> playlistDTO = new LinkedList<>();
+        for (PlaylistEntity entity : playList) {
+            playlistDTO.add(toDTO2(entity));
+        }
+        return playlistDTO;
+    }
+
+    public PlaylistDTO toDTO2(PlaylistEntity entity) {
+        PlaylistDTO dto = new PlaylistDTO();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        return dto;
+    }
 }

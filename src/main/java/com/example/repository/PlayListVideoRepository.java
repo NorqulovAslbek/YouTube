@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface PlayListVideoRepository extends CrudRepository<PlayListVideoEntity, Integer> {
 
-    @Query("from PlayListVideoEntity where playListId=?1 order by orderNum asc ")//and video.status='PUBLIC'
+    @Query("from PlayListVideoEntity where playListId=?1 order by orderNum asc ")
+//and video.status='PUBLIC'
     List<PlayListVideoEntity> getAllByPlayListId(Integer id);
-
 }
 

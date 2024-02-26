@@ -230,7 +230,15 @@ public class VideoService {
         profile.setSurname(profileDTO.getSurname());
         dto.setProfile(profile); //profile (is,name,surname)
 
-//        dto.setPlaylist(playlistService.getByChannelId(channelId,language));  //playlist (id,name))
+
+        List<PlaylistDTO> playList = playlistService.getPlayList(entity.getId(), language);
+        /* for (PlaylistDTO playlistDTO : playList) {
+
+        }
+        PlaylistDTO playlistDTO = new PlaylistDTO();
+        playlistDTO.setId(p);
+        dto.setPlaylist(entity.getId(),language);*/
+        dto.setPlaylist(playList);
 
         return dto;
     }
