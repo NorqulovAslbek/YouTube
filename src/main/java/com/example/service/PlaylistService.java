@@ -166,4 +166,9 @@ public class PlaylistService {
         return dto;
     }
 
+
+    public List<PlaylistDTO> getListByUserId(Integer id, AppLanguage language) {
+
+        playlistRepository.
+    }
 }

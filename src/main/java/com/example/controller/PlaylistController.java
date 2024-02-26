@@ -52,4 +52,15 @@ public class PlaylistController {
         return ResponseEntity.ok(playlistService.playlistPagination(page - 1, size, language));
     }
 
+
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "This api get list by userId", description = "This api used to get list by userId")
+    public ResponseEntity<?> getListByUserId(@PathVariable("id") Integer id,
+                                             @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        log.info("userId not found {}", id);
+        return ResponseEntity.ok(playlistService.getListByUserId(id,language));
+    }
 }
