@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.CreatePlaylistDTO;
+import com.example.dto.PlayListInfoDTO;
 import com.example.dto.PlaylistDTO;
 import com.example.enums.AppLanguage;
 import com.example.enums.PlaylistStatus;
@@ -9,7 +10,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Playlist Api list", description = "Api list for Playlist")
@@ -35,8 +38,18 @@ public class PlaylistController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletePlaylist(@PathVariable Integer id,
-                                            @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+    public ResponseEntity<?> delete(@PathVariable Integer id,
+                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(playlistService.deletePlaylist(id, language));
     }
+
+    @Operation(summary = "This api get playlist pagination ", description = "This api get playlist pagination ")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @GetMapping("/playlistPagination")
+    public ResponseEntity<PageImpl<PlayListInfoDTO>> playlistPagination(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                                        @RequestParam(value = "size", defaultValue = "5") Integer size,
+                                                                        @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(playlistService.playlistPagination(page - 1, size, language));
+    }
+
 }

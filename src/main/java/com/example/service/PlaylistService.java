@@ -1,9 +1,8 @@
 package com.example.service;
 
 import com.example.config.CustomUserDetails;
-import com.example.dto.CreatePlaylistDTO;
-import com.example.dto.PlaylistDTO;
-import com.example.entity.PlaylistEntity;
+import com.example.dto.*;
+import com.example.entity.*;
 import com.example.enums.AppLanguage;
 import com.example.enums.PlaylistStatus;
 import com.example.exp.AppBadException;
@@ -11,6 +10,7 @@ import com.example.exp.AppBadException;
 import com.example.repository.PlaylistRepository;
 import com.example.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
@@ -111,4 +111,59 @@ public class PlaylistService {
         dto.setName(entity.getName());
         return dto;
     }
+
+    public PageImpl<PlayListInfoDTO> playlistPagination(int page, Integer size, AppLanguage language) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable pageable = PageRequest.of(page, size, sort);
+        Page<PlaylistEntity> entityPage = playlistRepository.findAll(pageable);
+
+        List<PlaylistEntity> entityList = entityPage.getContent();
+        long totalElements = entityPage.getTotalElements();
+
+        List<PlayListInfoDTO> dtoList = new LinkedList<>();
+        for (PlaylistEntity entity : entityList) {
+            dtoList.add(getVideoPlayList(entity, language));
+        }
+        return new PageImpl<>(dtoList, pageable, totalElements);
+    }
+
+    private PlayListInfoDTO getVideoPlayList(PlaylistEntity entity, AppLanguage language) {
+        PlayListInfoDTO dto = new PlayListInfoDTO();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setOrderNum(entity.getOrderNum());
+        dto.setDescription(entity.getDescription());
+        dto.setStatus(entity.getStatus());
+
+        ChannelEntity channelEntity = entity.getChannel();
+        ChannelDTO channelDTO = new ChannelDTO();
+        channelDTO.setId(channelEntity.getId());
+        channelDTO.setName(channelEntity.getName());
+
+        AttachEntity photoEntity = channelEntity.getPhoto();
+        AttachDTO attachDTO = new AttachDTO();
+        attachDTO.setId(photoEntity.getId());
+        attachDTO.setUrl(photoEntity.getUrl());
+
+        channelDTO.setPhoto(attachDTO);
+
+        dto.setChannel(channelDTO);
+
+        ProfileEntity profile = channelEntity.getProfile();
+        ProfileDTO profileDTO = new ProfileDTO();
+        profileDTO.setId(profile.getId());
+        profileDTO.setName(profile.getName());
+        profileDTO.setSurname(profile.getSurname());
+        AttachEntity photo = profile.getPhoto();
+        AttachDTO profileAttach = new AttachDTO();
+        profileAttach.setId(photo.getId());
+        profileAttach.setUrl(profileAttach.getUrl());
+        profileDTO.setAttach(profileAttach);
+
+        dto.setProfile(profileDTO);
+
+
+        return dto;
+    }
+
 }
