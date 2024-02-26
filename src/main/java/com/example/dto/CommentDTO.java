@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -19,4 +21,5 @@ public class CommentDTO {
     private Integer replyId;
     private Integer likeCount;
     private Integer dislikeCount;
+    private LocalDateTime createdDate;
 }

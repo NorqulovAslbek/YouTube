@@ -23,4 +23,5 @@ public class VideoDTO {
     private Long sharedCount;
     private LocalDateTime createdDate;
     private LocalDateTime publishedDate;
+    private AttachDTO previewAttach;
 }

@@ -50,4 +50,12 @@ public class CommentController {
     public ResponseEntity<?> commentListPagination(@RequestParam Integer page,@RequestParam Integer size){
         return ResponseEntity.ok(commentService.commentListPagination(page,size));
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> commentListByProfileId(@PathVariable Integer id,
+                                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                    AppLanguage language){
+        return ResponseEntity.ok(commentService.commentListByProfileId(id,language));
+    }
 }

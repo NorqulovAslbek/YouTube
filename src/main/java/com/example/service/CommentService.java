@@ -1,11 +1,10 @@
 package com.example.service;
 
 import com.example.config.CustomUserDetails;
-import com.example.dto.CommentDTO;
-import com.example.dto.CreateCommentDTO;
-import com.example.dto.UpdateCommentDTO;
+import com.example.dto.*;
 import com.example.entity.ChannelEntity;
 import com.example.entity.CommentEntity;
+import com.example.entity.VideoEntity;
 import com.example.enums.AppLanguage;
 import com.example.enums.ProfileRole;
 import com.example.exp.AppBadException;
@@ -19,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +44,7 @@ public class CommentService {
         commentEntity.setContent(dto.getContent());
         commentEntity.setProfileId(SpringSecurityUtil.getCurrentUser().getId());
         commentEntity.setVideoId(dto.getVideoId());
+        commentEntity.setCreatedDate(LocalDateTime.now());
         if (dto.getReplyId() != null) {
             commentEntity.setReplyId(dto.getReplyId());
         }
@@ -87,6 +88,12 @@ public class CommentService {
         return new PageImpl<>(list, pageable, totalElements);
     }
 
+    public List<CommentListDTO> commentListByProfileId(Integer id, AppLanguage language) {
+        List<CommentEntity> list = commentRepository.getByProfileId(id);
+
+
+    }
+
     /**
      * Bu method jwt dan kelgan id vidioni create qilganmi yani ownermi shuni tekshirib beradi
      *
@@ -122,4 +129,19 @@ public class CommentService {
         return optional.get();
     }
 
+    public CommentListDTO getCommentListDTO(CommentEntity entity,AppLanguage language) {
+        CommentListDTO dto = new CommentListDTO();
+        dto.setId(entity.getId());
+        dto.setLikeCount(entity.getLikeCount());
+        dto.setDislikeCount(entity.getDislikeCount());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setContent(entity.getContent());
+        VideoDTO videoDTO=new VideoDTO();
+        VideoEntity videoEntity = videoService.get(entity.getVideoId(), language);
+//        video(id,name,preview_attach_id,title,duration)
+        videoDTO.setId(videoEntity.getId());
+        videoDTO.setTitle(videoEntity.getTitle());
+        return null;
+
+    }
 }

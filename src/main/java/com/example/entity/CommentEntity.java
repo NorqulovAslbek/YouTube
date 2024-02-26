@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -31,4 +33,5 @@ public class CommentEntity {
     private CommentEntity reply;
     private Integer likeCount=0;
     private Integer dislikeCount=0;
+    private LocalDateTime createdDate= LocalDateTime.now();
 }
