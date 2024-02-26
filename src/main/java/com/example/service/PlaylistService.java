@@ -168,7 +168,6 @@ public class PlaylistService {
 
 
     public List<PlaylistDTO> getListByUserId(Integer id, AppLanguage language) {
-
-        playlistRepository.
+        return null;
     }
 }
