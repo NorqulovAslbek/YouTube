@@ -171,6 +171,15 @@ public class CommentService {
         return list;
     }
 
+    public List<CommentInfoDTO> getCommentReplied(Integer commentId, AppLanguage language) {
+        List<CommentEntity> comment = commentRepository.commentWrittenOnAComment(commentId);
+        List<CommentInfoDTO> list = new LinkedList<>();
+        for (CommentEntity commentEntity : comment) {
+            list.add(getCommentInfoDTO(commentEntity, language));
+        }
+        return list;
+    }
+
     public CommentInfoDTO getCommentInfoDTO(CommentEntity entity, AppLanguage language) {
         CommentInfoDTO dto = new CommentInfoDTO();
         dto.setId(entity.getId());
@@ -185,10 +194,8 @@ public class CommentService {
         profileDTO.setName(profileEntity.getName());
         profileDTO.setSurname(profileEntity.getSurname());
 
-        AttachEntity attachEntity = attachService.get(profileEntity.getPhotoId());
-        AttachDTO attachDTO = new AttachDTO();
-        attachDTO.setId(attachEntity.getId());
-        attachDTO.setUrl(attachEntity.getUrl());
+        AttachDTO attachDTO = attachService.getURL(profileEntity.getPhotoId());
+        attachDTO.setId(profileEntity.getPhotoId());
         profileDTO.setPhotos(attachDTO);
 
         dto.setProfile(profileDTO);

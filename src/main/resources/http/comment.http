@@ -6,7 +6,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDY3MzIsImVtYWlsIjoiY
 
 {
   "videoId": "f1dccd77-f828-4a31-92ea-6b2ce819ed05",
-  "content": "Salom"
+  "content": "Tre",
+  "replyId": 1
 }
 
 ### update Comment
@@ -44,3 +45,6 @@ Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDY3MzIsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkwMzMxMzIsImlzcyI6IllvdXR1YmUifQ.Saz0MharWQTx34TIz7fVRrP12P9f_rFAgefhNUgYm-CLuvLWVOmlSQNo6ppV6Suw_eNz9DSQRnGz1OeniG2sOg
 
 ###  Get Comment Replied Comment by comment Id
+GET localhost:8080/comment/commentId?commentId=1
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDY3MzIsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkwMzMxMzIsImlzcyI6IllvdXR1YmUifQ.Saz0MharWQTx34TIz7fVRrP12P9f_rFAgefhNUgYm-CLuvLWVOmlSQNo6ppV6Suw_eNz9DSQRnGz1OeniG2sOg
