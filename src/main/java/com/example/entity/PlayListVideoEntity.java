@@ -27,6 +27,8 @@ public class PlayListVideoEntity {
 
     @Column(name = "order_num")
     private Integer orderNum;
+    @Column(name = "updated_date")
+    private LocalDateTime updatedDate;
     @Column(name = "created_date")
     private LocalDateTime createdDate;
 

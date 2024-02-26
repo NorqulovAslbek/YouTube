@@ -6,6 +6,30 @@ Accept-Language: UZ
 
 {
   "orderNumber": 1,
-  "videoId": "1ffa8656-afb4-4133-85e7-4551ea57493d",
-  "playlistId": 1
+  "videoId": "59ee0c84-4012-4f80-aad8-33f8839e9839",
+  "playlistId": 10
 }
+
+### Update playlist video
+PUT http://localhost:8080/playList_video/10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NzU4OTksImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg5NjIyOTksImlzcyI6IllvdXR1YmUifQ.ADd5yriideI4-iwGYw-alwxD920vi3cjj7ez1fhIlYoqZva5IKO4O49Qbb_p_0Q3vVbaGf2Vt4XGqUXu3hUSPg
+Accept-Language: UZ
+
+{
+"orderNumber": 0,
+"videoId": "59ee0c84-4012-4f80-aad8-33f8839e9839",
+"playlistId": 10
+}
+
+### Delete playlist video
+DELETE http://localhost:8080/playList_video/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NzU4OTksImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg5NjIyOTksImlzcyI6IllvdXR1YmUifQ.ADd5yriideI4-iwGYw-alwxD920vi3cjj7ez1fhIlYoqZva5IKO4O49Qbb_p_0Q3vVbaGf2Vt4XGqUXu3hUSPg
+Accept-Language: UZ
+
+### Get Video list by playListId
+GET http://localhost:8080/playList_video/10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NzU4OTksImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg5NjIyOTksImlzcyI6IllvdXR1YmUifQ.ADd5yriideI4-iwGYw-alwxD920vi3cjj7ez1fhIlYoqZva5IKO4O49Qbb_p_0Q3vVbaGf2Vt4XGqUXu3hUSPg
+Accept-Language: UZ

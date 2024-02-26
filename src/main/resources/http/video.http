@@ -1,15 +1,15 @@
 ### Create video (User)
 POST http://localhost:8080/video/any
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3ODc1MjIsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODg3MzkyMiwiaXNzIjoiWW91dHViZSJ9.CBzrWkLqNemeDKbPKVN1Jh5hO5CMVbZloOPJJFYQFPrW9wKzNGJiXK5ikycuBgiqovM3Iu13J43fVAlVlquEvQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NzU4OTksImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg5NjIyOTksImlzcyI6IllvdXR1YmUifQ.ADd5yriideI4-iwGYw-alwxD920vi3cjj7ez1fhIlYoqZva5IKO4O49Qbb_p_0Q3vVbaGf2Vt4XGqUXu3hUSPg
 
 {
   "title": "cccc",
   "description": "ccccc",
-  "attachId": "03dbf476-04ac-40cc-b259-1883bcf5ff16",
+  "attachId": "774293ad-eba4-439b-9b1d-2bc11312f1b4",
   "categoryId": 4,
-  "previewAttachId": "03dbf476-04ac-40cc-b259-1883bcf5ff16",
-  "channelId": 2,
+  "previewAttachId": "774293ad-eba4-439b-9b1d-2bc11312f1b4",
+  "channelId": 8,
   "status": "PRIVATE",
   "type": "VIDEO"
 }
