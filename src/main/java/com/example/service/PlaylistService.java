@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -72,5 +73,10 @@ public class PlaylistService {
         checkUser(language, playlistEntity);
         playlistRepository.delete(playlistEntity.getId());
         return null;
+    }
+
+    public List<PlaylistDTO> getListByUserId(Integer id, AppLanguage language) {
+
+        playlistRepository.
     }
 }

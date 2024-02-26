@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integer> {
@@ -21,4 +22,8 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
     @Modifying
     @Query("UPDATE PlaylistEntity SET visible=false WHERE id=?1")
     void delete(Integer id);
+
+    @Query("from PlaylistEntity where ")
+    List<PlaylistEntity> getListByUserId(Integer id);
+
 }
