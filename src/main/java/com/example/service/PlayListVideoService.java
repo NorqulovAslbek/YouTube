@@ -76,9 +76,9 @@ public class PlayListVideoService {
         return optional.get();
     }
 
-    public Boolean delete(Integer id, DeletePlayListVideoDTO dto, AppLanguage language) {
+    public Boolean delete(Integer id, AppLanguage language) {
         PlayListVideoEntity entity = get(id, language);
-        playListVideoRepository.deleteByVideoIdAndPlayListId(dto.getVideoId(), dto.getPlaylistId());
+        playListVideoRepository.delete(entity);
         return true;
     }
 

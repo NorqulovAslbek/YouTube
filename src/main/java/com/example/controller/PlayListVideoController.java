@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import com.example.dto.CreatePlayListVideoDTO;
-import com.example.dto.DeletePlayListVideoDTO;
 import com.example.dto.PlayListVideoDTO;
 import com.example.dto.PlaylistVideoInfoDTO;
 import com.example.enums.AppLanguage;
@@ -12,7 +11,6 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,11 +44,11 @@ public class PlayListVideoController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "This api playList video delete", description = "This api is used to delete a playlist video")
-    public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id, @Valid @RequestBody DeletePlayListVideoDTO dto,
+    public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
-        log.info("playlist video  was en error deleting {}", dto.getVideoId());
-        return ResponseEntity.ok(playListVideoService.delete(id, dto, language));
+        log.info("playlist video  was en error deleting {}",id);
+        return ResponseEntity.ok(playListVideoService.delete(id,language));
     }
 
     @GetMapping("/{id}")
@@ -58,7 +56,7 @@ public class PlayListVideoController {
     public ResponseEntity<List<PlaylistVideoInfoDTO>> getVideoList(@PathVariable("id") Integer id,
                                                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
-        log.info("playlist video  was en error creating {}", id);
+        log.info("playlist video  was en error get videoList {}", id);
         return ResponseEntity.ok(playListVideoService.getVideoList(id,language));
     }
 
