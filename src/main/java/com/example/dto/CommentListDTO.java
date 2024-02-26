@@ -13,5 +13,5 @@ public class CommentListDTO {
     private LocalDateTime createdDate;
     private Integer likeCount;
     private Integer dislikeCount;
-    private VideoEntity video;
+    private VideoDTO video;
 }

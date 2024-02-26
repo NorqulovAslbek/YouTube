@@ -90,8 +90,11 @@ public class CommentService {
 
     public List<CommentListDTO> commentListByProfileId(Integer id, AppLanguage language) {
         List<CommentEntity> list = commentRepository.getByProfileId(id);
-
-
+        List<CommentListDTO> commentListDTOS = new LinkedList<>();
+        for (CommentEntity commentEntity : list) {
+            commentListDTOS.add(getCommentListDTO(commentEntity, language));
+        }
+        return commentListDTOS;
     }
 
     /**
@@ -129,19 +132,20 @@ public class CommentService {
         return optional.get();
     }
 
-    public CommentListDTO getCommentListDTO(CommentEntity entity,AppLanguage language) {
+    public CommentListDTO getCommentListDTO(CommentEntity entity, AppLanguage language) {
         CommentListDTO dto = new CommentListDTO();
         dto.setId(entity.getId());
         dto.setLikeCount(entity.getLikeCount());
         dto.setDislikeCount(entity.getDislikeCount());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setContent(entity.getContent());
-        VideoDTO videoDTO=new VideoDTO();
+        VideoDTO videoDTO = new VideoDTO();
         VideoEntity videoEntity = videoService.get(entity.getVideoId(), language);
-//        video(id,name,preview_attach_id,title,duration)
         videoDTO.setId(videoEntity.getId());
         videoDTO.setTitle(videoEntity.getTitle());
-        return null;
-
+        videoDTO.setDuration(videoEntity.getDuration());
+        videoDTO.setPreviewId(videoEntity.getPreviewId());
+        dto.setVideo(videoDTO);
+        return dto;
     }
 }

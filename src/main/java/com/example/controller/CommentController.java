@@ -53,9 +53,12 @@ public class CommentController {
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Api for  commentListByProfileId", description = "this api comment list By ProfileId")
     public ResponseEntity<?> commentListByProfileId(@PathVariable Integer id,
                                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                                     AppLanguage language){
         return ResponseEntity.ok(commentService.commentListByProfileId(id,language));
     }
+
 }
