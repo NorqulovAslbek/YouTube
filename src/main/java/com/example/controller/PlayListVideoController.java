@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.dto.CreatePlayListVideoDTO;
 import com.example.dto.DeletePlayListVideoDTO;
 import com.example.dto.PlayListVideoDTO;
+import com.example.dto.PlaylistVideoInfoDTO;
 import com.example.enums.AppLanguage;
 import com.example.service.PlayListVideoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -37,8 +40,8 @@ public class PlayListVideoController {
     public ResponseEntity<Boolean> update(@PathVariable("id") Integer id, @Valid @RequestBody CreatePlayListVideoDTO dto,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
-        log.info("playlist video  was en error creating {}", dto.getOrderNumber());
-        return ResponseEntity.ok(playListVideoService.update(id,dto, language));
+        log.info("playlist video  was en error updating {}", dto.getOrderNumber());
+        return ResponseEntity.ok(playListVideoService.update(id, dto, language));
     }
 
     @DeleteMapping("/{id}")
@@ -46,9 +49,17 @@ public class PlayListVideoController {
     public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id, @Valid @RequestBody DeletePlayListVideoDTO dto,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
-        log.info("playlist video  was en error creating {}", dto.getVideoId());
-        return ResponseEntity.ok(playListVideoService.delete(id,dto, language));
+        log.info("playlist video  was en error deleting {}", dto.getVideoId());
+        return ResponseEntity.ok(playListVideoService.delete(id, dto, language));
     }
 
+    @GetMapping("/{id}")
+    @Operation(summary = "This api playList video getVideoList", description = "This api is used to Get Video list by playListId ")
+    public ResponseEntity<List<PlaylistVideoInfoDTO>> getVideoList(@PathVariable("id") Integer id,
+                                                                   @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        log.info("playlist video  was en error creating {}", id);
+        return ResponseEntity.ok(playListVideoService.getVideoList(id,language));
+    }
 
 }

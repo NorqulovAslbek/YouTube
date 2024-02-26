@@ -15,6 +15,8 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import javax.sound.midi.MidiFileFormat;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,15 +49,19 @@ public class PlaylistService {
         return playlistDTO;
     }
 
-    public PlaylistDTO getByChannelId(Integer id) {
-        Optional<PlaylistEntity> optional = playlistRepository.getByChannelId(id);
+    public List<PlaylistDTO> getByChannelId(Integer id, AppLanguage language) {
+        List<PlaylistEntity> optional = playlistRepository.getByChannelId(id);
         if (optional.isEmpty()) {
-            throw new AppBadException("Play list not found");
+            throw new AppBadException(resourceBundleService.getMessage("playlist.not.found", language));
         }
+        List<PlaylistDTO> dtoList = new LinkedList<>();
         PlaylistDTO dto = new PlaylistDTO();
-        dto.setId(optional.get().getId());
-        dto.setName(optional.get().getName());
-        return dto;
+        for (PlaylistEntity entity : optional) {
+            dto.setId(entity.getId());
+            dto.setName(entity.getName());
+            dtoList.add(dto);
+        }
+        return dtoList;
     }
 
     public Boolean changeStatus(Integer id, PlaylistStatus status, AppLanguage language) {
@@ -72,7 +78,7 @@ public class PlaylistService {
         }
     }
 
-    private PlaylistEntity get(Integer id, AppLanguage language) {
+    public PlaylistEntity get(Integer id, AppLanguage language) {
         Optional<PlaylistEntity> optionalPlaylistEntity = playlistRepository.findByIdAndVisible(id, true);
         if (optionalPlaylistEntity.isEmpty()) {
             throw new AppBadException(resourceBundleService.getMessage("playlist.not.found", language));

@@ -17,5 +17,8 @@ public interface PlayListVideoRepository extends CrudRepository<PlayListVideoEnt
     @Modifying
     @Query("delete from PlayListVideoEntity p where p.videoId=?1 and p.playListId=?2")
     int deleteByVideoIdAndPlayListId(String videoId, Integer playListId);
+
+    @Query("from PlayListVideoEntity where playListId=?1")//and video.status='PUBLIC'
+    List<PlayListVideoEntity> getAllByPlayListId(Integer id);
 }
 

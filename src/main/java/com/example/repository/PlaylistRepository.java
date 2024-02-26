@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import java.util.Optional;
@@ -27,5 +28,5 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
     void delete(Integer id);
 
     @Query("from PlaylistEntity where channelId=?1")
-    Optional<PlaylistEntity> getByChannelId(Integer id);
+    List<PlaylistEntity> getByChannelId(Integer id);
 }

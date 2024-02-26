@@ -230,7 +230,7 @@ public class VideoService {
         profile.setSurname(profileDTO.getSurname());
         dto.setProfile(profile); //profile (is,name,surname)
 
-        dto.setPlaylist(playlistService.getByChannelId(channelId));  //playlist (id,name))
+//        dto.setPlaylist(playlistService.getByChannelId(channelId,language));  //playlist (id,name))
 
         return dto;
     }
