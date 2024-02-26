@@ -10,4 +10,8 @@ import java.util.List;
 public interface CommentRepository extends CrudRepository<CommentEntity, Integer>, PagingAndSortingRepository<CommentEntity, Integer> {
     @Query("FROM CommentEntity WHERE profileId=?1")
     List<CommentEntity> getByProfileId(Integer id);
+
+    @Query("FROM CommentEntity WHERE videoId=?1")
+    List<CommentEntity> getByVideoId(String id);
+
 }

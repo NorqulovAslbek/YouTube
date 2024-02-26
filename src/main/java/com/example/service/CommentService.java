@@ -2,9 +2,7 @@ package com.example.service;
 
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
-import com.example.entity.ChannelEntity;
-import com.example.entity.CommentEntity;
-import com.example.entity.VideoEntity;
+import com.example.entity.*;
 import com.example.enums.AppLanguage;
 import com.example.enums.ProfileRole;
 import com.example.exp.AppBadException;
@@ -35,6 +33,10 @@ public class CommentService {
     private VideoService videoService;
     @Autowired
     private ChannelService channelService;
+    @Autowired
+    private ProfileService profileService;
+    @Autowired
+    private AttachService attachService;
 
     public CommentDTO create(CreateCommentDTO dto, AppLanguage language) {
         if (!videoRepository.existsById(dto.getVideoId())) {
@@ -97,6 +99,16 @@ public class CommentService {
         return commentListDTOS;
     }
 
+    public List<CommentListDTO> commentListByProfile(AppLanguage language) {
+        Integer id = SpringSecurityUtil.getCurrentUser().getId();
+        List<CommentEntity> list = commentRepository.getByProfileId(id);
+        List<CommentListDTO> commentListDTOS = new LinkedList<>();
+        for (CommentEntity commentEntity : list) {
+            commentListDTOS.add(getCommentListDTO(commentEntity, language));
+        }
+        return commentListDTOS;
+    }
+
     /**
      * Bu method jwt dan kelgan id vidioni create qilganmi yani ownermi shuni tekshirib beradi
      *
@@ -120,6 +132,7 @@ public class CommentService {
         dto.setLikeCount(entity.getLikeCount());
         dto.setDislikeCount(entity.getDislikeCount());
         dto.setVideoId(entity.getVideoId());
+        dto.setCreatedDate(entity.getCreatedDate());
         dto.setContent(entity.getContent());
         return dto;
     }
@@ -146,6 +159,39 @@ public class CommentService {
         videoDTO.setDuration(videoEntity.getDuration());
         videoDTO.setPreviewId(videoEntity.getPreviewId());
         dto.setVideo(videoDTO);
+        return dto;
+    }
+
+    public List<CommentInfoDTO> commentListByVideoId(String id, AppLanguage language) {
+        List<CommentEntity> byVideoIdList = commentRepository.getByVideoId(id);
+        List<CommentInfoDTO> list = new LinkedList<>();
+        for (CommentEntity commentEntity : byVideoIdList) {
+            list.add(getCommentInfoDTO(commentEntity, language));
+        }
+        return list;
+    }
+
+    public CommentInfoDTO getCommentInfoDTO(CommentEntity entity, AppLanguage language) {
+        CommentInfoDTO dto = new CommentInfoDTO();
+        dto.setId(entity.getId());
+        dto.setContent(entity.getContent());
+        dto.setLikeCount(entity.getLikeCount());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setDislikeCount(entity.getDislikeCount());
+        ProfileEntity profileEntity = profileService.get(entity.getProfileId(), language);
+
+        ProfileDTO profileDTO = new ProfileDTO();
+        profileDTO.setId(profileEntity.getId());
+        profileDTO.setName(profileEntity.getName());
+        profileDTO.setSurname(profileEntity.getSurname());
+
+        AttachEntity attachEntity = attachService.get(profileEntity.getPhotoId());
+        AttachDTO attachDTO = new AttachDTO();
+        attachDTO.setId(attachEntity.getId());
+        attachDTO.setUrl(attachEntity.getUrl());
+        profileDTO.setPhotos(attachDTO);
+
+        dto.setProfile(profileDTO);
         return dto;
     }
 }

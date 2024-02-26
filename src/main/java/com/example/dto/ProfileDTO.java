@@ -20,6 +20,7 @@ public class ProfileDTO {
     private String tempEmail;
     private String password;
     private String photo;
+    private AttachDTO photos;
     private ProfileStatus status;
     private ProfileRole role;
     protected LocalDateTime createdDate;

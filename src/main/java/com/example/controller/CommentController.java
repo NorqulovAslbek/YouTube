@@ -33,22 +33,23 @@ public class CommentController {
     public ResponseEntity<?> update(@PathVariable("id") Integer commentId,
                                     @RequestBody UpdateCommentDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                     AppLanguage language){
-        return ResponseEntity.ok(commentService.update(commentId,dto,language));
+                                    AppLanguage language) {
+        return ResponseEntity.ok(commentService.update(commentId, dto, language));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Api for comment delete", description = "this api delete comment")
     public ResponseEntity<?> delete(@PathVariable("id") Integer commentId,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                    AppLanguage language){
-        return ResponseEntity.ok(commentService.delete(commentId,language));
+                                    AppLanguage language) {
+        return ResponseEntity.ok(commentService.delete(commentId, language));
     }
+
     @GetMapping()
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Api for  commentListPagination", description = "this api comment list pagination")
-    public ResponseEntity<?> commentListPagination(@RequestParam Integer page,@RequestParam Integer size){
-        return ResponseEntity.ok(commentService.commentListPagination(page,size));
+    public ResponseEntity<?> commentListPagination(@RequestParam Integer page, @RequestParam Integer size) {
+        return ResponseEntity.ok(commentService.commentListPagination(page, size));
     }
 
 
@@ -57,8 +58,24 @@ public class CommentController {
     @Operation(summary = "Api for  commentListByProfileId", description = "this api comment list By ProfileId")
     public ResponseEntity<?> commentListByProfileId(@PathVariable Integer id,
                                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                                    AppLanguage language){
-        return ResponseEntity.ok(commentService.commentListByProfileId(id,language));
+                                                    AppLanguage language) {
+        return ResponseEntity.ok(commentService.commentListByProfileId(id, language));
     }
+
+    @GetMapping("/byProfile") //yani ozi yozgan kommentlar ro'yhati.
+    @Operation(summary = "Api for commentListByProfile", description = "this api comment list By Profile")
+    public ResponseEntity<?> commentListByProfile(@RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                  AppLanguage language) {
+        return ResponseEntity.ok(commentService.commentListByProfile(language));
+    }
+
+    @GetMapping("/byVideoId/{id}")
+    @Operation(summary = "Api for commentListByProfile", description = "this api comment list By Profile")
+    public ResponseEntity<?> commentListByVideoId(@PathVariable String id,
+                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                  AppLanguage language) {
+        return ResponseEntity.ok(commentService.commentListByVideoId(id,language));
+    }
+
 
 }
