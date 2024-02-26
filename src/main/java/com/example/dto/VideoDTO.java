@@ -14,6 +14,7 @@ public class VideoDTO {
     private String id;
     private String title;
     private String description;
+    private Long duration;
     private CategoryDTO category;
     private AttachDTO attach;
     private ChannelDTO channel;
