@@ -152,7 +152,7 @@
                 category(id,name),tagList(id,name),
                 published_date, channel(id,name,photo(url)),
                 view_count,shared_count,Like(like_count,dislike_count,
-                isUserLiked,IsUserDisliked),duration)
+                isUserLiked,IsUserDisliked),duration)S
     VideShortInfo(id,title, preview_attach(id,url),
                    published_date, channel(id,name,photo(url)),
                    view_count,duration)

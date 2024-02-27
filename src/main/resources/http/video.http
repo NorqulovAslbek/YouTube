@@ -1,15 +1,15 @@
 ### Create video (User)
 POST http://localhost:8080/video/any
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDY3MzIsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkwMzMxMzIsImlzcyI6IllvdXR1YmUifQ.Saz0MharWQTx34TIz7fVRrP12P9f_rFAgefhNUgYm-CLuvLWVOmlSQNo6ppV6Suw_eNz9DSQRnGz1OeniG2sOg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc2MDEsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwOTEzNDAwMSwiaXNzIjoiWW91dHViZSJ9.ZShfZVvE5rVYQd9xdtqGk0MXcc4gupyKKIxeufAxqUZINbh-7mFYYC67CJyNmF1LADGSPxZeL9I791HgseW_3Q
 
 {
   "title": "cccc",
   "description": "ccccc",
-  "attachId": "68e685f5-5e49-4ae9-9a14-1bc65746220a",
+  "attachId": "1ec3a054-e680-46e1-805d-b5292e5dd5aa",
   "categoryId": 4,
-  "previewAttachId": "68e685f5-5e49-4ae9-9a14-1bc65746220a",
-  "channelId": 1,
+  "previewAttachId": "52a24a31-6940-460a-972e-fb3c3658ffd1",
+  "channelId": 2,
   "status": "PRIVATE",
   "type": "VIDEO"
 }
@@ -40,13 +40,11 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzc4OTcsImVtYWlsIjoic
 
 ### Get video by tag_id with pagination
 GET http://localhost:8080/video/462c6a3e-6702-43e8-b1e6-07f185d2a675
-Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjU5NTAsImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg5NTIzNTAsImlzcyI6IllvdXR1YmUifQ.cNwWTVzCrlJHy-TiIA4KA0-KhEMph8oTPtp1i4t4RgRtPcXAf7k-aWqm_cZMqxgvGA9QhsXyxcg8w4OAMBNuuw
 Accept-Language: EN
 
 ###  Get Video List Pagination (ADMIN)
 GET http://localhost:8080/video?page=1&size=6
-Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjkyNDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5NTU2NDMsImlzcyI6IllvdXR1YmUifQ.cChCaGIi0omytS6ldHPrbpZpnlP0DJ6_d1u0B-pecKHbbdCuJeuWeT5NQEG25_NF9INXEFY8hEV9u5717TcDOQ
 Accept-Language: UZ
 
@@ -54,3 +52,8 @@ Accept-Language: UZ
 GET localhost:8080/video/getChannelVideoListPagination
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4ODc3NzQsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk3NDE3NCwiaXNzIjoiWW91dHViZSJ9.IDVpW7DLbr1BWu7Xs4kMr6-QKcnbSqm-1Rdglzh7WIZQo-ajiOzWi21mHECfSv8SCTdVcng4fCxSxgkd2VwpYg
 Accept-Language: EN
+
+###  Get Video By id (If Status PRIVATE allow only for OWNER or ADMIN)
+GET localhost:8080/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
+Accept-Language: UZ

@@ -18,7 +18,7 @@ public class VideoEntity {
     private String id;
     @Column(name = "title", nullable = false, columnDefinition = "Text")
     private String title;
-    @Column(name = "description", nullable = false,columnDefinition = "Text")
+    @Column(name = "description", nullable = false, columnDefinition = "Text")
     private String description;
 
     @Column(name = "category_id")
@@ -61,5 +61,7 @@ public class VideoEntity {
     private Long viewCount = 0l;
     @Column(name = "shared_count")
     private Long sharedCount = 0l;
+    private Integer likeCount=0;
+    private Integer dislikeCount=0;
 
 }

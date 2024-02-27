@@ -18,6 +18,7 @@ public class ChannelDTO {
     private String bannerId;
     private String photoId;
     private AttachDTO photo;
+    private String url;
     private Integer profileId;
     private Boolean visible;
     private LocalDateTime createdDate;
