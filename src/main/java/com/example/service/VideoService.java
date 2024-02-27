@@ -2,13 +2,16 @@ package com.example.service;
 
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
-import com.example.entity.AttachEntity;
 import com.example.entity.ChannelEntity;
+import com.example.entity.PlaylistEntity;
 import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
 import com.example.mapper.VideoFullInfoMapper;
+import com.example.mapper.VideoPlayListInfoMapper;
+import com.example.mapper.VideoShortInfoMapper;
+import com.example.mapper.VideoShortInfoPaginationMapper;
 import com.example.repository.*;
 import com.example.util.SpringSecurityUtil;
 import com.example.repository.VideoPermissionRepository;
@@ -110,7 +113,7 @@ public class VideoService {
         return true;
     }
 
-    public VideoEntity get(String videoId, AppLanguage language) {
+    private VideoEntity get(String videoId, AppLanguage language) {
         Optional<VideoEntity> optionalVideoEntity = videoRepository.findById(videoId);
         if (optionalVideoEntity.isEmpty()) {
             throw new AppBadException(bundleService.getMessage("video.not.found", language));
@@ -180,17 +183,45 @@ public class VideoService {
         return new PageImpl<>(dtoList, pageable, totalElements);
     }
 
-    public PageImpl<VideoListPaginationDTO> getVideoList(Integer page, Integer size, AppLanguage language) {
-        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
-        Pageable pageable = PageRequest.of(page - 1, size, sort);
-        Page<VideoEntity> entityPage = videoRepository.findAll(pageable);
+    public PageImpl<VideoListPaginationDTO> getVideoList(Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+        Page<VideoShortInfoPaginationMapper> entityPage = videoRepository.getVideoListForAdmin(pageable);
 
-        List<VideoEntity> entityList = entityPage.getContent();
+        List<VideoShortInfoPaginationMapper> entityList = entityPage.getContent();
         long totalElements = entityPage.getTotalElements();
 
         List<VideoListPaginationDTO> dtoList = new LinkedList<>();
-        for (VideoEntity entity : entityList) {
-            dtoList.add(getVideoList(entity, language));
+        VideoDTO videoDTO = new VideoDTO();
+        for (VideoShortInfoPaginationMapper entity : entityList) {
+            videoDTO.setId(entity.getId());
+            videoDTO.setTitle(entity.getTitle());
+            if (entity.getPreviewAttachId() != null) {
+                AttachDTO attachDTO = new AttachDTO();
+                attachDTO.setUrl(attachService.getURL(entity.getPreviewAttachId()).getUrl());
+            }
+            videoDTO.setPublishedDate(entity.getPublishedDate());
+
+            ChannelDTO channelDTO = new ChannelDTO();
+            channelDTO.setId(entity.getChannelId());
+            channelDTO.setName(entity.getChannelName());
+            channelDTO.setPhotoId(entity.getPhotoId());
+            videoDTO.setChannel(channelDTO);
+            videoDTO.setViewCount(entity.getViewCount());
+            videoDTO.setDuration(entity.getDuration());
+
+            ProfileDTO profileDTO = new ProfileDTO();
+            profileDTO.setId(entity.getProfileId());
+            profileDTO.setName(entity.getProfileName());
+            profileDTO.setSurname(entity.getProfileSurname());
+            videoDTO.setOwner(profileDTO);
+
+            videoDTO.setPlayListJson(entity.getPlayListJson());
+
+            VideoListPaginationDTO dto = new VideoListPaginationDTO();
+            dto.setVideo(videoDTO);
+            dto.setChannel(channelDTO);
+            dto.setProfile(profileDTO);
+            dtoList.add(dto);
         }
         return new PageImpl<>(dtoList, pageable, totalElements);
     }
@@ -231,16 +262,27 @@ public class VideoService {
         profile.setSurname(profileDTO.getSurname());
         dto.setProfile(profile); //profile (is,name,surname)
 
+        PreviewAttachDTO previewAttachDTO = new PreviewAttachDTO();
+        if (entity.getPreviewAttachId() != null) {
+            previewAttachDTO.setId(entity.getPreviewAttachId());
+            previewAttachDTO.setUrl(attachService.getURL(entity.getPreviewAttachId()).getUrl());
+        }
+        dto.setPreviewDto(previewAttachDTO);
 
         List<PlaylistDTO> playList = playlistService.getPlayList(entity.getId(), language);
         /* for (PlaylistDTO playlistDTO : playList) {
 
+        ChannelDTO channelDTO = new ChannelDTO();
+        if (entity.getChannelId() != null) {
+            channelDTO.setId(entity.getChannelId());
+            channelDTO.setName(entity.getChannelName());
+            channelDTO.setPhotoId(entity.getPhotoId());
         }
-        PlaylistDTO playlistDTO = new PlaylistDTO();
-        playlistDTO.setId(p);
-        dto.setPlaylist(entity.getId(),language);*/
-        dto.setPlaylist(playList);
+        dto.setChannel(channelDTO);
 
+        dto.setViewCount(entity.getViewCount());
+        dto.setDuration(entity.getDuration());
+        dto.setChannel(channelDTO);
         return dto;
     }
 
@@ -258,7 +300,6 @@ public class VideoService {
         }
         return new PageImpl<>(dtoList, pageable, totalElements);
     }
-
     private VidePlayListInfoDTO getVideoPlayList(VideoEntity entity, AppLanguage language) {
         VidePlayListInfoDTO dto = new VidePlayListInfoDTO();
         dto.setId(entity.getId());
@@ -323,6 +364,7 @@ public class VideoService {
         }
         return dto;
     }
+
 
 
 }

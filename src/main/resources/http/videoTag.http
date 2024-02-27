@@ -1,11 +1,11 @@
 ### Create video tag
 POST http://localhost:8080/video_tag
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjQ3NDUsImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg5NTExNDUsImlzcyI6IllvdXR1YmUifQ.pjd6aXwutlJr0YG-Nckgz-ZpHRMC8e4TTd1BAWGVoLJwMsAJnpNwUkt02EuSgznfE0vVQlzOIe3f1p_LK8pOgQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwMjY0NjksImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDkxMTI4NjksImlzcyI6IllvdXR1YmUifQ.2JvXS9pF6UlmY83wPQPn1Y4lndS4XLuEZsSe4Cb2xkgKCQHW-RmQikS00VYuOOigl7h5L1WKTmFyKPYRiDgwGQ
 Accept-Language: UZ
 
 {
-  "videoId": "613131b7-1dd0-4b2a-b432-b57790b349f9",
+  "videoId": "59ee0c84-4012-4f80-aad8-33f8839e9839",
   "tagId": 1
 }
 

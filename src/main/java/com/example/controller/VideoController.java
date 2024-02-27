@@ -22,8 +22,7 @@ public class VideoController {
     @Autowired
     private VideoService videoService;
 
-
-    @PostMapping("/any")
+    @PostMapping("")
     @Operation(summary = "This api Video Create", description = "This api is used to create video")
     public ResponseEntity<VideoDTO> create(@RequestBody VideoCreateDTO dto,
                                            @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
@@ -89,7 +88,7 @@ public class VideoController {
                                                                          @RequestParam(value = "size", defaultValue = "6") Integer size,
                                                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
-        return ResponseEntity.ok(videoService.getVideoList(page, size, language));
+        return ResponseEntity.ok(videoService.getVideoList(page, size,language));
     }
 
     @GetMapping("/getChannelVideoListPagination")
