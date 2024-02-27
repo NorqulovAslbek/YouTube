@@ -6,15 +6,13 @@ import com.example.entity.*;
 import com.example.enums.AppLanguage;
 import com.example.enums.PlaylistStatus;
 import com.example.exp.AppBadException;
-import com.example.exp.AppBadException;
+import com.example.mapper.PlayListInfoMapper;
 import com.example.repository.PlaylistRepository;
 import com.example.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
-import javax.sound.midi.MidiFileFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -113,61 +111,40 @@ public class PlaylistService {
     }
 
     public PageImpl<PlayListInfoDTO> playlistPagination(int page, Integer size, AppLanguage language) {
-        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
-        Pageable pageable = PageRequest.of(page, size, sort);
-        Page<PlaylistEntity> entityPage = playlistRepository.findAll(pageable);
-
-        List<PlaylistEntity> entityList = entityPage.getContent();
-        long totalElements = entityPage.getTotalElements();
-
+        Pageable pageable = PageRequest.of(page, size);
+        List<PlayListInfoMapper> mapperList = playlistRepository.pagination();
         List<PlayListInfoDTO> dtoList = new LinkedList<>();
-        for (PlaylistEntity entity : entityList) {
-            dtoList.add(getVideoPlayList(entity, language));
+        for (PlayListInfoMapper infoMapper : mapperList) {
+            dtoList.add(playlistInfoMapperToPlaylistDTO(infoMapper));
         }
+        Long totalElements = playlistRepository.totalElements();
         return new PageImpl<>(dtoList, pageable, totalElements);
     }
 
-    private PlayListInfoDTO getVideoPlayList(PlaylistEntity entity, AppLanguage language) {
+    private PlayListInfoDTO playlistInfoMapperToPlaylistDTO(PlayListInfoMapper infoMapper) {
         PlayListInfoDTO dto = new PlayListInfoDTO();
-        dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        dto.setOrderNum(entity.getOrderNum());
-        dto.setDescription(entity.getDescription());
-        dto.setStatus(entity.getStatus());
-
-        ChannelEntity channelEntity = entity.getChannel();
-        ChannelDTO channelDTO = new ChannelDTO();
-        channelDTO.setId(channelEntity.getId());
-        channelDTO.setName(channelEntity.getName());
-
-        AttachEntity photoEntity = channelEntity.getPhoto();
-        AttachDTO attachDTO = new AttachDTO();
-        attachDTO.setId(photoEntity.getId());
-        attachDTO.setUrl(photoEntity.getUrl());
-
-        channelDTO.setPhoto(attachDTO);
-
-        dto.setChannel(channelDTO);
-
-        ProfileEntity profile = channelEntity.getProfile();
-        ProfileDTO profileDTO = new ProfileDTO();
-        profileDTO.setId(profile.getId());
-        profileDTO.setName(profile.getName());
-        profileDTO.setSurname(profile.getSurname());
-        AttachEntity photo = profile.getPhoto();
-        AttachDTO profileAttach = new AttachDTO();
-        profileAttach.setId(photo.getId());
-        profileAttach.setUrl(profileAttach.getUrl());
-        profileDTO.setAttach(profileAttach);
-
-        dto.setProfile(profileDTO);
-
-
+        dto.setId(infoMapper.getId());
+        dto.setName(infoMapper.getName());
+        dto.setDescription(infoMapper.getDescription());
+        dto.setStatus(infoMapper.getStatus());
+        dto.setOrderNum(infoMapper.getOrderNum());
+        dto.setChannelId(infoMapper.getChannelId());
+        dto.setChannelName(infoMapper.getChannelName());
+        dto.setChannelPhotoId(infoMapper.getChannelPhotoId());
+        dto.setChannelPhotoUrl(infoMapper.getChannelPhotoUrl());
+        dto.setProfileId(infoMapper.getProfileId());
+        dto.setProfileName(infoMapper.getProfileName());
+        dto.setProfileAttachId(infoMapper.getProfileAttachId());
+        dto.setProfileAttachUrl(infoMapper.getProfileAttachUrl());
         return dto;
     }
 
-
-    public List<PlaylistDTO> getListByUserId(Integer id, AppLanguage language) {
-        return null;
+    public List<PlayListInfoDTO> getListByUserId(Integer userId) {
+        List<PlayListInfoMapper> mapperList = playlistRepository.getListByUserId(userId);
+        List<PlayListInfoDTO> dtoList = new LinkedList<>();
+        for (PlayListInfoMapper infoMapper : mapperList) {
+            dtoList.add(playlistInfoMapperToPlaylistDTO(infoMapper));
+        }
+        return dtoList;
     }
 }

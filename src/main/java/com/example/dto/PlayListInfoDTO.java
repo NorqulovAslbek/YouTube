@@ -14,6 +14,13 @@ public class PlayListInfoDTO {
     private String description;
     private PlaylistStatus status;
     private Integer orderNum;
-    private ChannelDTO channel;
-    private ProfileDTO profile;
+    private Integer channelId;
+    private String channelName;
+    private String channelPhotoId;
+    private String channelPhotoUrl;
+    private Integer profileId;
+    private String profileName;
+    private String profileSurname;
+    private String profileAttachId;
+    private String profileAttachUrl;
 }

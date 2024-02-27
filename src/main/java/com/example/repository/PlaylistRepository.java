@@ -1,7 +1,6 @@
 package com.example.repository;
 
 import com.example.entity.PlaylistEntity;
-import com.example.entity.VideoEntity;
 import com.example.enums.PlaylistStatus;
 import com.example.mapper.PlayListInfoMapper;
 import jakarta.transaction.Transactional;
@@ -35,9 +34,55 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
     List<PlaylistEntity> getPlayList(String id);
 
 
-    @Query("from PlaylistEntity where ")
-    List<PlaylistEntity> getListByUserId(Integer id);
+    @Query(value = """
+            SELECT p.id,
+                   p.name,
+                   p.description,
+                   p.status,
+                   p.order_num,
+                   c.id         as channelId,
+                   c.name       as channelName,
+                   a.id         as channelphotoId,
+                   a.url        as channelphotoUrl,
+                   prof.id      as profileId,
+                   prof.name    as profileName,
+                   prof.surname as profileSurname,
+                   attach.id    as profileAttachId,
+                   attach.url   as profileAttachUrl
+            FROM playlist as p
+                     inner join channel as c on p.channel_id = c.id
+                     inner join attach as a on a.id = c.photo_id
+                     inner join profile as prof on prof.id = c.profile_id
+                     inner join attach on prof.photo_id = attach.id
+            where prof.id = ?1
+            order by p.order_num desc;
+            """, nativeQuery = true)
+    List<PlayListInfoMapper> getListByUserId(Integer id);
 
-  /*  @Query(value = "", nativeQuery = true)
-    List<PlayListInfoMapper> pagination();*/
+    @Query(value = """
+            SELECT p.id,
+                   p.name,
+                   p.description,
+                   p.status,
+                   p.order_num,
+                   c.id         as channelId,
+                   c.name       as channelName,
+                   a.id         as channelphotoId,
+                   a.url        as channelphotoUrl,
+                   prof.id      as profileId,
+                   prof.name    as profileName,
+                   prof.surname as profileSurname,
+                   attach.id    as profileAttachId,
+                   attach.url   as profileAttachUrl
+            FROM playlist as p
+                     inner join channel as c on p.channel_id = c.id
+                     inner join attach as a on a.id = c.photo_id
+                     inner join profile as prof on prof.id = c.profile_id
+                     inner join attach on prof.photo_id = attach.id
+            order by p.created_date desc;
+            """, nativeQuery = true)
+    List<PlayListInfoMapper> pagination();
+
+    @Query("SELECT count(*) FROM PlaylistEntity")
+    Long totalElements();
 }

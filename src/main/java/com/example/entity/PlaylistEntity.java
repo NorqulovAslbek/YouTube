@@ -22,7 +22,7 @@ public class PlaylistEntity extends BaseEntity {
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private PlaylistStatus status;
-    @Column(name = "orderNum")
+    @Column(name = "order_num")
     private Integer orderNum;
 
 }
