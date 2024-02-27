@@ -331,6 +331,7 @@ public class VideoService {
         if (video.getAttachId() != null) {
             attachDTO.setUrl(attachService.getURL(video.getAttachId()).getUrl());
         }
+        dto.setAttach(attachDTO);
         CategoryDTO categoryDTO=new CategoryDTO();
         categoryDTO.setId(video.getCategoryId());
         categoryDTO.setName(video.getCategoryName());
