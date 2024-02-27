@@ -2,12 +2,10 @@ package com.example.dto;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class VideoListPaginationDTO {
-    private VideoShortInfoDTO shortInfo;
+    private VideoDTO video;
+    private ChannelDTO channel;
     private ProfileDTO profile;
-    private List<PlaylistDTO> playlist;
 
 }
