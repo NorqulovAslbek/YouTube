@@ -65,20 +65,19 @@ public class AttachService {
 
             byte[] bytes = file.getBytes();
 
-            Path path = Paths.get(extension);
-            Path url = Paths.get("uploads/" + pathFolder + "/" + key + "." + extension);
+            Path path = Paths.get("uploads/" + pathFolder + "/" + key + "." + extension);
             //                         uploads/2022/04/23/dasdasd-dasdasda-asdasda-asdasd.jpg
             //                         uploads/ + Path + id + extension
             Files.write(path, bytes);
 
             AttachEntity entity = new AttachEntity();
-            entity.setId(key);
+            entity.setId(key); //+ entity.getExtension()
             entity.setSize(file.getSize());
             entity.setExtension(extension);
             entity.setOriginalName(file.getOriginalFilename());
             entity.setCreatedDate(LocalDateTime.now());
             entity.setPath(pathFolder);
-            entity.setUrl(url.toString());
+            entity.setUrl(path.toString());
             attachRepository.save(entity);
 
             return toDTO(entity);

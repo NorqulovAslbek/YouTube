@@ -11,6 +11,7 @@ public class VideoShortInfoDTO {
     private String id;
     private String title;
     private AttachDTO previewAttach;
+    private PreviewAttachDTO previewDto;
     private ChannelDTO channel;
     private Long duration;
     private Long viewCount;

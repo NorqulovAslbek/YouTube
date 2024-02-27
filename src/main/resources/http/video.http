@@ -11,7 +11,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDY3MzIsImVtYWlsIjoiY
   "previewAttachId": "68e685f5-5e49-4ae9-9a14-1bc65746220a",
   "channelId": 1,
   "status": "PRIVATE",
-  "type": "VIDEO"
+  "type": "VIDEO",
+  "playlist": [10]
 }
 
 ### Update Status Video
@@ -41,16 +42,16 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzc4OTcsImVtYWlsIjoic
 ### Get video by tag_id with pagination
 GET http://localhost:8080/video/462c6a3e-6702-43e8-b1e6-07f185d2a675
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjU5NTAsImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg5NTIzNTAsImlzcyI6IllvdXR1YmUifQ.cNwWTVzCrlJHy-TiIA4KA0-KhEMph8oTPtp1i4t4RgRtPcXAf7k-aWqm_cZMqxgvGA9QhsXyxcg8w4OAMBNuuw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwMjY0NjksImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDkxMTI4NjksImlzcyI6IllvdXR1YmUifQ.2JvXS9pF6UlmY83wPQPn1Y4lndS4XLuEZsSe4Cb2xkgKCQHW-RmQikS00VYuOOigl7h5L1WKTmFyKPYRiDgwGQ
 Accept-Language: EN
 
 ###  Get Video List Pagination (ADMIN)
 GET http://localhost:8080/video?page=1&size=6
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjkyNDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5NTU2NDMsImlzcyI6IllvdXR1YmUifQ.cChCaGIi0omytS6ldHPrbpZpnlP0DJ6_d1u0B-pecKHbbdCuJeuWeT5NQEG25_NF9INXEFY8hEV9u5717TcDOQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwMzg3MDQsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMjUxMDQsImlzcyI6IllvdXR1YmUifQ.xn8ijeHYJqMbEaTBIJ-YLiin87HGkP01TvIh2Zx0606N7YF5x6FRK2MfyLUxDS_QPLpb6q12uSXkpVnoj3Xi9A
 Accept-Language: UZ
 
 ### Get vido play list Pagination
 GET localhost:8080/video/getChannelVideoListPagination
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4ODc3NzQsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk3NDE3NCwiaXNzIjoiWW91dHViZSJ9.IDVpW7DLbr1BWu7Xs4kMr6-QKcnbSqm-1Rdglzh7WIZQo-ajiOzWi21mHECfSv8SCTdVcng4fCxSxgkd2VwpYg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwMjY0NjksImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDkxMTI4NjksImlzcyI6IllvdXR1YmUifQ.2JvXS9pF6UlmY83wPQPn1Y4lndS4XLuEZsSe4Cb2xkgKCQHW-RmQikS00VYuOOigl7h5L1WKTmFyKPYRiDgwGQ
 Accept-Language: EN
