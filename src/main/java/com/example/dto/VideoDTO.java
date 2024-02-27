@@ -17,6 +17,7 @@ public class VideoDTO {
     private Long duration;
     private CategoryDTO category;
     private AttachDTO attach;
+    private AttachDTO previewAttach;
     private ChannelDTO channel;
     private VideoStatus status;
     private VideoType type;
@@ -24,4 +25,7 @@ public class VideoDTO {
     private Long sharedCount;
     private LocalDateTime createdDate;
     private LocalDateTime publishedDate;
+    private ProfileDTO owner;
+    private String playListJson;
 }
+

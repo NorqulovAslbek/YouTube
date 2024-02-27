@@ -37,4 +37,6 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
     @Query("from PlaylistEntity where ")
     List<PlaylistEntity> getListByUserId(Integer id);
 
+    @Query("FROM PlaylistEntity where channel.profileId=?1")
+    List<PlaylistEntity> getUserPlaylist(Integer profileId);
 }

@@ -53,7 +53,6 @@ public class PlaylistController {
     }
 
 
-
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "This api get list by userId", description = "This api used to get list by userId")
@@ -61,6 +60,7 @@ public class PlaylistController {
                                              @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
         log.info("userId not found {}", id);
-        return ResponseEntity.ok(playlistService.getListByUserId(id,language));
+        return ResponseEntity.ok(playlistService.getListByUserId(id, language));
     }
+
 }

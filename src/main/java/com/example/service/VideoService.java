@@ -8,6 +8,7 @@ import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
+import com.example.mapper.VideoShortInfoPaginationMapper;
 import com.example.repository.*;
 import com.example.util.SpringSecurityUtil;
 import com.example.repository.VideoPermissionRepository;
@@ -243,6 +244,41 @@ public class VideoService {
         return dto;
     }
 
+    public PageImpl<VideoListPaginationDTO> getVideoListForAdmin(Integer page, Integer size, AppLanguage language) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+        Page<VideoShortInfoPaginationMapper> entityPage = videoRepository.getVideoListForAdmin(pageable);
+
+        List<VideoShortInfoPaginationMapper> entityList = entityPage.getContent();
+        long totalElements = entityPage.getTotalElements();
+
+        List<VideoListPaginationDTO> dtoList = new LinkedList<>();
+        for (VideoShortInfoPaginationMapper entity : entityList) {
+            VideoDTO videoDTO = new VideoDTO();
+            videoDTO.setId(entity.getId());
+            videoDTO.setTitle(entity.geTitle());
+            if (entity.getPreviewAttachId() != null) {
+                videoDTO.setPreviewAttach(attachService.getURL(entity.getPreviewAttachId()));
+            }
+            videoDTO.setPublishedDate(entity.getPublishedDate());
+
+            ChannelDTO channelDTO = new ChannelDTO();
+            channelDTO.setId(entity.getChannelId());
+            channelDTO.setName(entity.getChannelName());
+            channelDTO.setPhotoId(entity.getPhotoId());
+            videoDTO.setChannel(channelDTO);
+
+            ProfileDTO profileDTO = new ProfileDTO();
+            profileDTO.setId(entity.getProfileId());
+            profileDTO.setName(entity.getProfileName());
+            profileDTO.setSurname(entity.getProfileSurname());
+            videoDTO.setOwner(profileDTO);
+
+            videoDTO.setPlayListJson(entity.getPlayListJson());
+        }
+        return new PageImpl<>(dtoList, pageable, totalElements);
+    }
+
+
     public PageImpl<VidePlayListInfoDTO> getChannelVideoListPagination(Integer page, Integer size, AppLanguage language) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
         Pageable pageable = PageRequest.of(page - 1, size, sort);
@@ -257,6 +293,7 @@ public class VideoService {
         }
         return new PageImpl<>(dtoList, pageable, totalElements);
     }
+
     private VidePlayListInfoDTO getVideoPlayList(VideoEntity entity, AppLanguage language) {
         VidePlayListInfoDTO dto = new VidePlayListInfoDTO();
         dto.setId(entity.getId());
