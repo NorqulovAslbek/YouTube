@@ -3,6 +3,7 @@ package com.example.repository;
 import com.example.entity.PlaylistEntity;
 import com.example.entity.VideoEntity;
 import com.example.enums.PlaylistStatus;
+import com.example.mapper.PlayListInfoMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -37,4 +38,6 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
     @Query("from PlaylistEntity where ")
     List<PlaylistEntity> getListByUserId(Integer id);
 
+  /*  @Query(value = "", nativeQuery = true)
+    List<PlayListInfoMapper> pagination();*/
 }
