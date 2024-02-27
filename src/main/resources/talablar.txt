@@ -107,7 +107,7 @@
     4. Delete Playlist (USER and OWNER, ADMIN)
     5. Playlist Pagination (ADMIN)
         PlayListInfo
-    6. Playlist List By UserId (order by order number desc) (ADMIN)
+    6. Playlist List By 3 (order by order number desc) (ADMIN)
         PlayListInfo
     7. Get User Playlist (order by order number desc) (murojat qilgan user ni)
         PlayListShortInfo
