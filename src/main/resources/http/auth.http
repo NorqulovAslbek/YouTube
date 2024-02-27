@@ -4,8 +4,8 @@ Content-Type: application/json
 Accept-Language: UZ
 
 {
-  "name": "aa",
-  "surname": "bb",
+  "name": "rajab",
+  "surname": "ollanzarov",
   "email": "rajabbekollanazarov12@gmail.com",
   "password": "123456",
   "mainPhoto": "uploads/2024/2/23/2f7fe3f8-1f3d-4a54-b4bd-5a083aa143c2.png"

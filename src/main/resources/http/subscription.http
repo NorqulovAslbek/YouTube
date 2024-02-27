@@ -1,0 +1,9 @@
+### Create Subscription
+POST http://localhost:8080/subscription
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNTk5NzgsImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDkxNDYzNzgsImlzcyI6IllvdXR1YmUifQ.b0Kml94CXb8GOw_uMtrc66s8JXoZTcGq--IEugVMIudcbQmYblBB-cjPERpMZCEZYrWYtoHxF9GxzyuXJfiUPQ
+
+{
+  "channelId": 3,
+  "notificationType": "ALL"
+}
