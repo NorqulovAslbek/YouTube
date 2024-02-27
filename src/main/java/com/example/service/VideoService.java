@@ -8,6 +8,7 @@ import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
+import com.example.mapper.VideoFullInfoMapper;
 import com.example.mapper.VideoPlayListInfoMapper;
 import com.example.mapper.VideoShortInfoMapper;
 import com.example.mapper.VideoShortInfoPaginationMapper;
@@ -32,7 +33,6 @@ import java.util.Optional;
 @Slf4j
 @Service
 public class VideoService {
-
     @Autowired
     private VideoRepository videoRepository;
     @Autowired
@@ -305,4 +305,50 @@ public class VideoService {
         return dto;
     }
 
+    public VideoFullInfoDTO getVideoById(String id, AppLanguage language) {
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        Optional<VideoFullInfoMapper> optional = videoRepository.getVideoFullInfo(id, profileId);
+        if (optional.isEmpty()) {
+            throw new AppBadException(bundleService.getMessage("video.not.found", language));
+        }
+        return getVideoFullInfoDTO(optional.get());
+    }
+
+    private VideoFullInfoDTO getVideoFullInfoDTO(VideoFullInfoMapper video) {
+        VideoFullInfoDTO dto = new VideoFullInfoDTO();
+        dto.setId(video.getId());
+        dto.setTitle(video.getTitle());
+        dto.setDescription(video.getDescription());
+        PreviewAttachDTO previewAttachDTO = new PreviewAttachDTO();
+        previewAttachDTO.setId(video.getPreviewAttachId());
+        if (video.getPreviewAttachId() != null) {
+            previewAttachDTO.setUrl(attachService.getURL(video.getPreviewAttachId()).getUrl());
+        }
+        dto.setPreviewAttach(previewAttachDTO);
+        AttachDTO attachDTO = new AttachDTO();
+        attachDTO.setId(video.getAttachId());
+        attachDTO.setDuration(video.getAttachDuration());
+        if (video.getAttachId() != null) {
+            attachDTO.setUrl(attachService.getURL(video.getAttachId()).getUrl());
+        }
+        CategoryDTO categoryDTO=new CategoryDTO();
+        categoryDTO.setId(video.getCategoryId());
+        categoryDTO.setName(video.getCategoryName());
+        dto.setCategory(categoryDTO);
+        dto.setTagList(video.getTagListJson());
+        dto.setPublishedDate(video.getPublishedDate());
+        ChannelDTO channelDTO=new ChannelDTO();
+        channelDTO.setId(video.getChannelId());
+        channelDTO.setName(video.getChannelName());
+        if (video.getChannelId()!=null){
+            channelDTO.setPhotoId(attachService.getURL(video.getPhotoId()).getUrl());
+        }
+        dto.setChannel(channelDTO);
+        dto.setViewCount(video.getViewCount());
+        dto.setSharedCount(video.getSharedCount());
+        dto.setLikeCount(video.getLikeCount());
+        dto.setDislikeCount(video.getDislikeCount());
+        dto.setDuration(video.getDuration());
+        return dto;
+    }
 }

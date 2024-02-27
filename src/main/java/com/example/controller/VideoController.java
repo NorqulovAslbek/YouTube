@@ -107,5 +107,10 @@ public class VideoController {
         return ResponseEntity.ok(videoService.getChannelVideoListPagination(page, size, language));
     }
 
+    @GetMapping("/getVideoById/{id}")
+    public ResponseEntity<?> getVideoById(@PathVariable String id,
+                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+       return ResponseEntity.ok(videoService.getVideoById(id,language));
+    }
 
 }

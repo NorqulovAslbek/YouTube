@@ -5,23 +5,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class VideFullInfoDTO {
+public class VideoFullInfoDTO {
     private String id;
     private String title;
     private String description;
-    private AttachDTO previewAttach;
+    private PreviewAttachDTO previewAttach;
     private AttachDTO attach;
     private CategoryDTO category;
-    private List<TagDTO> tagList;
+    private String tagList;
     private LocalDateTime publishedDate;
     private ChannelDTO channel;
     private Long viewCount;
     private Long sharedCount;
     private VideoLikeDTO like;
     private Long duration;
+    private Integer likeCount;
+    private Integer dislikeCount;
 }
