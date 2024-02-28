@@ -5,8 +5,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNTk5NzgsImVtYWlsIjoic
 
 {
   "name": "Kino",
-  "description": "Kino",
-  "photoId": "eac5333d-5cca-458a-a3fe-4553ff11cf3d"
+  "description": "Kino"
 }
 
 ### Update channel

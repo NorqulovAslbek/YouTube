@@ -16,6 +16,6 @@ public interface SubscriptionInfoMapper {
     String getUrl();
 
     SubscriptionNotificationType getNotificationType();
-    LocalDateTime createdDate();
+    LocalDateTime getCreatedDate();
 
 }

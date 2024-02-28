@@ -55,6 +55,21 @@ public class SubscriptionService {
         return subscription;
     }
 
+    public Boolean unsubscribe(ChangeNotificationTypeSubscriptionDTO dto, Integer profileId, AppLanguage language) {
+        if (!channelRepository.existsById(dto.getChannelId())) {
+            throw new AppBadException(bundleService.getMessage("channel.not.found", language));
+        }
+        if (!profileRepository.existsById(profileId)) {
+            throw new AppBadException(bundleService.getMessage("playlist.not.found", language));
+        }
+        Optional<SubscriptionEntity> optional = subscriptionRepository.getByChannelId(dto.getChannelId());
+        if (optional.isEmpty()) {
+            throw new AppBadException(bundleService.getMessage("subscription.not.found", language));
+        }
+        SubscriptionEntity entity = optional.get();
+        return true;
+    }
+
     public Boolean update(Integer id, UpdateSubscriptionDTO dto, AppLanguage language) {
         SubscriptionEntity entity = get(id, language);
         if (!channelRepository.existsById(dto.getChannelId())) {
@@ -76,10 +91,12 @@ public class SubscriptionService {
     }
 
 
-    public Object changeStatus(Integer id, AppLanguage language) {
-        SubscriptionEntity entity = get(id, language);
-//        subscriptionRepository.getByIdChangeStatus(id,language)
-        return null;
+    public Boolean changeStatus(ChangeNotificationTypeSubscriptionDTO dto, AppLanguage language) {
+        if (!channelRepository.existsById(dto.getChannelId())) {
+            throw new AppBadException(bundleService.getMessage("channel.not.found", language));
+        }
+        subscriptionRepository.getByIdChangeStatus(dto.getChannelId(), dto.getNotificationType());
+        return true;
     }
 
     public List<SubscriptionInfoDTO> getSubscriptionList(AppLanguage language) {
@@ -106,7 +123,6 @@ public class SubscriptionService {
         return dtoList;
     }
 
-
     public List<SubscriptionInfoDTO> getByUserIdSubscriptionList(Integer profileId, AppLanguage language) {
         List<SubscriptionInfoMapper> userSubscriptionList = subscriptionRepository.getByUserIdSubscriptionList(profileId);
         if (userSubscriptionList.isEmpty()) {
@@ -125,7 +141,7 @@ public class SubscriptionService {
             channelDTO.setUrl(entity.getUrl());
             dto.setChannel(channelDTO); //channel(id,name,photo(id,url))
             dto.setNotificationType(entity.getNotificationType());
-            dto.setCreatedDate(entity.createdDate());
+            dto.setCreatedDate(entity.getCreatedDate());
 
             dtoList.add(dto);
         }

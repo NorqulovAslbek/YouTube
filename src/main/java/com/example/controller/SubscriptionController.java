@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.dto.ChangeNotificationTypeSubscriptionDTO;
 import com.example.dto.CreateSubscriptionDTO;
 import com.example.dto.SubscriptionInfoDTO;
 import com.example.dto.UpdateSubscriptionDTO;
@@ -49,12 +50,12 @@ public class SubscriptionController {
     }
 
     @PutMapping("")
-    @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> changeStatus(@PathVariable("id") Integer id,
-                                          @RequestHeader(value = "Accept_Language", defaultValue = "UZ") AppLanguage language) {
+    @Operation(summary = "Subscription get change Status", description = "Change Subscription Notification type Subscriptions")
+    public ResponseEntity<?> changeStatus(@RequestBody ChangeNotificationTypeSubscriptionDTO dto,
+                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
-        log.info("Subscription change status error {}", id);
-        return ResponseEntity.ok(subscriptionService.changeStatus(id, language));
+        log.info("Subscription change status error {}", dto.getNotificationType());
+        return ResponseEntity.ok(subscriptionService.changeStatus(dto, language));
     }
 
     @GetMapping("")

@@ -191,8 +191,9 @@ public class VideoService {
             videoDTO.setId(entity.getId());
             videoDTO.setTitle(entity.getTitle());
             if (entity.getPreviewAttachId() != null) {
-                AttachDTO attachDTO = new AttachDTO();
-                attachDTO.setUrl(attachService.getURL(entity.getPreviewAttachId()).getUrl());
+//                AttachDTO attachDTO = new AttachDTO();
+//                attachDTO.setUrl().getUrl());
+                videoDTO.setPreviewAttach(attachService.getURL(entity.getPreviewAttachId()));
             }
             videoDTO.setPublishedDate(entity.getPublishedDate());
 
