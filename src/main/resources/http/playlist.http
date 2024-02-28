@@ -1,15 +1,15 @@
 ### Create Playlist
 POST localhost:8080/playlist
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDYyMDksImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkwMzI2MDksImlzcyI6IllvdXR1YmUifQ.Y2CNI-s1335kFJwv3bX0BNG127-HlR4HsZ9MhJncd2sK4UNwFrMenmwk8wMTG_-3m5xGb7qrh-MyLi5VWRJO9A
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDMzODMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMjk3ODMsImlzcyI6IllvdXR1YmUifQ.gr9h9XWwIQ1rEzHhNLQtQPPpTQEMFX7b5OBk6T5kW4RS_HvyK4__GecsnA-yXK3n7qtvmO6vQawCh7caPs3spA
 Accept-Language: UZ
 
 {
-  "channelId": 9,
+  "channelId": 1,
   "description": "aaaa",
   "name": "aaaaa",
   "status": "PUBLIC",
-  "orderNum": 5
+  "orderNum": 1
 }
 
 ### Change Playlist Status
@@ -23,9 +23,9 @@ Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjQ5NTgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5NTEzNTgsImlzcyI6IllvdXR1YmUifQ.ljwomDxnDMwUaptmlhvUbOZYSel_8JCCePU69BFc95Wd8XakJIynzTj4X3-bpWabmjU4LjNC1o8ERHyYBo_6ig
 
 ### Playlist pagination
-GET localhost:8080/playlist/playlistPagination?page=111&size=111
+GET localhost:8080/playlist/playlistPagination?page=1&size=11
 Accept-Language: UZ
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwMzE4NTYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMTgyNTYsImlzcyI6IllvdXR1YmUifQ.Qa_r8cDAeo1IHmS_eh6qcloGLmICvTWkjSAMqVRnayl2QDwYdSRnsUSNx9FtgQ49jEOSX1RfQiHuO5vjMrMMVA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDMzODMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMjk3ODMsImlzcyI6IllvdXR1YmUifQ.gr9h9XWwIQ1rEzHhNLQtQPPpTQEMFX7b5OBk6T5kW4RS_HvyK4__GecsnA-yXK3n7qtvmO6vQawCh7caPs3spA
 
 ### Playlist List By UserId
 GET localhost:8080/playlist/111
