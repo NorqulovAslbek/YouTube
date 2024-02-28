@@ -1,12 +1,11 @@
 package com.example.service;
 
-import com.example.dto.CreateSubscriptionDTO;
-import com.example.dto.SubscriptionDTO;
-import com.example.dto.UpdateSubscriptionDTO;
+import com.example.dto.*;
 import com.example.entity.SubscriptionEntity;
 import com.example.enums.AppLanguage;
 import com.example.enums.SubscriptionStatus;
 import com.example.exp.AppBadException;
+import com.example.mapper.SubscriptionInfoMapper;
 import com.example.repository.ChannelRepository;
 import com.example.repository.ProfileRepository;
 import com.example.repository.SubscriptionRepository;
@@ -15,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -74,5 +75,35 @@ public class SubscriptionService {
         return optional.get();
     }
 
+
+    public List<SubscriptionInfoDTO> getSubscriptionList(AppLanguage language) {
+        List<SubscriptionInfoMapper> userSubscriptionList = subscriptionRepository.getUserSubscriptionList();
+        if (userSubscriptionList.isEmpty()) {
+            throw new AppBadException(bundleService.getMessage("subscription.not.found", language));
+        }
+        List<SubscriptionInfoDTO> dtoList = new LinkedList<>();
+
+        for (SubscriptionInfoMapper entity : userSubscriptionList) {
+            SubscriptionInfoDTO dto = new SubscriptionInfoDTO();
+            dto.setId(entity.getId());
+
+            ChannelDTO channelDTO = new ChannelDTO();
+            channelDTO.setId(entity.getChannelId());
+            channelDTO.setName(entity.getName());
+            channelDTO.setPhotoId(entity.getPhotoId());
+            channelDTO.setUrl(entity.getUrl());
+            dto.setChannel(channelDTO); //channel(id,name,photo(id,url))
+            dto.setNotificationType(entity.getNotificationType());
+
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
+    public Object changeStatus(Integer id, AppLanguage language) {
+        SubscriptionEntity entity = get(id, language);
+//        subscriptionRepository.getByIdChangeStatus(id,language)
+        return null;
+    }
 
 }

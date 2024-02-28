@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.CreateSubscriptionDTO;
+import com.example.dto.SubscriptionInfoDTO;
 import com.example.dto.UpdateSubscriptionDTO;
 import com.example.enums.AppLanguage;
 import com.example.service.SubscriptionService;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -41,8 +44,23 @@ public class SubscriptionController {
                                     @RequestBody UpdateSubscriptionDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
 
-        log.info("Subscription not found {}", id);
+        log.info("Subscription update error {}", id);
         return ResponseEntity.ok(subscriptionService.update(id, dto, language));
     }
 
+    @PutMapping("")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> changeStatus(@PathVariable("id") Integer id,
+                                          @RequestHeader(value = "Accept_Language", defaultValue = "UZ") AppLanguage language) {
+
+        log.info("Subscription change status error {}", id);
+        return ResponseEntity.ok(subscriptionService.changeStatus(id, language));
+    }
+
+    @GetMapping("")
+    @Operation(summary = "Subscription get List", description = "Get all Subscriptions")
+    public ResponseEntity<List<SubscriptionInfoDTO>> getSubscriptionList(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        return ResponseEntity.ok(subscriptionService.getSubscriptionList(language));
+    }
 }
