@@ -18,17 +18,19 @@ public class SubscriptionEntity {
     @Column(name = "profile_id")
     private Integer profileId;
     @ManyToOne
-    @JoinColumn(name = "pforile_id", updatable = false, insertable = false)
+    @JoinColumn(name = "profile_id", updatable = false, insertable = false)
     private ProfileEntity profile;
 
     @Column(name = "channel_id")
     private Integer channelId;
     @OneToOne
-    @JoinColumn(name = "channel_id",updatable = false,insertable = false)
+    @JoinColumn(name = "channel_id", updatable = false, insertable = false)
     private ChannelEntity channel;
 
     @Column(name = "status")
+    @Enumerated(value = EnumType.STRING)
     private SubscriptionStatus status;
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "notification_type")
     private SubscriptionNotificationType notificationType;
     @Column(name = "created_date")

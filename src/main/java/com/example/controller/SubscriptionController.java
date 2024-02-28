@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.CreateSubscriptionDTO;
+import com.example.dto.UpdateSubscriptionDTO;
 import com.example.enums.AppLanguage;
 import com.example.service.SubscriptionService;
 import com.example.util.SpringSecurityUtil;
@@ -30,7 +31,18 @@ public class SubscriptionController {
 
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         log.info("Subscription create error {}", dto);
-        return ResponseEntity.ok(subscriptionService.create(dto, profileId,language));
+        return ResponseEntity.ok(subscriptionService.create(dto, profileId, language));
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('USER')")
+    @Operation(summary = "Subscription update", description = "This is api Subscription update used")
+    public ResponseEntity<?> update(@PathVariable("id") Integer id,
+                                    @RequestBody UpdateSubscriptionDTO dto,
+                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        log.info("Subscription not found {}", id);
+        return ResponseEntity.ok(subscriptionService.update(id, dto, language));
     }
 
 }
