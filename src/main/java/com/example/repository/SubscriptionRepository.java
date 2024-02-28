@@ -26,7 +26,20 @@ public interface SubscriptionRepository extends CrudRepository<SubscriptionEntit
             " inner join channel as ch on s.channel_id= ch.id " +
             " inner join attach as a on ch.photo_id=a.id " +
             " where s.status='ACTIVE' ", nativeQuery = true)
-    List<SubscriptionInfoMapper> getUserSubscriptionList();
+    List<SubscriptionInfoMapper> getSubscriptionList();
+
+    @Query(value = "select s.id, " +
+            "       ch.id as channelId, " +
+            "       ch.name, " +
+            "       a.id as photoId, " +
+            "       a.url, " +
+            "       s.notification_type," +
+            "       s.created_date " +
+            "    from subscription as s " +
+            " inner join channel as ch on s.channel_id= ch.id " +
+            " inner join attach as a on ch.photo_id=a.id " +
+            " where s.profile_id=?1 and s.status='ACTIVE' ", nativeQuery = true)
+    List<SubscriptionInfoMapper> getByUserIdSubscriptionList(Integer id);
 
 }
 

@@ -76,8 +76,14 @@ public class SubscriptionService {
     }
 
 
+    public Object changeStatus(Integer id, AppLanguage language) {
+        SubscriptionEntity entity = get(id, language);
+//        subscriptionRepository.getByIdChangeStatus(id,language)
+        return null;
+    }
+
     public List<SubscriptionInfoDTO> getSubscriptionList(AppLanguage language) {
-        List<SubscriptionInfoMapper> userSubscriptionList = subscriptionRepository.getUserSubscriptionList();
+        List<SubscriptionInfoMapper> userSubscriptionList = subscriptionRepository.getSubscriptionList();
         if (userSubscriptionList.isEmpty()) {
             throw new AppBadException(bundleService.getMessage("subscription.not.found", language));
         }
@@ -100,10 +106,29 @@ public class SubscriptionService {
         return dtoList;
     }
 
-    public Object changeStatus(Integer id, AppLanguage language) {
-        SubscriptionEntity entity = get(id, language);
-//        subscriptionRepository.getByIdChangeStatus(id,language)
-        return null;
-    }
 
+    public List<SubscriptionInfoDTO> getByUserIdSubscriptionList(Integer profileId, AppLanguage language) {
+        List<SubscriptionInfoMapper> userSubscriptionList = subscriptionRepository.getByUserIdSubscriptionList(profileId);
+        if (userSubscriptionList.isEmpty()) {
+            throw new AppBadException(bundleService.getMessage("subscription.not.found", language));
+        }
+        List<SubscriptionInfoDTO> dtoList = new LinkedList<>();
+
+        for (SubscriptionInfoMapper entity : userSubscriptionList) {
+            SubscriptionInfoDTO dto = new SubscriptionInfoDTO();
+            dto.setId(entity.getId());
+
+            ChannelDTO channelDTO = new ChannelDTO();
+            channelDTO.setId(entity.getChannelId());
+            channelDTO.setName(entity.getName());
+            channelDTO.setPhotoId(entity.getPhotoId());
+            channelDTO.setUrl(entity.getUrl());
+            dto.setChannel(channelDTO); //channel(id,name,photo(id,url))
+            dto.setNotificationType(entity.getNotificationType());
+            dto.setCreatedDate(entity.createdDate());
+
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
 }

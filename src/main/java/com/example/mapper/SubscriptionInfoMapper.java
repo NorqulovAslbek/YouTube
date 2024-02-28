@@ -2,6 +2,8 @@ package com.example.mapper;
 
 import com.example.enums.SubscriptionNotificationType;
 
+import java.time.LocalDateTime;
+
 public interface SubscriptionInfoMapper {
     Integer getId();
 
@@ -13,6 +15,7 @@ public interface SubscriptionInfoMapper {
 
     String getUrl();
 
-    String getNotificationType();
+    SubscriptionNotificationType getNotificationType();
+    LocalDateTime createdDate();
 
 }

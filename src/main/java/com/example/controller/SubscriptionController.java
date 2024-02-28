@@ -63,4 +63,13 @@ public class SubscriptionController {
 
         return ResponseEntity.ok(subscriptionService.getSubscriptionList(language));
     }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Subscription get List", description = "Get User Subscription List By UserId")
+    public ResponseEntity<List<SubscriptionInfoDTO>> getByUserIdSubscriptionList(@PathVariable("id") Integer profileId,
+                                                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        return ResponseEntity.ok(subscriptionService.getByUserIdSubscriptionList(profileId, language));
+    }
 }
