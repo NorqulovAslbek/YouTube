@@ -1,11 +1,12 @@
 ### Create channel
 POST localhost:8080/channel
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDMzODMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMjk3ODMsImlzcyI6IllvdXR1YmUifQ.gr9h9XWwIQ1rEzHhNLQtQPPpTQEMFX7b5OBk6T5kW4RS_HvyK4__GecsnA-yXK3n7qtvmO6vQawCh7caPs3spA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDYyMDksImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkwMzI2MDksImlzcyI6IllvdXR1YmUifQ.Y2CNI-s1335kFJwv3bX0BNG127-HlR4HsZ9MhJncd2sK4UNwFrMenmwk8wMTG_-3m5xGb7qrh-MyLi5VWRJO9A
 
 {
   "name": "jallimi",
-  "description": "janli"
+  "description": "janli",
+  "photoId": "281749f5-4213-4596-82aa-22abbe0793ba"
 }
 
 ### Update channel

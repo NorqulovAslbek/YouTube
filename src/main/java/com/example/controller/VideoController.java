@@ -22,8 +22,7 @@ public class VideoController {
     @Autowired
     private VideoService videoService;
 
-
-    @PostMapping("/any")
+    @PostMapping("")
     @Operation(summary = "This api Video Create", description = "This api is used to create video")
     public ResponseEntity<VideoDTO> create(@RequestBody VideoCreateDTO dto,
                                            @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
@@ -33,7 +32,16 @@ public class VideoController {
         return ResponseEntity.ok(videoService.create(dto, language, profileId));
     }
 
-    @PutMapping("/any/updateStatus")
+    @PutMapping("/{id}")
+    @Operation(summary = "This api Video updateStatus", description = "This api is used to updateStatus video")
+    public ResponseEntity<?> updateVideoDetail(@PathVariable("id") String videoId, @RequestBody VideoUpdateDetailDTO dto,
+                                               @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+
+        log.info("Video not found {}", dto.getTitle());
+        return ResponseEntity.ok(videoService.updateDetail(dto, videoId,language));
+    }
+
+    @PutMapping("/updateStatus")
     @Operation(summary = "This api Video updateStatus", description = "This api is used to updateStatus video")
     public ResponseEntity<?> updateStatus(@RequestBody UpdateStatusVideoDTO dto,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
@@ -84,21 +92,25 @@ public class VideoController {
 
     @GetMapping("")
     @PreAuthorize("hasRole('ADMIN')")
-    @Operation(summary = "This api Video by tagId", description = "This api Get video by tag_id with pagination")
+    @Operation(summary = "This api Video by list pagination", description = "This api Get video by list pagination")
     public ResponseEntity<PageImpl<VideoListPaginationDTO>> getVideoList(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                                                         @RequestParam(value = "size", defaultValue = "6") Integer size,
-                                                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+                                                                         @RequestParam(value = "size", defaultValue = "6") Integer size) {
 
-        return ResponseEntity.ok(videoService.getVideoList(page, size,language));
+        return ResponseEntity.ok(videoService.getVideoList(page, size));
     }
 
     @GetMapping("/getChannelVideoListPagination")
     @Operation(summary = "This api get channel video list pagination ", description = "This api get channel video list pagination ")
     public ResponseEntity<PageImpl<VidePlayListInfoDTO>> getChannelVideoListPagination(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                                                                        @RequestParam(value = "size", defaultValue = "6") Integer size,
-                                                                                       @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language){
-        return ResponseEntity.ok(videoService.getChannelVideoListPagination(page,size,language));
+                                                                                       @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(videoService.getChannelVideoListPagination(page, size, language));
     }
 
+    @GetMapping("/getVideoById/{id}")
+    public ResponseEntity<?> getVideoById(@PathVariable String id,
+                                          @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+       return ResponseEntity.ok(videoService.getVideoById(id,language));
+    }
 
 }

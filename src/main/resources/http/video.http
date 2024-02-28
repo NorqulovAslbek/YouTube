@@ -54,3 +54,8 @@ Accept-Language: UZ
 GET localhost:8080/video/getChannelVideoListPagination
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4ODc3NzQsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwODk3NDE3NCwiaXNzIjoiWW91dHViZSJ9.IDVpW7DLbr1BWu7Xs4kMr6-QKcnbSqm-1Rdglzh7WIZQo-ajiOzWi21mHECfSv8SCTdVcng4fCxSxgkd2VwpYg
 Accept-Language: EN
+
+###  Get Video By id (If Status PRIVATE allow only for OWNER or ADMIN)
+GET localhost:8080/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
+Accept-Language: UZ
