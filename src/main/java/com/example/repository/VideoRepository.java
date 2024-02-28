@@ -88,8 +88,8 @@ public interface VideoRepository extends CrudRepository<VideoEntity, String>, Pa
                    (SELECT cast(json_agg(temp_t) as text)
                     FROM (SELECT json_build_object('id', v1.id, 'title', v1.title)
                           FROM video as v1
-                                   INNER JOIN video_tag AS vt ON v1.id = vt.video_id
-                                   INNER JOIN tag AS t ON t.id = vt.tag_id
+                                   LEFT JOIN video_tag AS vt ON v1.id = vt.video_id
+                                   LEFT JOIN tag AS t ON t.id = vt.tag_id
                           WHERE v1.id = v.id) AS temp_t) AS tagListJson
 
             FROM video AS v

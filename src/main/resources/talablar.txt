@@ -48,7 +48,7 @@
 14. comment_like
     id,profile_id,comment_id,created_date,type(Like,Dislike)
 15. report
-    id,profile_id,content,entity_id(channel)id,profile_id),type(channel,video)
+    id,profile_id,content,entity_id(channel_id,profile_id),type(channel,video)
 16. email_history
     id, to_email, title, message, created_date
 
