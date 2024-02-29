@@ -2,7 +2,6 @@ package com.example.controller;
 
 import com.example.dto.CommentLikeDTO;
 import com.example.dto.CreateCommentLikeDTO;
-import com.example.entity.CommentEntity;
 import com.example.enums.AppLanguage;
 import com.example.service.CommentLikeService;
 import io.swagger.v3.oas.annotations.Operation;
