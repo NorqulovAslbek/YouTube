@@ -22,7 +22,7 @@ public class TagContreller {
 
     @PostMapping
     @Operation(summary = "Api for Tag", description = "this api used for Tag create")
-    public ResponseEntity<TagDTO> create(@Valid @RequestBody CreateTagDTO dto) {
+    public ResponseEntity<List<TagDTO>> create(@Valid @RequestBody CreateTagDTO dto) {
         log.info("Create tag {}", dto.getName());
         return ResponseEntity.ok(service.create(dto));
     }

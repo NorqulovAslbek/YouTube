@@ -20,11 +20,16 @@ public class TagService {
     @Autowired
     private TagRepository repository;
 
-    public TagDTO create(CreateTagDTO tagDTO) {
-        TagEntity entity = new TagEntity();
-        entity.setName(tagDTO.getName());
-        repository.save(entity);
-        return toDTO(entity);
+    public List<TagDTO> create(CreateTagDTO tagDTO) {
+        List<TagDTO> tageNames=new LinkedList<>();
+        for (String name : tagDTO.getName()) {
+            TagEntity entity = new TagEntity();
+            entity.setName(name);
+            repository.save(entity);
+            tageNames.add(toDTO(entity));
+        }
+
+        return tageNames;
     }
 
     public TagDTO toDTO(TagEntity entity) {

@@ -1,10 +1,10 @@
 ###Create
 POST http://localhost:8080/tag
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTg2MjMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2ODUwMjMsImlzcyI6IllvdXR1YmUifQ.5e5VoYsCb06x7aybandreH_eczVqYTBHsQ-TVQ7qnR2YqJ7V-vrmBtSZEMlVLcB5gEllOayKFjcA0kJj3pWuVg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxNzc2MzksImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkyNjQwMzksImlzcyI6IllvdXR1YmUifQ.eJkFuIS-mTPpJQZbngdIYQr6ZxigzaglaAfZ6YqJewdcSqZlI_ED-6HmWD5rEp5PAMjJ74ntAZfR3p-N986BHg
 
 {
-  "name": "#java"
+  "name": ["#java","#python"]
 }
 
 
@@ -26,4 +26,4 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTg2MjMsImVtYWlsIjoiY
 ###Get List
 GET http://localhost:8080/tag
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg1OTg2MjMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg2ODUwMjMsImlzcyI6IllvdXR1YmUifQ.5e5VoYsCb06x7aybandreH_eczVqYTBHsQ-TVQ7qnR2YqJ7V-vrmBtSZEMlVLcB5gEllOayKFjcA0kJj3pWuVg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxNzc2MzksImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkyNjQwMzksImlzcyI6IllvdXR1YmUifQ.eJkFuIS-mTPpJQZbngdIYQr6ZxigzaglaAfZ6YqJewdcSqZlI_ED-6HmWD5rEp5PAMjJ74ntAZfR3p-N986BHg
