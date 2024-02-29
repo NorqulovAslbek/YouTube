@@ -27,8 +27,11 @@ public class CommentLikeEntity {
     @JoinColumn(name = "comment_id",insertable = false,updatable = false)
     private CommentEntity comment;
     @Column(name = "created_date")
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDate=LocalDateTime.now();
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private CommentLikeType type;
+    @Column(name = "updated_date")
+    private LocalDateTime updatedDate;
 
 }

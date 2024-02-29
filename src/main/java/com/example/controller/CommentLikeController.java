@@ -16,11 +16,9 @@ public class CommentLikeController {
     private CommentLikeService commentLikeService;
 
     @PostMapping("")
-    @Operation(summary = "Api for getEmailPagination", description = "this api to get email history in paginated view")
-    public ResponseEntity<?> create(@Valid @RequestBody CreateCommentLikeDTO dto,
-                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                    AppLanguage language){
-        return ResponseEntity.ok(commentLikeService.create(dto,language));
+    @Operation(summary = "Api for comment like create")
+    public ResponseEntity<?> create(@Valid @RequestBody CreateCommentLikeDTO dto){
+        return ResponseEntity.ok(commentLikeService.create(dto));
     }
 
 
