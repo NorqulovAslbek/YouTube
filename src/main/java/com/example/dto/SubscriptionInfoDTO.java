@@ -1,17 +1,16 @@
 package com.example.dto;
 
+import com.example.enums.SubscriptionNotificationType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TagDTO {
+public class SubscriptionInfoDTO {
     private Integer id;
-    private String name;
+    private ChannelDTO channel;
+    private SubscriptionNotificationType notificationType;
     private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
-    private Boolean visible;
 }
