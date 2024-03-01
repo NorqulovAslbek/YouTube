@@ -1,0 +1,29 @@
+### Create Report
+POST http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODc2MzAsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQwMzAsImlzcyI6IllvdXR1YmUifQ.M-ylSUpzaH9TTGBS4SjzmQKW0_OGmd8mfkEf_hIjjj7_0uicBI8gGrb556aCPAWt_-ByEI1EH2rGFFyaomFEvQ
+Accept-Language: EN
+
+{
+  "content": "CCCc",
+  "channelId": 1,
+  "profileId": 1,
+  "type": "CHANNEL"
+}
+
+### get reportList (Admin)
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+
+### Delete report
+DELETE http://localhost:8080/report/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Accept-Language: EN
+
+### ReportList By User id
+GET http://localhost:8080/report/getUserId/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Accept-Language: EN
