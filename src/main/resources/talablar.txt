@@ -230,7 +230,7 @@
     1. Create Comment like
     2. Remove Comment Like
     3. User Liked Comment List (order by created_date desc) (USER)
-        VideoLikeInfo
+        CommentLikeInfo
     4. Get User LikedComment List By UserId (ADMIN)
         CommentLikeInfo
 

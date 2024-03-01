@@ -7,3 +7,23 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiY
   "commentId": 1,
   "type": "DISLIKE"
 }
+
+### remove
+DELETE localhost:8080/comment-like/1
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
+
+
+### Get list (USER)
+GET localhost:8080/comment-like
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyMTk1NDYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzMDU5NDYsImlzcyI6IllvdXR1YmUifQ.miR5bQdgrPsceNod-OO_0I627Zgqnmlhu5YRqrZllFKlDvwQvC2dRvuE_RNtLjHUtNC82-tC_u22jM3l5B1aiA
+
+### Get list by user id  (ADMIN)
+GET localhost:8080/comment-like/1
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
+
+
+
+
