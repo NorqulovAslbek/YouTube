@@ -4,6 +4,9 @@ import com.example.enums.ReportType;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @Table(name = "report")
@@ -29,5 +32,6 @@ public class ReportEntity {
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private ReportType type;
-
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
 }

@@ -1,18 +1,17 @@
 package com.example.dto;
 
 import com.example.enums.ReportType;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class ReportDTO {
+public class ReportInfoDTO {
     private Integer id;
     private ProfileDTO profile;
+    private PreviewAttachDTO previewAttach;
     private String content;
-    private ChannelDTO channel;
+    private Integer channelId;
     private ReportType type;
     private LocalDateTime createdDate;
 }

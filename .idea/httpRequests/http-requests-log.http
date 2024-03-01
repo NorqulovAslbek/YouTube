@@ -1,3 +1,285 @@
+GET http://localhost:8080/report/getUserId/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=AB9231A2C9CC8B1798340F86722E03D5
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T170103.200.json
+
+###
+
+GET http://localhost:8080/report/getUserId/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=AB9231A2C9CC8B1798340F86722E03D5
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T165636.500.txt
+
+###
+
+GET http://localhost:8080/report/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T163635.200.json
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T163419.200.json
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T162626.200.json
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T162507.200.json
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T161949.500.txt
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T161905.500.txt
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T161628.500.txt
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T161238.500.txt
+
+###
+
+DELETE http://localhost:8080/report/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Accept-Language: EN
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T161233.200.json
+
+###
+
+POST http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODc2MzAsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQwMzAsImlzcyI6IllvdXR1YmUifQ.M-ylSUpzaH9TTGBS4SjzmQKW0_OGmd8mfkEf_hIjjj7_0uicBI8gGrb556aCPAWt_-ByEI1EH2rGFFyaomFEvQ
+Accept-Language: EN
+Content-Length: 80
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "content": "CCCc",
+  "channelId": 1,
+  "profileId": 1,
+  "type": "CHANNEL"
+}
+
+<> 2024-03-01T161227.200.json
+
+###
+
+POST http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODc2MzAsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQwMzAsImlzcyI6IllvdXR1YmUifQ.M-ylSUpzaH9TTGBS4SjzmQKW0_OGmd8mfkEf_hIjjj7_0uicBI8gGrb556aCPAWt_-ByEI1EH2rGFFyaomFEvQ
+Accept-Language: EN
+Content-Length: 78
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "content": "Baaa",
+  "channelId": 1,
+  "profileId": 1,
+  "type": "VIDEO"
+}
+
+<> 2024-03-01T161216.200.json
+
+###
+
+POST http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODc2MzAsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQwMzAsImlzcyI6IllvdXR1YmUifQ.M-ylSUpzaH9TTGBS4SjzmQKW0_OGmd8mfkEf_hIjjj7_0uicBI8gGrb556aCPAWt_-ByEI1EH2rGFFyaomFEvQ
+Accept-Language: EN
+Content-Length: 79
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "content": "Aaaaa",
+  "channelId": 1,
+  "profileId": 1,
+  "type": "VIDEO"
+}
+
+<> 2024-03-01T161208.200.json
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T160808.500.txt
+
+###
+
+GET http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T160624.500.txt
+
+###
+
+DELETE http://localhost:8080/report/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODg0MDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQ4MDMsImlzcyI6IllvdXR1YmUifQ.l-olUgjmiFptxbXzM6BcNhDy7XTRaINQT6KqCE2Qf7RhaKuHbayw3rbzWJErLEeZQqI-lK-2Pg8yGcoD4TKdDw
+Accept-Language: EN
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-01T152015.200.json
+
+###
+
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+Accept-Language: UZ
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "adminjon@gmail.com",
+  "password": "admin123"
+}
+
+<> 2024-03-01T152003.200.json
+
+###
+
+POST http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODc2MzAsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQwMzAsImlzcyI6IllvdXR1YmUifQ.M-ylSUpzaH9TTGBS4SjzmQKW0_OGmd8mfkEf_hIjjj7_0uicBI8gGrb556aCPAWt_-ByEI1EH2rGFFyaomFEvQ
+Accept-Language: EN
+Content-Length: 80
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Cookie: JSESSIONID=534BC5372D5334BD9A544D4E20C23843
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "content": "BBbb",
+  "channelId": 1,
+  "profileId": 1,
+  "type": "CHANNEL"
+}
+
+<> 2024-03-01T151913.200.json
+
+###
+
 POST http://localhost:8080/report
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODc2MzAsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQwMzAsImlzcyI6IllvdXR1YmUifQ.M-ylSUpzaH9TTGBS4SjzmQKW0_OGmd8mfkEf_hIjjj7_0uicBI8gGrb556aCPAWt_-ByEI1EH2rGFFyaomFEvQ
@@ -421,324 +703,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 }
 
 <> 2024-02-28T202938.200.json
-
-###
-
-POST http://localhost:8080/auth/login
-Content-Type: application/json
-Accept-Language: UZ
-Content-Length: 61
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "adminjon@gmail.com",
-  "password": "admin123"
-}
-
-<> 2024-02-28T202921.200.json
-
-###
-
-POST http://localhost:8080/tag
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg3Nzc4OTcsImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg4NjQyOTcsImlzcyI6IllvdXR1YmUifQ.wd6-oFxZE9xTTZvy_fV5HrVmnGaL_Kgb8ROHMwLBSy9wYRbb6jzhuDvjJzgOf5Pvtw3wzATrroxf3kChQAl2ug
-Content-Length: 21
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "name": "detrf"
-}
-
-###
-
-GET http://localhost:8081/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-28T202733.200.json
-
-###
-
-GET http://localhost:8081/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-28T202532.200.json
-
-###
-
-GET http://localhost:8081/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-28T202431.200.json
-
-###
-
-GET http://localhost:8081/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-28T202342.200.json
-
-###
-
-GET http://localhost:8080/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-28T202328.404.json
-
-###
-
-GET http://localhost:8080/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-28T202325.404.json
-
-###
-
-GET http://localhost:8080/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
-Accept-Language: UZ
-PUT http://localhost:8080/subscription
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNTk5NzgsImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDkxNDYzNzgsImlzcyI6IllvdXR1YmUifQ.b0Kml94CXb8GOw_uMtrc66s8JXoZTcGq--IEugVMIudcbQmYblBB-cjPERpMZCEZYrWYtoHxF9GxzyuXJfiUPQ
-Accept-Language: EN
-Content-Length: 58
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-27T211923.200.json
-
-###
-
-GET http://localhost:8080/video/getVideoById/fb65c69e-9881-4814-a348-95036da86277
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkwNDc3MjgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkxMzQxMjgsImlzcyI6IllvdXR1YmUifQ.lZShyBmAtL_RzrUgXWSsABs11DKhin0FOFKw0WedHAv36_K7sv1mTKxmPOiB_tGBu20RWEhecwJoWb9BOCRueg
-Accept-Language: UZ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
-Cookie: JSESSIONID=30DF97313AED9068ADCCAB518DD385B3
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-02-27T211603.200.json
-
-###
-
-GET http://localhost:8080/uploads/2024/2/26/281749f5-4213-4596-82aa-22abbe0793ba.jpg
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg5NDYyMDksImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkwMzI2MDksImlzcyI6IllvdXR1YmUifQ.Y2CNI-s1335kFJwv3bX0BNG127-HlR4HsZ9MhJncd2sK4UNwFrMenmwk8wMTG_-3m5xGb7qrh-MyLi5VWRJO9A
-=======
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 41
->>>>>>> commentLike
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "DISLIKE"
-}
-
-<> 2024-02-29T154818.200.txt
-
-###
-
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 41
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "DISLIKE"
-}
-
-<> 2024-02-29T154817.200.json
-
-###
-
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 41
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "DISLIKE"
-}
-
-<> 2024-02-29T154812.200.txt
-
-###
-
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 41
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "DISLIKE"
-}
-
-<> 2024-02-29T154517.200.json
-
-###
-
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 38
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "LIKE"
-}
-
-<> 2024-02-29T154511.200.txt
-
-###
-
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 38
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "LIKE"
-}
-
-<> 2024-02-29T154509.200.json
-
-###
-
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 38
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "LIKE"
-}
-
-<> 2024-02-29T154323.200.json
-
-###
-
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 41
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "DISLIKE"
-}
-
-<> 2024-02-29T154307.200.json
-
-###
-
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 41
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "DISLIKE"
-}
-
-<> 2024-02-29T154305.200.txt
-
-###
-
-POST http://localhost:8080/comment-like
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
-Content-Length: 41
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
-Cookie: JSESSIONID=4B7D9FF0A8B3FDB050E864368AE4D05D
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "commentId": 1,
-  "type": "DISLIKE"
-}
-
-<> 2024-02-29T154301.200.json
 
 ###
 
