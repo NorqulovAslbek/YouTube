@@ -7,6 +7,7 @@ import com.example.enums.AppLanguage;
 import com.example.enums.PlaylistStatus;
 import com.example.exp.AppBadException;
 import com.example.mapper.PlayListInfoMapper;
+import com.example.mapper.PlayListShortInfoMapper;
 import com.example.repository.PlaylistRepository;
 import com.example.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,9 +111,9 @@ public class PlaylistService {
         return dto;
     }
 
-    public PageImpl<PlayListInfoDTO> playlistPagination(int page, Integer size, AppLanguage language) {
+    public PageImpl<PlayListInfoDTO> playlistPagination(Integer page, Integer size, AppLanguage language) {
         Pageable pageable = PageRequest.of(page, size);
-        List<PlayListInfoMapper> mapperList = playlistRepository.pagination();
+        Page<PlayListInfoMapper> mapperList = playlistRepository.pagination(pageable);
         List<PlayListInfoDTO> dtoList = new LinkedList<>();
         for (PlayListInfoMapper infoMapper : mapperList) {
             dtoList.add(playlistInfoMapperToPlaylistDTO(infoMapper));
@@ -146,5 +147,33 @@ public class PlaylistService {
             dtoList.add(playlistInfoMapperToPlaylistDTO(infoMapper));
         }
         return dtoList;
+    }
+
+    public List<PlayListShortInfoDTO> getAll(Integer profileId) {
+        List<PlayListShortInfoMapper> listShortInfoMappers = playlistRepository.getAll(profileId);
+        List<PlayListShortInfoDTO> dtoList = new LinkedList<>();
+        for (PlayListShortInfoMapper infoMapper : listShortInfoMappers) {
+            PlayListShortInfoDTO dto = mapperToPlayListShortInfoDTO(infoMapper);
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
+    private PlayListShortInfoDTO mapperToPlayListShortInfoDTO(PlayListShortInfoMapper infoMapper) {
+        PlayListShortInfoDTO dto = new PlayListShortInfoDTO();
+        dto.setId(infoMapper.getId());
+        dto.setName(infoMapper.getName());
+        dto.setCreatedDate(infoMapper.getCreatedDate());
+        dto.setChannelId(infoMapper.getChannelId());
+        dto.setChannelName(infoMapper.getChannelName());
+        dto.setVideoId(infoMapper.getVideoId());
+        dto.setVideoTitle(infoMapper.getVideoTitle());
+        dto.setDuration(infoMapper.getDuration());
+        return dto;
+    }
+
+    public Object getById(Integer id, AppLanguage language) {
+        playlistRepository.getById(id);
+        return null;
     }
 }

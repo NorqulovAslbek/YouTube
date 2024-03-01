@@ -1,9 +1,13 @@
 package com.example.repository;
 
+import com.example.dto.PlayListShortInfoDTO;
 import com.example.entity.PlaylistEntity;
 import com.example.enums.PlaylistStatus;
 import com.example.mapper.PlayListInfoMapper;
+import com.example.mapper.PlayListShortInfoMapper;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -51,9 +55,9 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
                    attach.url   as profileAttachUrl
             FROM playlist as p
                      inner join channel as c on p.channel_id = c.id
-                     inner join attach as a on a.id = c.photo_id
+                     left join attach as a on a.id = c.photo_id
                      inner join profile as prof on prof.id = c.profile_id
-                     inner join attach on prof.photo_id = attach.id
+                     left join attach on prof.photo_id = attach.id
             where prof.id = ?1
             order by p.order_num desc;
             """, nativeQuery = true)
@@ -76,13 +80,35 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
                    attach.url   as profileAttachUrl
             FROM playlist as p
                      inner join channel as c on p.channel_id = c.id
-                     inner join attach as a on a.id = c.photo_id
+                     left join attach as a on a.id = c.photo_id
                      inner join profile as prof on prof.id = c.profile_id
-                     inner join attach on prof.photo_id = attach.id
+                     left join attach on prof.photo_id = attach.id
             order by p.created_date desc;
             """, nativeQuery = true)
-    List<PlayListInfoMapper> pagination();
+    Page<PlayListInfoMapper> pagination(Pageable pageable);
 
     @Query("SELECT count(*) FROM PlaylistEntity")
     Long totalElements();
+
+    @Query(value = """
+            select p.id,
+                   p.name,
+                   p.created_date,
+                   c.id       as channelId,
+                   c.name     as channelName,
+                   v.id       as videoId,
+                   v.title    as videoTitle,
+                   v.duration as videoDuration
+            from playlist p
+                     inner join channel c on c.id = p.channel_id
+                     inner join play_list_video plv on p.id = plv.playlist_id
+                     inner join video v on v.id = plv.video_id
+                     where c.visible = true
+                       and p.visible = true
+                    order by p.order_num;
+            """, nativeQuery = true)
+    List<PlayListShortInfoMapper> getAll(Integer profileId);
+
+    @Query("from PlaylistEntity where id=1")
+    Optional<PlaylistEntity> getById(Integer id);
 }

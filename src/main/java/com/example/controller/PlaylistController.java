@@ -2,10 +2,12 @@ package com.example.controller;
 
 import com.example.dto.CreatePlaylistDTO;
 import com.example.dto.PlayListInfoDTO;
+import com.example.dto.PlayListShortInfoDTO;
 import com.example.dto.PlaylistDTO;
 import com.example.enums.AppLanguage;
 import com.example.enums.PlaylistStatus;
 import com.example.service.PlaylistService;
+import com.example.util.SpringSecurityUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +16,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Tag(name = "Playlist Api list", description = "Api list for Playlist")
 @RestController
@@ -55,8 +59,24 @@ public class PlaylistController {
     @GetMapping("/{userId}")
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "This api get list by userId", description = "This api used to get list by userId")
-    public ResponseEntity<?> getListByUserId(@PathVariable("userId") Integer userId) {
+    public ResponseEntity<List<PlayListInfoDTO>> getListByUserId(@PathVariable("userId") Integer userId) {
         log.info("Playlist List By UserId {}", userId);
         return ResponseEntity.ok(playlistService.getListByUserId(userId));
     }
+
+    @GetMapping("/getAll")
+    @Operation(summary = "This api  Get User Playlist", description = "This api Get User Playlist")
+    public ResponseEntity<List<PlayListShortInfoDTO>> getAll() {
+        Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
+        log.info("Playlist List By UserId {}", profileId);
+        return ResponseEntity.ok(playlistService.getAll(profileId));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getById(@PathVariable Integer id,
+                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(playlistService.getById(id, language));
+    }
+
+
 }
