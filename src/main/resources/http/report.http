@@ -1,0 +1,12 @@
+### Create Report
+POST http://localhost:8080/report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyODc2MzAsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzNzQwMzAsImlzcyI6IllvdXR1YmUifQ.M-ylSUpzaH9TTGBS4SjzmQKW0_OGmd8mfkEf_hIjjj7_0uicBI8gGrb556aCPAWt_-ByEI1EH2rGFFyaomFEvQ
+Accept-Language: EN
+
+{
+  "content": "Aaaaa",
+  "channelId": 1,
+  "profileId": 1,
+  "type": "VIDEO"
+}
