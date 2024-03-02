@@ -1,4 +1,13 @@
-### Create File(photo,media....)
+### Create File(media....)
+POST http://localhost:8080/attach/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="testvideo.mp4"
+
+< C:\Users\Rajabbek\Desktop\img\testvideo.mp4
+
+### Create File(photo....)
 POST http://localhost:8080/attach/any/upload
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
