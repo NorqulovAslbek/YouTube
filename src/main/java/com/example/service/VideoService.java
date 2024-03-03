@@ -3,7 +3,6 @@ package com.example.service;
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
 import com.example.entity.ChannelEntity;
-import com.example.entity.PlaylistEntity;
 import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
@@ -58,6 +57,9 @@ public class VideoService {
         }
         if (!attachRepository.existsById(dto.getAttachId())) {
             throw new AppBadException(bundleService.getMessage("video.could.not.found", language));
+        }
+        if (!attachRepository.existsById(dto.getPreviewAttachId())) {
+            throw new AppBadException(bundleService.getMessage("attach.not.found", language));
         }
 
         if (dto.getType() == null && dto.getDescription() == null && dto.getStatus() == null && dto.getTitle() == null &&
@@ -331,16 +333,16 @@ public class VideoService {
         if (video.getAttachId() != null) {
             attachDTO.setUrl(attachService.getURL(video.getAttachId()).getUrl());
         }
-        CategoryDTO categoryDTO=new CategoryDTO();
+        CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setId(video.getCategoryId());
         categoryDTO.setName(video.getCategoryName());
         dto.setCategory(categoryDTO);
         dto.setTagList(video.getTagListJson());
         dto.setPublishedDate(video.getPublishedDate());
-        ChannelDTO channelDTO=new ChannelDTO();
+        ChannelDTO channelDTO = new ChannelDTO();
         channelDTO.setId(video.getChannelId());
         channelDTO.setName(video.getChannelName());
-        if (video.getChannelId()!=null){
+        if (video.getChannelId() != null) {
             channelDTO.setPhotoId(attachService.getURL(video.getPhotoId()).getUrl());
         }
         dto.setChannel(channelDTO);
