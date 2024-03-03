@@ -5,7 +5,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="1.png"
 
-< C:\Users\Rajabbek\Desktop\img\1.png
+< C:\Users\Shamshod Odinayev\Desktop\Новая папка (2)\2oLRQf6suZ4LrBBaCqawSoy30yM.jpg
 
 ### Get By Id(Open)
 GET http://localhost:8080/attach/any/5112368f-a066-4c26-b239-5246fd093cdd.jpg

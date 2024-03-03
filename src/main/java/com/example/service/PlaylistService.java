@@ -8,6 +8,7 @@ import com.example.enums.PlaylistStatus;
 import com.example.exp.AppBadException;
 import com.example.mapper.PlayListInfoMapper;
 import com.example.mapper.PlayListShortInfoMapper;
+import com.example.mapper.PlayListShortMapper;
 import com.example.repository.PlaylistRepository;
 import com.example.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -173,7 +174,17 @@ public class PlaylistService {
     }
 
     public Object getById(Integer id, AppLanguage language) {
-        playlistRepository.getById(id);
-        return null;
+        Optional<PlayListShortMapper> mapper = playlistRepository.getById(id);
+        if (mapper.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("playListShortMapper.not.found", language));
+        }
+        PlayListShortMapper playListShortMapper = mapper.get();
+        PlayListShortInfoDTO dto = new PlayListShortInfoDTO();
+        dto.setId(playListShortMapper.getId());
+        dto.setName(playListShortMapper.getName());
+        dto.setViewCount(playListShortMapper.getViewCount());
+        dto.setTotalViewCount(playListShortMapper.getTotalViewCount());
+        dto.setUpdatedDate(playListShortMapper.getUpdatedDate());
+        return dto;
     }
 }
