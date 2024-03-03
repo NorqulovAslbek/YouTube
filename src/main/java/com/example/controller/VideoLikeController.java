@@ -35,7 +35,6 @@ public class VideoLikeController {
     }
 
     @GetMapping("")
-    @PreAuthorize("hasAnyRole('MODERATOR','USER')")
     @Operation(summary = "Api for getUserLikedVideoList VideoLike", description = "This api is for viewing the list of liked videos")
     public ResponseEntity<?> getUserLikedVideoList(@RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                                        AppLanguage language){
