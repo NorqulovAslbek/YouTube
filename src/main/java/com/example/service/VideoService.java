@@ -3,7 +3,6 @@ package com.example.service;
 import com.example.config.CustomUserDetails;
 import com.example.dto.*;
 import com.example.entity.ChannelEntity;
-import com.example.entity.PlaylistEntity;
 import com.example.entity.VideoEntity;
 import com.example.entity.VideoPermissionEntity;
 import com.example.enums.AppLanguage;
@@ -58,6 +57,9 @@ public class VideoService {
         }
         if (!attachRepository.existsById(dto.getAttachId())) {
             throw new AppBadException(bundleService.getMessage("video.could.not.found", language));
+        }
+        if (!attachRepository.existsById(dto.getPreviewAttachId())) {
+            throw new AppBadException(bundleService.getMessage("attach.not.found", language));
         }
 
         if (dto.getType() == null && dto.getDescription() == null && dto.getStatus() == null && dto.getTitle() == null &&
@@ -191,9 +193,8 @@ public class VideoService {
             videoDTO.setId(entity.getId());
             videoDTO.setTitle(entity.getTitle());
             if (entity.getPreviewAttachId() != null) {
-//                AttachDTO attachDTO = new AttachDTO();
-//                attachDTO.setUrl().getUrl());
-                videoDTO.setPreviewAttach(attachService.getURL(entity.getPreviewAttachId()));
+                AttachDTO attachDTO = new AttachDTO();
+                attachDTO.setUrl(attachService.getURL(entity.getPreviewAttachId()).getUrl());
             }
             videoDTO.setPublishedDate(entity.getPublishedDate());
 
@@ -332,7 +333,6 @@ public class VideoService {
         if (video.getAttachId() != null) {
             attachDTO.setUrl(attachService.getURL(video.getAttachId()).getUrl());
         }
-        dto.setAttach(attachDTO);
         CategoryDTO categoryDTO=new CategoryDTO();
         categoryDTO.setId(video.getCategoryId());
         categoryDTO.setName(video.getCategoryName());
