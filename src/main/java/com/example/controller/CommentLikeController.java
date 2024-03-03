@@ -25,8 +25,6 @@ public class CommentLikeController {
     public ResponseEntity<?> create(@Valid @RequestBody CreateCommentLikeDTO dto,
                                     @RequestHeader(name = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(commentLikeService.create(dto, language));
-    public ResponseEntity<?> create(@Valid @RequestBody CreateCommentLikeDTO dto) {
-        return ResponseEntity.ok(commentLikeService.create(dto));
     }
 
     @DeleteMapping("/{id}")
@@ -53,10 +51,6 @@ public class CommentLikeController {
                                                                                 AppLanguage language) {
         return ResponseEntity.ok(commentLikeService.getUserLikedCommentListByUserId(profileId, language));
     }
-
-
-
-
 
 
 }

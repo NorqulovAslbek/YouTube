@@ -23,6 +23,8 @@ public class CommentLikeService {
     @Autowired
     private CommentLikeRepository commentLikeRepository;
     @Autowired
+    private CommentRepository commentRepository;
+    @Autowired
     private ResourceBundleService resourceBundleService;
 
     public Object create(CreateCommentLikeDTO dto, AppLanguage language) {
