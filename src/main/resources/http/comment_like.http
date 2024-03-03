@@ -1,26 +1,26 @@
 ### Create like
-POST localhost:8080/comment-like
+POST localhost:8080/comment_like
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDk0NzA0NDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDk1NTY4NDMsImlzcyI6IllvdXR1YmUifQ.hSMpMcvRcmWJXb7vr1zAsGdbA7E4N49r5bx8OUmN7OLG19lVtcjQuw_kl_UBRcRQ463Vy31bKP0iXdWuLgoBuA
 
 {
-  "commentId": 1,
+  "commentId": 3,
   "type": "DISLIKE"
 }
 
 ### remove
-DELETE localhost:8080/comment-like/1
+DELETE localhost:8080/comment_like/1
 Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
 
 
 ### Get list (USER)
-GET localhost:8080/comment-like
+GET localhost:8080/comment_like
 Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkyMTk1NDYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzMDU5NDYsImlzcyI6IllvdXR1YmUifQ.miR5bQdgrPsceNod-OO_0I627Zgqnmlhu5YRqrZllFKlDvwQvC2dRvuE_RNtLjHUtNC82-tC_u22jM3l5B1aiA
 
 ### Get list by user id  (ADMIN)
-GET localhost:8080/comment-like/1
+GET localhost:8080/comment_like/1
 Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/comment-like")
+@RequestMapping("/comment_like")
 public class CommentLikeController {
     @Autowired
     private CommentLikeService commentLikeService;
@@ -22,6 +22,9 @@ public class CommentLikeController {
 
     @PostMapping("")
     @Operation(summary = "Api for comment like create")
+    public ResponseEntity<?> create(@Valid @RequestBody CreateCommentLikeDTO dto,
+                                    @RequestHeader(name = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
+        return ResponseEntity.ok(commentLikeService.create(dto, language));
     public ResponseEntity<?> create(@Valid @RequestBody CreateCommentLikeDTO dto) {
         return ResponseEntity.ok(commentLikeService.create(dto));
     }
@@ -50,6 +53,10 @@ public class CommentLikeController {
                                                                                 AppLanguage language) {
         return ResponseEntity.ok(commentLikeService.getUserLikedCommentListByUserId(profileId, language));
     }
+
+
+
+
 
 
 }

@@ -2,10 +2,12 @@ package com.example.service;
 
 import com.example.dto.CommentLikeDTO;
 import com.example.dto.CreateCommentLikeDTO;
+import com.example.entity.CommentEntity;
 import com.example.entity.CommentLikeEntity;
 import com.example.enums.AppLanguage;
 import com.example.exp.AppBadException;
 import com.example.repository.CommentLikeRepository;
+import com.example.repository.CommentRepository;
 import com.example.util.SpringSecurityUtil;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,27 +25,28 @@ public class CommentLikeService {
     @Autowired
     private ResourceBundleService resourceBundleService;
 
-    public Object create(CreateCommentLikeDTO dto) {
+    public Object create(CreateCommentLikeDTO dto, AppLanguage language) {
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         Optional<CommentLikeEntity> optional = commentLikeRepository.checkLike(dto.getCommentId(), profileId);
-        if (optional.isEmpty()) {
-            CommentLikeEntity entity = new CommentLikeEntity();
-            entity.setCommentId(dto.getCommentId());
-            entity.setType(dto.getType());
-            entity.setProfileId(profileId);
-            commentLikeRepository.save(entity);
-            return toDTO(entity);
+        if (optional.isPresent()) {
+            CommentLikeEntity videoLikeEntity = optional.get();
+            videoLikeEntity.setType(dto.getType());
+            videoLikeEntity.setUpdatedDate(LocalDateTime.now());
+            commentLikeRepository.save(videoLikeEntity);
+            return toDTO(videoLikeEntity);
+        }
+        getCommentById(dto.getCommentId(), language); //check qilish uchun comment id bormi yoqmi
+        CommentLikeEntity videoLikeEntity = commentLikeRepository.save(toEntity(dto, profileId));
+        return toDTO(videoLikeEntity);
+    }
 
-        }
-        CommentLikeEntity entity = optional.get();
-        if (!dto.getType().equals(entity.getType())) {
-            entity.setType(dto.getType());
-            entity.setUpdatedDate(LocalDateTime.now());
-            commentLikeRepository.updateType(dto.getType(), dto.getCommentId(), profileId);
-            return toDTO(entity);
-        }
-        commentLikeRepository.delete(entity);
-        return "comment " + entity.getType() + " removed";
+    public CommentLikeEntity toEntity(CreateCommentLikeDTO dto, Integer profileId) {
+        CommentLikeEntity entity = new CommentLikeEntity();
+        entity.setCommentId(dto.getCommentId());
+        entity.setProfileId(profileId);
+        entity.setCreatedDate(LocalDateTime.now());
+        entity.setType(dto.getType());
+        return entity;
     }
 
     private CommentLikeDTO toDTO(CommentLikeEntity entity) {
@@ -69,6 +72,14 @@ public class CommentLikeService {
             throw new AppBadException(resourceBundleService.getMessage("comment.like.not.found", language));
         }
         return optionalVideoEntity.get();
+    }
+
+    private CommentEntity getCommentById(Integer commentId, AppLanguage language) {
+        Optional<CommentEntity> optional = commentRepository.findById(commentId);
+        if (optional.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("comment.not.found", language));
+        }
+        return optional.get();
     }
 
     public List<CommentLikeDTO> getLikedList(AppLanguage language) {
