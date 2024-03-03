@@ -5,6 +5,7 @@ import com.example.entity.PlaylistEntity;
 import com.example.enums.PlaylistStatus;
 import com.example.mapper.PlayListInfoMapper;
 import com.example.mapper.PlayListShortInfoMapper;
+import com.example.mapper.PlayListShortMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -109,6 +110,20 @@ public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integ
             """, nativeQuery = true)
     List<PlayListShortInfoMapper> getAll(Integer profileId);
 
-    @Query("from PlaylistEntity where id=1")
-    Optional<PlaylistEntity> getById(Integer id);
+    @Query(value = """
+            select p.id,
+                   p.name,
+                   v.view_count,
+                   (select count(view_count)
+                    from video
+                             inner join play_list_video plv
+                                        on video.id = plv.video_id
+                    where plv.playlist_id = ?1) as totalViewCount,
+                   p.updated_date
+            from playlist p
+                     inner join public.video v
+                                on p.channel_id = v.channel_id
+                                 where p.id=?1;
+            """, nativeQuery = true)
+    Optional<PlayListShortMapper> getById(Integer id);
 }

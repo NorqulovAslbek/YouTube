@@ -72,7 +72,7 @@ public class PlaylistController {
         return ResponseEntity.ok(playlistService.getAll(profileId));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id,
                                      @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
         return ResponseEntity.ok(playlistService.getById(id, language));

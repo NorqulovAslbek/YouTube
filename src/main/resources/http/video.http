@@ -1,15 +1,13 @@
 ### Create video (User)
-POST http://localhost:8080/video/any
+PUT http://localhost:8080/video/any
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NzU4OTksImVtYWlsIjoicmFqYWJiZWtvbGxhbmF6YXJvdjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE3MDg5NjIyOTksImlzcyI6IllvdXR1YmUifQ.ADd5yriideI4-iwGYw-alwxD920vi3cjj7ez1fhIlYoqZva5IKO4O49Qbb_p_0Q3vVbaGf2Vt4XGqUXu3hUSPg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkzMDAxODYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzODY1ODYsImlzcyI6IllvdXR1YmUifQ.gL_SLZiuhyVWcPrHsqJUHl_lHWeTKG8DZj5kc826qAEUWGrhFMvSfQTHk0xjbXdLwo18EhUbo-MKwFNRuqvoJg
 
 {
   "title": "cccc",
   "description": "ccccc",
-  "attachId": "774293ad-eba4-439b-9b1d-2bc11312f1b4",
-  "categoryId": 4,
-  "previewAttachId": "774293ad-eba4-439b-9b1d-2bc11312f1b4",
-  "channelId": 8,
+  "attachId": "af66c646-ffde-4c18-960a-abe58bdb0b52",
+  "channelId": 1,
   "status": "PRIVATE",
   "type": "VIDEO"
 }
@@ -47,7 +45,7 @@ Accept-Language: EN
 ###  Get Video List Pagination (ADMIN)
 GET http://localhost:8080/video?page=1&size=6
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjkyNDMsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDg5NTU2NDMsImlzcyI6IllvdXR1YmUifQ.cChCaGIi0omytS6ldHPrbpZpnlP0DJ6_d1u0B-pecKHbbdCuJeuWeT5NQEG25_NF9INXEFY8hEV9u5717TcDOQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkzMDAxODYsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDkzODY1ODYsImlzcyI6IllvdXR1YmUifQ.gL_SLZiuhyVWcPrHsqJUHl_lHWeTKG8DZj5kc826qAEUWGrhFMvSfQTHk0xjbXdLwo18EhUbo-MKwFNRuqvoJg
 Accept-Language: UZ
 
 ### Get vido play list Pagination

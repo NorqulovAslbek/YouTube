@@ -15,10 +15,13 @@ public class PlayListShortInfoDTO {
     private Integer id;
     private String name;
     private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
     private Integer channelId;
     private String channelName;
     private String videoId;
     private String videoTitle;
     private Long duration;
+    private Long viewCount;
+    private Integer totalViewCount;
 
 }
