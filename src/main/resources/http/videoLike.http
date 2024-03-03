@@ -5,8 +5,8 @@ Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDk0NjUyNDgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDk1NTE2NDgsImlzcyI6IllvdXR1YmUifQ.zvEFUVFusdSQePXdyoun5_7VldIc8We5l-2ZZZHJfU3LbzW70wOH2qoqPxtwgaQBdYd05W_EiRWU2WvyUZwcvA
 
 {
-  "videoId": "00568a2e-a73d-49e0-bbf4-5de025b317c4",
-  "type": "DISLIKE"
+  "videoId": "51208383-f4e7-4e2e-b1a5-6e8bdb09155b",
+  "type": "LIKE"
 }
 
 ### remove Video Like

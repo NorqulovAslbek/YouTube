@@ -2,12 +2,11 @@
 POST localhost:8080/comment
 Content-Type: application/json
 Accept-Language: UZ
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDkxOTk4NDYsImVtYWlsIjoiYXNsYmVrbm9ycXVsb3YyNDZAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTcwOTI4NjI0NiwiaXNzIjoiWW91dHViZSJ9.m7K7TdHAb5X2ZTB-ritrWe9tOi5vM3DlbFlgmIjRY4ZSq4NHeKHwqYO_g5fdp2WWtppZ1UHon_LFNhJZ0ReoHw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDk0NjczMjIsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDk1NTM3MjIsImlzcyI6IllvdXR1YmUifQ.TfEy5RiJ29ZIvBL85t4WbeiJzWYe9tjU5flVv5v60tlaXWcJAKDTdlZ4mcKH1TU9vVED6JPsGog_gqUrQrgQXg
 
 {
-  "videoId": "3a88c9f3-bc81-401a-97e0-5816cf3014f6",
-  "content": "Tre",
-  "replyId": 1
+  "videoId": "51208383-f4e7-4e2e-b1a5-6e8bdb09155b",
+  "content": "Tureeeeee"
 }
 
 ### update Comment
