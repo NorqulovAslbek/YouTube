@@ -63,7 +63,7 @@ public class VideoService {
         }
 
         if (dto.getType() == null && dto.getDescription() == null && dto.getStatus() == null && dto.getTitle() == null &&
-                dto.getAttachId() == null && dto.getCategoryId() == null && dto.getChannelId() == null && dto.getPreviewAttachId() == null) {
+            dto.getAttachId() == null && dto.getCategoryId() == null && dto.getChannelId() == null && dto.getPreviewAttachId() == null) {
             log.info("There is an error in what you sent {}", dto);
             throw new AppBadException(bundleService.getMessage("there.error.in.what.you.sent", language));
         }
@@ -76,13 +76,11 @@ public class VideoService {
         entity.setType(dto.getType());
         entity.setStatus(dto.getStatus());
         entity.setCreatedDate(LocalDateTime.now());
-
         VideoEntity save = videoRepository.save(entity);
         VideoPermissionEntity permissionEntity = new VideoPermissionEntity();
         permissionEntity.setProfileId(profileId);
         permissionEntity.setVideoId(save.getId());
         permissionRepository.save(permissionEntity);
-
         VideoDTO videoDTO = new VideoDTO();
         videoDTO.setId(entity.getId());
         videoDTO.setCreatedDate(entity.getCreatedDate());
@@ -90,7 +88,6 @@ public class VideoService {
     }
 
     public Boolean updateStatus(UpdateStatusVideoDTO dto, AppLanguage language) {
-
         VideoEntity entity = get(dto.getId(), language);
         entity.setStatus(dto.getStatus());
         videoRepository.save(entity);
@@ -122,14 +119,12 @@ public class VideoService {
     public PageImpl<VideoShortInfoDTO> getVideoByCategoryId(Integer id, Integer page, Integer size, AppLanguage language) {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
         Pageable pageable = PageRequest.of(page - 1, size);
-
         Page<VideoPermissionEntity> permission = permissionRepository.getPermission(currentUser.getId(), pageable);
         long totalElements = permission.getTotalElements();
         List<VideoShortInfoDTO> shortInfoDTOS = new LinkedList<>();
         for (VideoPermissionEntity videoPermissionEntity : permission) {
             shortInfoDTOS.add(get(videoPermissionEntity.getVideoId(), id, language));
         }
-
         List<VideoEntity> categoryIdList = videoRepository.getByCategoryId(id);
         for (VideoEntity videoEntity : categoryIdList) {
             shortInfoDTOS.add(get(videoEntity.getId(), id, language));
@@ -148,7 +143,6 @@ public class VideoService {
 
     public PageImpl<VideoShortInfoDTO> searchVideoByTitle(Integer page, Integer size, VideoFilterDTO dto, AppLanguage language) {
         PaginationResultDTO<VideoEntity> filter = videoSearchRepository.filter(dto, page, size);
-
         List<VideoShortInfoDTO> dtoList = new LinkedList<>();
         for (VideoEntity entity : filter.getList()) {
             dtoList.add(getVideoShortInfoDTO(entity, language));
@@ -161,7 +155,6 @@ public class VideoService {
         VideoEntity video = get(id, language);
         video.setViewCount(video.getViewCount() + 1);
         videoRepository.save(video);
-
         return video.getViewCount();
     }
 
@@ -169,10 +162,8 @@ public class VideoService {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
         Pageable pageable = PageRequest.of(page - 1, size, sort);
         Page<VideoEntity> entityPage = videoRepository.findAll(pageable);
-
         List<VideoEntity> entityList = entityPage.getContent();
         long totalElements = entityPage.getTotalElements();
-
         List<VideoShortInfoDTO> dtoList = new LinkedList<>();
         for (VideoEntity entity : entityList) {
             dtoList.add(getVideoShortInfoDTO(entity, language));
@@ -183,10 +174,8 @@ public class VideoService {
     public PageImpl<VideoListPaginationDTO> getVideoList(Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<VideoShortInfoPaginationMapper> entityPage = videoRepository.getVideoListForAdmin(pageable);
-
         List<VideoShortInfoPaginationMapper> entityList = entityPage.getContent();
         long totalElements = entityPage.getTotalElements();
-
         List<VideoListPaginationDTO> dtoList = new LinkedList<>();
         VideoDTO videoDTO = new VideoDTO();
         for (VideoShortInfoPaginationMapper entity : entityList) {
@@ -197,7 +186,6 @@ public class VideoService {
                 attachDTO.setUrl(attachService.getURL(entity.getPreviewAttachId()).getUrl());
             }
             videoDTO.setPublishedDate(entity.getPublishedDate());
-
             ChannelDTO channelDTO = new ChannelDTO();
             channelDTO.setId(entity.getChannelId());
             channelDTO.setName(entity.getChannelName());
@@ -205,15 +193,12 @@ public class VideoService {
             videoDTO.setChannel(channelDTO);
             videoDTO.setViewCount(entity.getViewCount());
             videoDTO.setDuration(entity.getDuration());
-
             ProfileDTO profileDTO = new ProfileDTO();
             profileDTO.setId(entity.getProfileId());
             profileDTO.setName(entity.getProfileName());
             profileDTO.setSurname(entity.getProfileSurname());
             videoDTO.setOwner(profileDTO);
-
             videoDTO.setPlayListJson(entity.getPlayListJson());
-
             VideoListPaginationDTO dto = new VideoListPaginationDTO();
             dto.setVideo(videoDTO);
             dto.setChannel(channelDTO);
@@ -229,7 +214,6 @@ public class VideoService {
         dto.setTitle(entity.getTitle());
         dto.setPreviewAttach(attachService.getURL(entity.getPreviewId()));
         dto.setPublishedDate(entity.getPublishedDate());
-
         ChannelEntity channelEntity = channelService.get(entity.getChannelId(), language);
         ChannelDTO channelDTO = new ChannelDTO();
         channelDTO.setId(channelEntity.getId());
@@ -240,7 +224,6 @@ public class VideoService {
             dto.setDuration(attachDTO.getDuration());
         }
         dto.setViewCount(entity.getViewCount());
-
         dto.setChannel(channelDTO);
         return dto;
     }
@@ -249,16 +232,13 @@ public class VideoService {
         VideoShortInfoDTO dto = new VideoShortInfoDTO();
         dto.setId(entity.getId());
         dto.setTitle(entity.getTitle());
-
         PreviewAttachDTO previewAttachDTO = new PreviewAttachDTO();
         if (entity.getPreviewAttachId() != null) {
             previewAttachDTO.setId(entity.getPreviewAttachId());
             previewAttachDTO.setUrl(attachService.getURL(entity.getPreviewAttachId()).getUrl());
         }
         dto.setPreviewDto(previewAttachDTO);
-
         dto.setPublishedDate(entity.getPublishedDate());
-
         ChannelDTO channelDTO = new ChannelDTO();
         if (entity.getChannelId() != null) {
             channelDTO.setId(entity.getChannelId());
@@ -266,7 +246,6 @@ public class VideoService {
             channelDTO.setPhotoId(entity.getPhotoId());
         }
         dto.setChannel(channelDTO);
-
         dto.setViewCount(entity.getViewCount());
         dto.setDuration(entity.getDuration());
         dto.setChannel(channelDTO);
@@ -274,13 +253,10 @@ public class VideoService {
     }
 
     public PageImpl<VidePlayListInfoDTO> getChannelVideoListPagination(Integer page, Integer size, AppLanguage language) {
-
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<VideoPlayListInfoMapper> entityPage = videoRepository.getChannelVideoList(pageable);
-
         List<VideoPlayListInfoMapper> entityList = entityPage.getContent();
         long totalElements = entityPage.getTotalElements();
-
         List<VidePlayListInfoDTO> dtoList = new LinkedList<>();
         for (VideoPlayListInfoMapper mapperEntity : entityList) {
             dtoList.add(getVideoPlayList(mapperEntity, language));
@@ -292,18 +268,15 @@ public class VideoService {
         VidePlayListInfoDTO dto = new VidePlayListInfoDTO();
         dto.setId(mapperEntity.getVideoId());
         dto.setViewCount(mapperEntity.getViewCount());
-
         PreviewAttachDTO previewAttachDTO = new PreviewAttachDTO();
         if (mapperEntity.getPreviewAttachId() != null) {
             previewAttachDTO.setId(mapperEntity.getPreviewAttachId());
             previewAttachDTO.setUrl(attachService.getURL(previewAttachDTO.getId()).getUrl());
         }
         dto.setPreviewAttach(previewAttachDTO);
-
         dto.setTitle(mapperEntity.getTitle());
         dto.setPublishedDate(mapperEntity.publishedDate());
         dto.setDuration(mapperEntity.getDuration());
-
         return dto;
     }
 
@@ -333,16 +306,16 @@ public class VideoService {
         if (video.getAttachId() != null) {
             attachDTO.setUrl(attachService.getURL(video.getAttachId()).getUrl());
         }
-        CategoryDTO categoryDTO=new CategoryDTO();
+        CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setId(video.getCategoryId());
         categoryDTO.setName(video.getCategoryName());
         dto.setCategory(categoryDTO);
         dto.setTagList(video.getTagListJson());
         dto.setPublishedDate(video.getPublishedDate());
-        ChannelDTO channelDTO=new ChannelDTO();
+        ChannelDTO channelDTO = new ChannelDTO();
         channelDTO.setId(video.getChannelId());
         channelDTO.setName(video.getChannelName());
-        if (video.getChannelId()!=null){
+        if (video.getChannelId() != null) {
             channelDTO.setPhotoId(attachService.getURL(video.getPhotoId()).getUrl());
         }
         dto.setChannel(channelDTO);

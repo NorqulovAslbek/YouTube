@@ -41,7 +41,6 @@ public class AttachService {
             if (!folder.exists()) {
                 folder.mkdir();
             }
-
             byte[] bytes = file.getBytes();
             Path path = Paths.get("attaches/" + file.getOriginalFilename()); // attaches/mazgi.png
             Files.write(path, bytes);
@@ -69,7 +68,6 @@ public class AttachService {
             //                         uploads/2022/04/23/dasdasd-dasdasda-asdasda-asdasd.jpg
             //                         uploads/ + Path + id + extension
             Files.write(path, bytes);
-
             AttachEntity entity = new AttachEntity();
             entity.setId(key); //+ entity.getExtension()
             entity.setSize(file.getSize());
@@ -79,7 +77,6 @@ public class AttachService {
             entity.setPath(pathFolder);
             entity.setUrl(path.toString());
             attachRepository.save(entity);
-
             return toDTO(entity);
         } catch (IOException e) {
             e.printStackTrace();
@@ -118,13 +115,9 @@ public class AttachService {
     public ResponseEntity download(String attachId, AppLanguage language) {
         try {
             String id = attachId.substring(0, attachId.lastIndexOf("."));
-
             AttachEntity entity = get(id);
-
             Path file = Paths.get("uploads/" + entity.getPath() + "/" + attachId);
-
             Resource resource = new UrlResource(file.toUri());
-
             if (resource.exists() || resource.isReadable()) {
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                         "attachment; filename=\"" + entity.getOriginalName() + "\"").body(resource);
@@ -140,15 +133,12 @@ public class AttachService {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
         Pageable pageable = PageRequest.of(page - 1, size, sort);
         Page<AttachEntity> entityPage = attachRepository.findAll(pageable);
-
         List<AttachEntity> entityList = entityPage.getContent();
         long totalElements = entityPage.getTotalElements();
-
         List<AttachDTO> dtoList = new LinkedList<>();
         for (AttachEntity entity : entityList) {
             dtoList.add(getEntityPutDTO(entity));
         }
-
         return new PageImpl<>(dtoList, pageable, totalElements);
     }
 
@@ -172,7 +162,6 @@ public class AttachService {
         dto.setExtension(entity.getExtension());
         dto.setOriginalName(entity.getOriginalName());
         dto.setCreatedData(entity.getCreatedDate());
-
         return dto;
     }
 
@@ -180,7 +169,6 @@ public class AttachService {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
         int day = Calendar.getInstance().get(Calendar.DATE);
-
         return year + "/" + month + "/" + day;
     }
 

@@ -20,8 +20,8 @@ public class EmailHistoryController {
     @GetMapping("/adm/pagination")
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Api for getEmailPagination", description = "this api to get email history in paginated view")
-    public ResponseEntity<?> getEmailPagination(@RequestParam Integer page,@RequestParam Integer size) {
-        return ResponseEntity.ok(sendEmailHistoryService.getEmailPagination(page,size));
+    public ResponseEntity<?> getEmailPagination(@RequestParam Integer page, @RequestParam Integer size) {
+        return ResponseEntity.ok(sendEmailHistoryService.getEmailPagination(page, size));
     }
 
 
@@ -31,7 +31,7 @@ public class EmailHistoryController {
     public ResponseEntity<?> getByEmailPagination(@RequestParam Integer page,
                                                   @RequestParam Integer size,
                                                   @RequestBody UpdateEmailDTO dto) {
-        return ResponseEntity.ok(sendEmailHistoryService.getByEmailPagination(page,size,dto));
+        return ResponseEntity.ok(sendEmailHistoryService.getByEmailPagination(page, size, dto));
     }
 
     @PostMapping("/adm/filter")
@@ -39,8 +39,8 @@ public class EmailHistoryController {
     @Operation(summary = "Api for filter", description = "this api to get email history filter")
     public ResponseEntity<?> filter(@RequestParam Integer page,
                                     @RequestParam Integer size,
-                                    @RequestBody FilterEmailDTO dto){
-        return ResponseEntity.ok(sendEmailHistoryService.filter(dto,page,size));
+                                    @RequestBody FilterEmailDTO dto) {
+        return ResponseEntity.ok(sendEmailHistoryService.filter(dto, page, size));
     }
 
 }

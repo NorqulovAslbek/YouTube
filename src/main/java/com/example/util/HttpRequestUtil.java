@@ -10,12 +10,9 @@ public class HttpRequestUtil {
     public static Integer getProfileId(HttpServletRequest request, ProfileRole... requiredRoleList) {
         Integer id = (Integer) request.getAttribute("id");
         ProfileRole role = (ProfileRole) request.getAttribute("role");
-
         if (requiredRoleList.length == 0) {
             return id;
         }
-
-
         for (ProfileRole profileRole : requiredRoleList) {
             if (role.equals(profileRole)) {
                 return id;

@@ -28,23 +28,19 @@ public class SubscriptionController {
     private SubscriptionService subscriptionService;
 
     @PostMapping("")
-    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "Subscription create", description = "This is api Subscription create used")
     public ResponseEntity<?> create(@RequestBody @Valid CreateSubscriptionDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         log.info("Subscription create error {}", dto);
         return ResponseEntity.ok(subscriptionService.create(dto, profileId, language));
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "Subscription update", description = "This is api Subscription update used")
     public ResponseEntity<?> update(@PathVariable("id") Integer id,
                                     @RequestBody UpdateSubscriptionDTO dto,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         log.info("Subscription update error {}", id);
         return ResponseEntity.ok(subscriptionService.update(id, dto, language));
     }
@@ -53,7 +49,6 @@ public class SubscriptionController {
     @Operation(summary = "Subscription get change Status", description = "Change Subscription Notification type Subscriptions")
     public ResponseEntity<?> changeStatus(@RequestBody ChangeNotificationTypeSubscriptionDTO dto,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         log.info("Subscription change status error {}", dto.getNotificationType());
         return ResponseEntity.ok(subscriptionService.changeStatus(dto, language));
     }
@@ -61,7 +56,6 @@ public class SubscriptionController {
     @GetMapping("")
     @Operation(summary = "Subscription get List", description = "Get all Subscriptions")
     public ResponseEntity<List<SubscriptionInfoDTO>> getSubscriptionList(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         return ResponseEntity.ok(subscriptionService.getSubscriptionList(language));
     }
 
@@ -70,7 +64,6 @@ public class SubscriptionController {
     @Operation(summary = "Subscription get List", description = "Get User Subscription List By UserId")
     public ResponseEntity<List<SubscriptionInfoDTO>> getByUserIdSubscriptionList(@PathVariable("id") Integer profileId,
                                                                                  @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         return ResponseEntity.ok(subscriptionService.getByUserIdSubscriptionList(profileId, language));
     }
 }

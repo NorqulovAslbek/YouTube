@@ -70,8 +70,8 @@ public class CommentService {
         CustomUserDetails currentUser = SpringSecurityUtil.getCurrentUser();
 
         if (commentEntity.getProfileId().equals(currentUser.getId())
-                || currentUser.getRole().equals(ProfileRole.ROLE_ADMIN)
-                || getOwner(commentId, currentUser.getId(), language)) {
+            || currentUser.getRole().equals(ProfileRole.ROLE_ADMIN)
+            || getOwner(commentId, currentUser.getId(), language)) {
             commentRepository.deleteById(commentId);
             return true;
         }
@@ -109,14 +109,6 @@ public class CommentService {
         return commentListDTOS;
     }
 
-    /**
-     * Bu method jwt dan kelgan id vidioni create qilganmi yani ownermi shuni tekshirib beradi
-     *
-     * @param commentId
-     * @param profileId
-     * @param language
-     * @return
-     */
     private Boolean getOwner(Integer commentId, Integer profileId, AppLanguage language) {
         String videoId = get(commentId, language).getVideoId();
         Integer channelId = videoService.get(videoId, language).getChannelId();

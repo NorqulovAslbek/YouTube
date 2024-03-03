@@ -1,5 +1,5 @@
 package com.example.enums;
 
 public enum SubscriptionStatus {
-    ACTIVE,BLOCK
+    ACTIVE, BLOCK
 }

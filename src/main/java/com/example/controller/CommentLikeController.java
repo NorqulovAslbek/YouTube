@@ -22,7 +22,7 @@ public class CommentLikeController {
 
     @PostMapping("")
     @Operation(summary = "Api for comment like create")
-    public ResponseEntity<?> create(@Valid @RequestBody CreateCommentLikeDTO dto){
+    public ResponseEntity<?> create(@Valid @RequestBody CreateCommentLikeDTO dto) {
         return ResponseEntity.ok(commentLikeService.create(dto));
     }
 
@@ -30,29 +30,26 @@ public class CommentLikeController {
     @Operation(summary = "Api for remove comment like ")
     public ResponseEntity<?> remove(@PathVariable("id") Integer id,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                    AppLanguage language){
-        return ResponseEntity.ok(commentLikeService.remove(id,language));
+                                    AppLanguage language) {
+        return ResponseEntity.ok(commentLikeService.remove(id, language));
 
     }
+
     @GetMapping("")
     @Operation(summary = "Api for get  user liked comment list ")
-    public ResponseEntity<List<CommentLikeDTO>> getLikedList(  @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                                                   AppLanguage language){
+    public ResponseEntity<List<CommentLikeDTO>> getLikedList(@RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                             AppLanguage language) {
         return ResponseEntity.ok(commentLikeService.getLikedList(language));
     }
 
     @GetMapping("/{profileId}")
     @Operation(summary = "Api for get get user likedComment list by userId for ADMIN")
     @PreAuthorize(value = "hasRole('ADMIN')")
-    public ResponseEntity<List<CommentLikeDTO>>  getUserLikedCommentListByUserId(@PathVariable("profileId") Integer profileId,
+    public ResponseEntity<List<CommentLikeDTO>> getUserLikedCommentListByUserId(@PathVariable("profileId") Integer profileId,
                                                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                                                                AppLanguage language){
-        return ResponseEntity.ok(commentLikeService.getUserLikedCommentListByUserId(profileId,language));
+                                                                                AppLanguage language) {
+        return ResponseEntity.ok(commentLikeService.getUserLikedCommentListByUserId(profileId, language));
     }
-
-
-
-
 
 
 }

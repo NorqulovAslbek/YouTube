@@ -53,18 +53,18 @@ public class VideoLikeService {
     public List<VideoLikeInfoDTO> getUserLikedVideoList(AppLanguage language) {
         Integer profileId = SpringSecurityUtil.getCurrentUser().getId();
         List<VideoLikeEntity> likeEntityList = videoLikeRepository.getByProfileId(profileId);
-        List<VideoLikeInfoDTO>list=new LinkedList<>();
+        List<VideoLikeInfoDTO> list = new LinkedList<>();
         for (VideoLikeEntity videoLikeEntity : likeEntityList) {
-           list.add(getVideoLikeInfoDTO(videoLikeEntity,language));
+            list.add(getVideoLikeInfoDTO(videoLikeEntity, language));
         }
         return list;
     }
 
     public List<VideoLikeInfoDTO> getGetUserLikedVideoListByUserId(Integer profileId, AppLanguage language) {
         List<VideoLikeEntity> likeEntityList = videoLikeRepository.getByProfileId(profileId);
-        List<VideoLikeInfoDTO>list=new LinkedList<>();
+        List<VideoLikeInfoDTO> list = new LinkedList<>();
         for (VideoLikeEntity videoLikeEntity : likeEntityList) {
-            list.add(getVideoLikeInfoDTO(videoLikeEntity,language));
+            list.add(getVideoLikeInfoDTO(videoLikeEntity, language));
         }
         return list;
     }
@@ -89,21 +89,16 @@ public class VideoLikeService {
     public VideoLikeInfoDTO getVideoLikeInfoDTO(VideoLikeEntity entity, AppLanguage language) {
         VideoLikeInfoDTO dto = new VideoLikeInfoDTO();
         dto.setId(entity.getId());
-
         VideoDTO videoDTO = new VideoDTO();
-
         videoDTO.setId(entity.getVideoId());
         VideoEntity videoEntity = getVideoById(entity.getVideoId(), language);
         videoDTO.setTitle(videoEntity.getTitle());
-
         ChannelEntity channelEntity = getChannelById(videoEntity.getChannelId(), language);
         ChannelDTO channelDTO = new ChannelDTO();
         channelDTO.setId(channelEntity.getId());
         channelDTO.setName(channelEntity.getName());
         videoDTO.setChannel(channelDTO);
-
         dto.setVideo(videoDTO);
-
         AttachDTO attachDTO = new AttachDTO();
         AttachEntity attachEntity = getAttachById(videoEntity.getAttachId(), language);
         attachDTO.setId(attachEntity.getId());

@@ -27,6 +27,7 @@ public class AppConfig {
         messageSource.setDefaultLocale(new Locale("uz"));// if local not found use this
         return messageSource;
     }
+
     @Bean
     public DataSource getDataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();

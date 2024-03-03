@@ -64,9 +64,7 @@ public class EmailSendHistoryService {
 
     public PageImpl<EmailSendHistoryDTO> filter(FilterEmailDTO dto, Integer page, Integer size) {
         PaginationResultDTO<EmailSendHistoryEntity> filter = repository.filter(dto, page, size);
-
         List<EmailSendHistoryDTO> list = new LinkedList<>();
-
         for (EmailSendHistoryEntity studentEntity : filter.getList()) {
             list.add(getDTO(studentEntity));
         }

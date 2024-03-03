@@ -12,16 +12,18 @@ import org.springframework.web.bind.annotation.*;
 public class VideoPermissionController {
     @Autowired
     private VideoPermissionService permissionService;
+
     @PostMapping("")
     public ResponseEntity<?> givePermission(@RequestBody VideoPermissionDTO dto,
-                                        @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                        AppLanguage language) {
-      return ResponseEntity.ok(permissionService.permission(dto,language));
-    }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> removePermission(@PathVariable("id") Integer profileId,
                                             @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                             AppLanguage language) {
-        return ResponseEntity.ok(permissionService.removePermission(profileId,language));
+        return ResponseEntity.ok(permissionService.permission(dto, language));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> removePermission(@PathVariable("id") Integer profileId,
+                                              @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                              AppLanguage language) {
+        return ResponseEntity.ok(permissionService.removePermission(profileId, language));
     }
 }

@@ -43,9 +43,7 @@ public class ReportService {
         entity.setChannelId(dto.getChannelId());
         entity.setType(dto.getType());
         entity.setCreatedDate(LocalDateTime.now());
-
         reportRepository.save(entity);
-
         ReportDTO reportDTO = new ReportDTO();
         reportDTO.setId(entity.getId());
         reportDTO.setContent(entity.getContent());
@@ -57,10 +55,8 @@ public class ReportService {
     public PageImpl<ReportInfoDTO> reportList(Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<ReportInfoMapper> reportPage = reportRepository.getReportInfo(pageable);
-
         List<ReportInfoMapper> entityList = reportPage.getContent();
         long totalElements = reportPage.getTotalElements();
-
         List<ReportInfoDTO> dtoList = new LinkedList<>();
         for (ReportInfoMapper mapper : entityList) {
             dtoList.add(getReportInfoDTO(mapper));
@@ -71,7 +67,6 @@ public class ReportService {
     private ReportInfoDTO getReportInfoDTO(ReportInfoMapper mapper) {
         ReportInfoDTO dto = new ReportInfoDTO();
         dto.setId(mapper.getReportId());
-
         ProfileDTO profile = new ProfileDTO();
         profile.setId(mapper.getProfileId());
         profile.setName(mapper.getName());
@@ -118,6 +113,4 @@ public class ReportService {
         }
         return optional.get();
     }
-
-
 }

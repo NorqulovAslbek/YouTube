@@ -31,13 +31,13 @@ public class VideoLikeController {
     public ResponseEntity<?> remove(@PathVariable("videoId") String id,
                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                     AppLanguage language) {
-     return ResponseEntity.ok(videoLikeService.remove(id,language));
+        return ResponseEntity.ok(videoLikeService.remove(id, language));
     }
 
     @GetMapping("")
     @Operation(summary = "Api for getUserLikedVideoList VideoLike", description = "This api is for viewing the list of liked videos")
     public ResponseEntity<?> getUserLikedVideoList(@RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                                       AppLanguage language){
+                                                   AppLanguage language) {
         return ResponseEntity.ok(videoLikeService.getUserLikedVideoList(language));
     }
 
@@ -46,7 +46,7 @@ public class VideoLikeController {
     @Operation(summary = "Api for getGetUserLikedVideoListByUserId VideoLike", description = "this api is intended for Admin, it will list all users who have clicked like")
     public ResponseEntity<?> getGetUserLikedVideoListByUserId(@PathVariable("id") Integer profileId,
                                                               @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                                              AppLanguage language){
-        return ResponseEntity.ok(videoLikeService.getGetUserLikedVideoListByUserId(profileId,language));
+                                                              AppLanguage language) {
+        return ResponseEntity.ok(videoLikeService.getGetUserLikedVideoListByUserId(profileId, language));
     }
 }

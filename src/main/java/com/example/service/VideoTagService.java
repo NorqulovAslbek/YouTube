@@ -22,7 +22,6 @@ import java.util.Optional;
 @Slf4j
 @Service
 public class VideoTagService {
-
     @Autowired
     private VideoTagRepository videoTagRepository;
     @Autowired
@@ -48,15 +47,12 @@ public class VideoTagService {
         videoTagEntity.setVideoId(dto.getVideoId());
         videoTagEntity.setTagId(dto.getTagId());
         videoTagEntity.setCreatedDate(LocalDateTime.now());
-
         videoTagRepository.save(videoTagEntity);
-
         VideoTagDTO videoTagDTO = new VideoTagDTO();
         videoTagDTO.setId(videoTagEntity.getId());
         videoTagDTO.setVideoId(videoTagEntity.getVideoId());
         videoTagDTO.setTagId(videoTagEntity.getTagId());
         videoTagDTO.setCreatedDate(videoTagEntity.getCreatedDate());
-
         return videoTagDTO;
     }
 
@@ -86,7 +82,6 @@ public class VideoTagService {
         for (VideoTagEntity entity : entityList) {
             tagList.add(toDTO(entity));
         }
-
         return tagList;
     }
 
@@ -94,16 +89,13 @@ public class VideoTagService {
         VideoTagDTO dto = new VideoTagDTO();
         dto.setId(entity.getId());
         dto.setVideoId(entity.getVideoId());
-
         TagDTO tagDTO = new TagDTO();
         tagDTO.setId(entity.getTag().getId());
         tagDTO.setName(entity.getTag().getName());
         dto.setTag(tagDTO);
         dto.setCreatedDate(entity.getCreatedDate());
-
         return dto;
     }
-
 }
 
 

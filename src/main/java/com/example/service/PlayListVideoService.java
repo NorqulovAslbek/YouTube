@@ -34,7 +34,6 @@ public class PlayListVideoService {
 
     public PlayListVideoDTO create(CreatePlayListVideoDTO dto, AppLanguage language) {
         PlayListVideoEntity entity = new PlayListVideoEntity();
-
         if (!videoRepository.existsById(dto.getVideoId())) {
             throw new AppBadException(bundleService.getMessage("video.not.found", language));
         }
@@ -45,16 +44,13 @@ public class PlayListVideoService {
         entity.setPlayListId(dto.getPlaylistId());
         entity.setOrderNum(dto.getOrderNumber());
         entity.setCreatedDate(LocalDateTime.now());
-
         playListVideoRepository.save(entity);
-
         PlayListVideoDTO playListVideoDTO = new PlayListVideoDTO();
         playListVideoDTO.setId(entity.getId());
         playListVideoDTO.setVideoId(entity.getVideoId());
         playListVideoDTO.setPlaylistId(entity.getPlayListId());
         playListVideoDTO.setOrderNum(entity.getOrderNum());
         playListVideoDTO.setCreatedDate(entity.getCreatedDate());
-
         return playListVideoDTO;
     }
 
@@ -98,11 +94,9 @@ public class PlayListVideoService {
     private PlaylistVideoInfoDTO getPlayListInfo(PlayListVideoEntity entity, AppLanguage language) {
         PlaylistVideoInfoDTO dto = new PlaylistVideoInfoDTO();
         dto.setPlaylistId(entity.getPlayListId());
-
         VideoEntity video = entity.getVideo();
         VideoDTO videoDTO = new VideoDTO();
         videoDTO.setId(video.getId()); //video(id,(preview_attach(id,url),title,duration)
-
         AttachEntity preview = video.getPreview();
         AttachDTO attachDTO = new AttachDTO();
         attachDTO.setId(preview.getId());
@@ -110,13 +104,11 @@ public class PlayListVideoService {
         videoDTO.setAttach(attachDTO);
         videoDTO.setTitle(video.getTitle());
         videoDTO.setDuration(video.getDuration());
-
         ChannelEntity channel = video.getChannel();
         ChannelDTO channelDTO = channelService.getById(channel.getId(), language);
         ChannelDTO channelDto = new ChannelDTO();
         channelDto.setId(channelDTO.getId());
         channelDto.setName(channelDTO.getName()); //chanel(id,name)
-
         dto.setVideo(videoDTO);
         dto.setChannel(channelDto);
         dto.setOrderNum(entity.getOrderNum());

@@ -34,7 +34,6 @@ public class SpringSecurityConfig {
             "/swagger-ui/**",
             "/swagger-resources",
             "/swagger-resources/**",
-
             "/auth/*", "/auth/**",
             "/category/any",
             "/attach/any/**", "/attach/getUrl/*", "attach/upload",

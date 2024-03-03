@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+
 @Repository
 public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer> {
     Optional<ProfileEntity> findByEmail(String username);
@@ -22,7 +23,7 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
     void updateStatus(Integer id, ProfileStatus active);
 
 
-    @Query(value = "SELECT * FROM profile WHERE email=?1 AND password=?2 AND visible=true AND status='ACTIVE' ",nativeQuery = true)
+    @Query(value = "SELECT * FROM profile WHERE email=?1 AND password=?2 AND visible=true AND status='ACTIVE' ", nativeQuery = true)
     Optional<ProfileEntity> getProfile(String email, String password);
 
     @Query("FROM ProfileEntity WHERE id=?1 AND  visible=true ")

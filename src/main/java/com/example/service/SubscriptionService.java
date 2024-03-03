@@ -32,7 +32,6 @@ public class SubscriptionService {
     private ResourceBundleService bundleService;
 
     public SubscriptionDTO create(CreateSubscriptionDTO dto, Integer profileId, AppLanguage language) {
-
         if (!channelRepository.existsById(dto.getChannelId())) {
             throw new AppBadException(bundleService.getMessage("channel.not.found", language));
         }
@@ -45,9 +44,7 @@ public class SubscriptionService {
         entity.setNotificationType(dto.getNotificationType());
         entity.setStatus(SubscriptionStatus.ACTIVE);
         entity.setCreatedDate(LocalDateTime.now());
-
         subscriptionRepository.save(entity);
-
         SubscriptionDTO subscription = new SubscriptionDTO();
         subscription.setId(entity.getId());
         subscription.setCreatedDate(entity.getCreatedDate());
@@ -77,7 +74,6 @@ public class SubscriptionService {
         }
         entity.setChannelId(dto.getChannelId());
         entity.setStatus(dto.getStatus());
-
         subscriptionRepository.save(entity);
         return true;
     }
@@ -105,11 +101,9 @@ public class SubscriptionService {
             throw new AppBadException(bundleService.getMessage("subscription.not.found", language));
         }
         List<SubscriptionInfoDTO> dtoList = new LinkedList<>();
-
         for (SubscriptionInfoMapper entity : userSubscriptionList) {
             SubscriptionInfoDTO dto = new SubscriptionInfoDTO();
             dto.setId(entity.getId());
-
             ChannelDTO channelDTO = new ChannelDTO();
             channelDTO.setId(entity.getChannelId());
             channelDTO.setName(entity.getName());
@@ -117,7 +111,6 @@ public class SubscriptionService {
             channelDTO.setUrl(entity.getUrl());
             dto.setChannel(channelDTO); //channel(id,name,photo(id,url))
             dto.setNotificationType(entity.getNotificationType());
-
             dtoList.add(dto);
         }
         return dtoList;
@@ -129,11 +122,9 @@ public class SubscriptionService {
             throw new AppBadException(bundleService.getMessage("subscription.not.found", language));
         }
         List<SubscriptionInfoDTO> dtoList = new LinkedList<>();
-
         for (SubscriptionInfoMapper entity : userSubscriptionList) {
             SubscriptionInfoDTO dto = new SubscriptionInfoDTO();
             dto.setId(entity.getId());
-
             ChannelDTO channelDTO = new ChannelDTO();
             channelDTO.setId(entity.getChannelId());
             channelDTO.setName(entity.getName());
@@ -142,7 +133,6 @@ public class SubscriptionService {
             dto.setChannel(channelDTO); //channel(id,name,photo(id,url))
             dto.setNotificationType(entity.getNotificationType());
             dto.setCreatedDate(entity.getCreatedDate());
-
             dtoList.add(dto);
         }
         return dtoList;

@@ -43,7 +43,7 @@ public class CommentLikeService {
             return toDTO(entity);
         }
         commentLikeRepository.delete(entity);
-        return "comment " + entity.getType() +" removed";
+        return "comment " + entity.getType() + " removed";
     }
 
     private CommentLikeDTO toDTO(CommentLikeEntity entity) {
@@ -58,7 +58,7 @@ public class CommentLikeService {
     }
 
     public Object remove(Integer id, AppLanguage language) {
-        CommentLikeEntity entity = get(id,language);
+        CommentLikeEntity entity = get(id, language);
         commentLikeRepository.delete(entity);
         return true;
     }
@@ -76,18 +76,18 @@ public class CommentLikeService {
         return getCommentLikeDTOS(profileId, language);
     }
 
-    public List<CommentLikeDTO> getUserLikedCommentListByUserId(Integer profileId,AppLanguage language) {
+    public List<CommentLikeDTO> getUserLikedCommentListByUserId(Integer profileId, AppLanguage language) {
         return getCommentLikeDTOS(profileId, language);
     }
 
     @NotNull
     private List<CommentLikeDTO> getCommentLikeDTOS(Integer profileId, AppLanguage language) {
         List<CommentLikeEntity> list = commentLikeRepository.getList(profileId);
-        if (list.isEmpty()){
-            throw new AppBadException(resourceBundleService.getMessage("comment.like.not.found",language));
+        if (list.isEmpty()) {
+            throw new AppBadException(resourceBundleService.getMessage("comment.like.not.found", language));
         }
         List<CommentLikeDTO> dtoList = new ArrayList<>();
-        for (CommentLikeEntity entity:list){
+        for (CommentLikeEntity entity : list) {
             dtoList.add(toDTO(entity));
         }
         return dtoList;

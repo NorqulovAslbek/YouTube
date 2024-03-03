@@ -29,17 +29,12 @@ public class CategoryService {
             log.warn("This category exists");
             throw new AppBadException("This category exists");
         }
-
         CategoryEntity entity = new CategoryEntity();
         entity.setNameUz(dto.getNameUz());
         entity.setNameRU(dto.getNameRu());
         entity.setNameEn(dto.getNameEn());
-
         categoryRepository.save(entity);
-
         return toDTO(entity);
-
-
     }
 
     private CategoryDTO toDTO(CategoryEntity entity) {
@@ -68,7 +63,6 @@ public class CategoryService {
 
         int effectRows = categoryRepository.update(dto.getNameUz(), dto.getNameRu(), dto.getNameEn(), LocalDateTime.now(), id);
         return effectRows == 1;
-
     }
 
 

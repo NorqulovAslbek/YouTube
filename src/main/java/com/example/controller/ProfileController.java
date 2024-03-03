@@ -43,7 +43,6 @@ public class ProfileController {
     @PutMapping("/changeNameAndSurname")
     public ResponseEntity<?> changeNameAndSurname(@RequestBody ChangeNameAndSurnameDTO dto,
                                                   @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage appLanguage) {
-
         return ResponseEntity.ok(profileService.changeNameAndSurname(dto, appLanguage));
     }
 

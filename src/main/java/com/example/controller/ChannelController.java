@@ -53,7 +53,6 @@ public class ChannelController {
     public ResponseEntity<?> getById(@PathVariable Integer id,
                                      @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                      AppLanguage appLanguage) {
-
         log.info("channel not found {}", id);
         return ResponseEntity.ok(channelService.getById(id, appLanguage));
     }
@@ -76,7 +75,7 @@ public class ChannelController {
     @PutMapping("/updatePhoto")
     public ResponseEntity<?> updateChannelPhoto(@RequestBody ChannelUpdatePhotoDTO dto,
                                                 @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-        return ResponseEntity.ok(channelService.updatePhoto(dto,language));
+        return ResponseEntity.ok(channelService.updatePhoto(dto, language));
     }
 
 

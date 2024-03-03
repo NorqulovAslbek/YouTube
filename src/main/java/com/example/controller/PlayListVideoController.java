@@ -28,7 +28,6 @@ public class PlayListVideoController {
     @Operation(summary = "This api playList video create", description = "This api is used to create a playlist video")
     public ResponseEntity<PlayListVideoDTO> create(@Valid @RequestBody CreatePlayListVideoDTO dto,
                                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         log.info("playlist video  was en error creating {}", dto.getOrderNumber());
         return ResponseEntity.ok(playListVideoService.create(dto, language));
     }
@@ -37,7 +36,6 @@ public class PlayListVideoController {
     @Operation(summary = "This api playList video update", description = "This api is used to update a playlist video")
     public ResponseEntity<Boolean> update(@PathVariable("id") Integer id, @Valid @RequestBody CreatePlayListVideoDTO dto,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         log.info("playlist video  was en error updating {}", dto.getOrderNumber());
         return ResponseEntity.ok(playListVideoService.update(id, dto, language));
     }
@@ -46,18 +44,16 @@ public class PlayListVideoController {
     @Operation(summary = "This api playList video delete", description = "This api is used to delete a playlist video")
     public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
-        log.info("playlist video  was en error deleting {}",id);
-        return ResponseEntity.ok(playListVideoService.delete(id,language));
+        log.info("playlist video  was en error deleting {}", id);
+        return ResponseEntity.ok(playListVideoService.delete(id, language));
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "This api playList video getVideoList", description = "This api is used to Get Video list by playListId ")
     public ResponseEntity<List<PlaylistVideoInfoDTO>> getVideoList(@PathVariable("id") Integer id,
                                                                    @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         log.info("playlist video  was en error get videoList {}", id);
-        return ResponseEntity.ok(playListVideoService.getVideoList(id,language));
+        return ResponseEntity.ok(playListVideoService.getVideoList(id, language));
     }
 
 }

@@ -74,15 +74,15 @@ public class CommentController {
     public ResponseEntity<?> commentListByVideoId(@PathVariable String id,
                                                   @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
                                                   AppLanguage language) {
-        return ResponseEntity.ok(commentService.commentListByVideoId(id,language));
+        return ResponseEntity.ok(commentService.commentListByVideoId(id, language));
     }
 
     @GetMapping("/commentId")//comment id beriladi shu kommentga yozilgan kommentlar listini chiqarib berish kerak
     @Operation(summary = "Api for getCommentReplied", description = "this api will output the comments written to the comment")
     public ResponseEntity<?> getCommentReplied(@RequestParam("commentId") Integer commentId,
                                                @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
-                                               AppLanguage language){
-        return ResponseEntity.ok(commentService.getCommentReplied(commentId,language));
+                                               AppLanguage language) {
+        return ResponseEntity.ok(commentService.getCommentReplied(commentId, language));
     }
 
 

@@ -21,14 +21,13 @@ public class TagService {
     private TagRepository repository;
 
     public List<TagDTO> create(CreateTagDTO tagDTO) {
-        List<TagDTO> tageNames=new LinkedList<>();
+        List<TagDTO> tageNames = new LinkedList<>();
         for (String name : tagDTO.getName()) {
             TagEntity entity = new TagEntity();
             entity.setName(name);
             repository.save(entity);
             tageNames.add(toDTO(entity));
         }
-
         return tageNames;
     }
 

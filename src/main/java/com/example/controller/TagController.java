@@ -20,7 +20,7 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-    @PostMapping
+    @PostMapping()
     @Operation(summary = "Api for Tag", description = "this api used for Tag create")
     public ResponseEntity<List<TagDTO>> create(@Valid @RequestBody CreateTagDTO dto) {
         log.info("Create tag {}", dto.getName());
@@ -43,7 +43,7 @@ public class TagController {
         return ResponseEntity.ok(tagService.delete(id));
     }
 
-    @GetMapping
+    @GetMapping("")
     @Operation(summary = "Api for Tag", description = "this api used for get List tag")
     public ResponseEntity<List<TagDTO>> getList() {
         log.info("Get list tag ");

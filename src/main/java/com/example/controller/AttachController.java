@@ -73,7 +73,6 @@ public class AttachController {
     public ResponseEntity<Resource> download(@PathVariable("fineName") String fileName,
                                              @RequestHeader(value = "Accept-Language", defaultValue = "uz")
                                              AppLanguage language) {
-
         log.info("file is not found {}", fileName);
         return attachService.download(fileName, language);
     }
@@ -83,7 +82,6 @@ public class AttachController {
     @Operation(summary = "This api get All", description = "This api shows all files in pagination view")
     public ResponseEntity<PageImpl<AttachDTO>> pagination(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                                           @RequestParam(value = "size", defaultValue = "6") Integer size) {
-
         return ResponseEntity.ok(attachService.pagination(page, size));
     }
 

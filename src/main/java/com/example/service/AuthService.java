@@ -56,7 +56,6 @@ public class AuthService {
         entity.setStatus(ProfileStatus.REGISTRATION);
         entity.setRole(ProfileRole.ROLE_USER);
         profileRepository.save(entity);
-
         sendEmailMessage(dto, entity, language);     //  ==============> email jonaish uchun
         return true;
     }
@@ -75,15 +74,15 @@ public class AuthService {
 
     public String getButtonLink(ProfileEntity entity, String jwt) {
         String text = "<h1 style=\"text-align: center\">Hello %s</h1>\n" +
-                "<p style=\"background-color: indianred; color: white; padding: 30px\">To complete registration please link to the following link</p>\n" +
-                "<a style=\" background-color: #f44336;\n" +
-                "  color: white;\n" +
-                "  padding: 14px 25px;\n" +
-                "  text-align: center;\n" +
-                "  text-decoration: none;\n" +
-                "  display: inline-block;\" href=\"http://localhost:8080/auth/verification/email/%s\n" +
-                "\">Click</a>\n" +
-                "<br>\n";
+                      "<p style=\"background-color: indianred; color: white; padding: 30px\">To complete registration please link to the following link</p>\n" +
+                      "<a style=\" background-color: #f44336;\n" +
+                      "  color: white;\n" +
+                      "  padding: 14px 25px;\n" +
+                      "  text-align: center;\n" +
+                      "  text-decoration: none;\n" +
+                      "  display: inline-block;\" href=\"http://localhost:8080/auth/verification/email/%s\n" +
+                      "\">Click</a>\n" +
+                      "<br>\n";
         text = String.format(text, entity.getName(), jwt);
         return text;
     }

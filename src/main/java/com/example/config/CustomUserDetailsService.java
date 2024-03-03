@@ -17,6 +17,7 @@ import java.util.Optional;
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private ProfileRepository profileRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // login/phone/email

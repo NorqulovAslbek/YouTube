@@ -36,16 +36,14 @@ public class VideoController {
     @Operation(summary = "This api Video updateStatus", description = "This api is used to updateStatus video")
     public ResponseEntity<?> updateVideoDetail(@PathVariable("id") String videoId, @RequestBody VideoUpdateDetailDTO dto,
                                                @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         log.info("Video not found {}", dto.getTitle());
-        return ResponseEntity.ok(videoService.updateDetail(dto, videoId,language));
+        return ResponseEntity.ok(videoService.updateDetail(dto, videoId, language));
     }
 
     @PutMapping("/updateStatus")
     @Operation(summary = "This api Video updateStatus", description = "This api is used to updateStatus video")
     public ResponseEntity<?> updateStatus(@RequestBody UpdateStatusVideoDTO dto,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         log.info("Video not found {}", dto.getId());
         return ResponseEntity.ok(videoService.updateStatus(dto, language));
     }
@@ -74,7 +72,6 @@ public class VideoController {
                                                                           @RequestParam(value = "size", defaultValue = "6") Integer size,
                                                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language,
                                                                           @RequestBody VideoFilterDTO dto) {
-
         log.info("Title not found {}", dto.getTitle());
         return ResponseEntity.ok(videoService.searchVideoByTitle(page, size, dto, language));
     }
@@ -85,7 +82,6 @@ public class VideoController {
                                                                        @RequestParam(value = "page", defaultValue = "1") Integer page,
                                                                        @RequestParam(value = "size", defaultValue = "6") Integer size,
                                                                        @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-
         log.info("Title not found {}", tagId);
         return ResponseEntity.ok(videoService.getVideoByTagId(page, size, tagId, language));
     }
@@ -95,7 +91,6 @@ public class VideoController {
     @Operation(summary = "This api Video by list pagination", description = "This api Get video by list pagination")
     public ResponseEntity<PageImpl<VideoListPaginationDTO>> getVideoList(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                                                          @RequestParam(value = "size", defaultValue = "6") Integer size) {
-
         return ResponseEntity.ok(videoService.getVideoList(page, size));
     }
 
@@ -110,7 +105,7 @@ public class VideoController {
     @GetMapping("/getVideoById/{id}")
     public ResponseEntity<?> getVideoById(@PathVariable String id,
                                           @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage language) {
-       return ResponseEntity.ok(videoService.getVideoById(id,language));
+        return ResponseEntity.ok(videoService.getVideoById(id, language));
     }
 
 }

@@ -1,4 +1,5 @@
 package com.example.config;
+
 import com.example.dto.JwtDTO;
 import com.example.util.JWTUtil;
 
@@ -24,6 +25,7 @@ import java.util.Arrays;
 public class JwtTokenFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsService userDetailsService;
+
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
         AntPathMatcher pathMatcher = new AntPathMatcher();

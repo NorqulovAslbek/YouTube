@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 public class CommandLineAppStartupRunner implements CommandLineRunner {
     @Autowired
     private DataSource dataSource;
+
     @Override
     public void run(String... args) throws Exception {
 //        initService.initAdmin();
