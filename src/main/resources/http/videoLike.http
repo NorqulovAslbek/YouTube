@@ -2,17 +2,17 @@
 POST localhost:8080/videoLike
 Content-Type: application/json
 Accept-Language: UZ
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjQ5NTMsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODk1MTM1MywiaXNzIjoiWW91dHViZSJ9.TmHI-iDCyhrz7m4bMXfVMMkDgK1iupeD6EIO8QfI3Ho4xTj3zwU6MRMNcH7EmVtXONL2aMTTTPmjXr8Nc9vESg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDk0NjUyNDgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDk1NTE2NDgsImlzcyI6IllvdXR1YmUifQ.zvEFUVFusdSQePXdyoun5_7VldIc8We5l-2ZZZHJfU3LbzW70wOH2qoqPxtwgaQBdYd05W_EiRWU2WvyUZwcvA
 
 {
-  "videoId": "e96683e7-bc88-4a03-a806-25ec21db902d",
-  "type": "LIKE"
+  "videoId": "00568a2e-a73d-49e0-bbf4-5de025b317c4",
+  "type": "DISLIKE"
 }
 
 ### remove Video Like
-DELETE localhost:8080/videoLike/e96683e7-bc88-4a03-a806-25ec21db902d
+DELETE localhost:8080/videoLike/00568a2e-a73d-49e0-bbf4-5de025b317c4
 Accept-Language: UZ
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDg4NjQ5NTMsImVtYWlsIjoibW9kZXJhdG9yam9uQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX01PREVSQVRPUiIsImV4cCI6MTcwODk1MTM1MywiaXNzIjoiWW91dHViZSJ9.TmHI-iDCyhrz7m4bMXfVMMkDgK1iupeD6EIO8QfI3Ho4xTj3zwU6MRMNcH7EmVtXONL2aMTTTPmjXr8Nc9vESg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDk0NjUyNDgsImVtYWlsIjoiYWRtaW5qb25AZ21haWwuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE3MDk1NTE2NDgsImlzcyI6IllvdXR1YmUifQ.zvEFUVFusdSQePXdyoun5_7VldIc8We5l-2ZZZHJfU3LbzW70wOH2qoqPxtwgaQBdYd05W_EiRWU2WvyUZwcvA
 
 ### user Liked Video List
 GET localhost:8080/videoLike
